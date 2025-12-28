@@ -1,5 +1,22 @@
 body {
   margin: 1em;
+  font-family: sans-serif;
+  margin: 0.5em 1em;
+}
+h1 {
+  font-size: 1.4em;
+  margin: 0;
+}
+footer {
+  padding-top: 1em;
+  font-size: 0.8em;
+  color: #333;
+  clear: both;
+}
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+button.action {
+  padding: 2px;
 }
 button.beat-button, button.action {
   width: 2em;

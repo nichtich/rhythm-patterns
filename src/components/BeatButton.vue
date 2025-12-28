@@ -2,24 +2,21 @@
 /**
  * A single button with status (pressed or not pressed).
  */
-import { computed } from "vue"
-
-const props = defineProps({ modelValue: [Number, Boolean], active: Boolean })
-const emit = defineEmits(["update:modelValue"])
-const pressed = computed({
-  get: () => props.modelValue,
-  set: value => emit("update:modelValue", value ? 1 : 0),
+defineProps({
+  pressed: Boolean,
+  active: Boolean,
+  chars: { type: String, default: "x-" },
 })
-const toggle = () => pressed.value = pressed.value ? 0 : 1
+const emit = defineEmits(["toggle"])
 </script>
 
 <template>
   <button
     :class="{ 'beat-button': true, 'active': active }"
-    :aria-pressed="modelValue ? 'true' : 'false'"
-    @click="toggle"
+    :aria-pressed="pressed ? 'true' : 'false'"
+    @click="emit('toggle')"
   >
-    {{ modelValue ? "x" : "-" }}
+    {{ chars[pressed ? 0 : 1] }}
   </button>
 </template>
 
@@ -28,10 +25,12 @@ const toggle = () => pressed.value = pressed.value ? 0 : 1
   font-family: monospace;
 }
 .beat-button[aria-pressed="true"] {
-  background: #00aa00;
+  background: #222;
   border: 2px inset;
+  color: white
 }
 .beat-button[aria-pressed="false"] {
+  background: #ddd;
   border: 2px outset;
 }
 </style>

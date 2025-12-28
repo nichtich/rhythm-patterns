@@ -1,16 +1,20 @@
 <script setup>
 /**
- * A sequence of beat buttons.
+ * A sequence of beat buttons, encoding a Rhythm.
  */
 import BeatButton from "./BeatButton.vue"
 
-defineProps({ modelValue: Array, step: Number })
+defineProps({ rhythm: Array, step: Number })
+const emit = defineEmits(["toggle"])
 </script>
 
 <template>
   <ul class="rhythm-buttons">
-    <li v-for="(item, i) in modelValue" :key="i">
-      <BeatButton v-model="modelValue[i]" :active="step === i" />
+    <li v-for="(item, i) in rhythm" :key="i">
+      <BeatButton
+        :pressed="!!rhythm[i]" :active="step === i"
+        @toggle="emit('toggle',i)"
+      />
     </li>
   </ul>
 </template>
@@ -20,6 +24,7 @@ defineProps({ modelValue: Array, step: Number })
   list-style-type: none;
   display: inline-block;
   padding: 0;
+  margin: 0;
 }
 .rhythm-buttons li {
   display: inline-block;

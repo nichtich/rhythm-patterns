@@ -1,5 +1,3 @@
-import { ref } from "vue"
-
 export default class Looper {
   constructor({
     rhythmRef,
@@ -86,14 +84,7 @@ export default class Looper {
     }, delayMs)
     this._pendingPlayingTimeouts.push(t)
 
-    // If the step is a beat (1), schedule audio
-    const val = pattern[idx]
-    if (val === 1) {
-      if (!this.ensureAudio()) {
-        return
-      }
-
-      const now = this.audio.currentTime
+    if (pattern[idx] && this.ensureAudio()) { // beat
       if (this.soundType === "sample" && this.sample) {
         const src = this.audio.createBufferSource()
         src.buffer = this.sample

@@ -35,7 +35,7 @@ onUnmounted(() => looper.pause())
 </script>
 
 <template>
-  <div>
+  <div class="rhythm-player">
     <div style="display:flex; gap:1rem; align-items:center;">
       <button class="action" @click="running ? looper.pause() : looper.play()">
         {{ running ? '⏸' : '▶' }}

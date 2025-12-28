@@ -5,7 +5,7 @@ export const router = createRouter({
   history: createWebHistory(),
   routes: [{
     name: "pattern",
-    path: "/:pattern([x-]+)",
+    path: "/:pattern([x-][x-]+)",
     component: RhythmPage,
     props: true,
   }],

@@ -197,4 +197,4 @@ class Rhythm extends Array {
   // Related app: <https://www.mikeslessons.com/groove/>
 }
 
-export { Rhythm }
+export default Rhythm

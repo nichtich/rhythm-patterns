@@ -1,5 +1,5 @@
 import assert from "assert"
-import { Rhythm } from "./index.js"
+import Rhythm from "./src/Rhythm.js"
 
 
 it("empty rythm", () => {

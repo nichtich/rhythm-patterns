@@ -4,11 +4,11 @@
 <template>
   <div>
     <router-view />
-    <p>
+    <!--p>
       Example: <router-link to="/x-xx--x">
         x-xx--x
       </router-link>
-    </p>
+    </p-->
   </div>
 </template>
 
