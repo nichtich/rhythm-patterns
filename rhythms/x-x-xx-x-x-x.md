@@ -6,6 +6,6 @@ category:
 - bell pattern
 ---
 
-Usually written in 12/8.
+Usually written in 12/8 or 4/4 with trioles.
 
-Many many more bell patterns exist!
+Many more bell patterns exist!

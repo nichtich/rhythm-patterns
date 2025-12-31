@@ -8,11 +8,14 @@ it("empty rythm", () => {
   assert.deepEqual(new Rhythm(""), r)
   assert.deepEqual(new Rhythm(r), r)
   assert.deepEqual(new Rhythm([]), r)
-
   assert.deepEqual(r.durations(), [])
 })
 
 it("sample rythm", () => {
+  assert.deepEqual(new Rhythm(""),[])
+  assert.deepEqual(new Rhythm("-"),[0])
+  assert.deepEqual(new Rhythm("x"),[1])
+
   let r = new Rhythm()
   r.beat(3).beat(3,2)
   assert.equal(`${r}`, "x--x--x-")

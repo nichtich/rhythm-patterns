@@ -34,9 +34,17 @@ class Rhythm extends Array {
    * Rhythm("|RL-RRL--|")
    * Rhyth([1,0,0,1,0,0,1,0])
    * Rhyth("1","_","_","+","_","_","4","_")
+   *
+   * Rhythm(n) 
    */
   constructor(...beats) {
-    super(...Rhythm.parse(...beats))
+    if (beats.length === 1 && typeof beats[0] === "number") {
+      super(beats[0])
+      this.fill(0)
+    } else {
+      super()
+      this.push(...Rhythm.parse(...beats))
+    }
   }
 
   replace(...beats) {
