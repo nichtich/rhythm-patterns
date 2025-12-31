@@ -11,7 +11,7 @@ const step = ref(undefined)
 watch(step, value => emit("step", value))
 
 const bpm = ref(90)
-const beats = ref( props.rhythm.length / 2 )
+const beats = ref( Math.round(props.rhythm.length / 2) )
 
 function stepDuration() {
   return 60000 / (bpm.value * beats.value)

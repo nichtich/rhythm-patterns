@@ -34,8 +34,10 @@ const toggle = i => rhythm.value[i] = rhythm.value[i] ? 0 : 1
     ({{ durations.join("-") }})
     {{ beats }} beats in {{ rhythm.length }} steps
     <RhythmPlayer :rhythm="rhythm" @step="step = $event" />
-    <RhythmCircle :rhythm="rhythm" :step="step" @toggle="toggle" />
-    <RhythmInfo :rhythm="rhythm" />
+    <div style="display: flex; flex-wrap: wrap;">
+      <RhythmCircle :rhythm="rhythm" :step="step" @toggle="toggle" />
+      <RhythmInfo :rhythm="rhythm" />
+    </div>
   </div>
 </template>
 
@@ -44,11 +46,11 @@ const toggle = i => rhythm.value[i] = rhythm.value[i] ? 0 : 1
   margin: 0.5em 0;
 }
 .rhythm-circle {
-  float:left;
-  width:30%;
+  flex: 0 30%;
   margin-right: 1em;
 }
 .rhythm-info {
+  flex-grow: 1;
 }
 button.action {
   padding: 2px;

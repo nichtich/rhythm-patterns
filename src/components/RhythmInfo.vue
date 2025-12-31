@@ -8,7 +8,7 @@ const props = defineProps({ rhythm: { validator: r => r instanceof Rhythm } })
 
 const beats = computed(() => props.rhythm.beats())
 const length = computed(() => props.rhythm.length)
-const euclidean = computed(() => length.value > 1 ? Rhythm.euclidean(length.value, beats.value).toString() : undefined)
+const euclidean = computed(() => beats.value ? Rhythm.euclidean(length.value, beats.value).toString() : undefined)
 const pattern = computed(() => props.rhythm.toString())
 const even = computed(() => length.value % 2 === 0)
 const redundant = computed(() => {
@@ -49,9 +49,13 @@ const info = computed(() => rhythms[pattern.value])
     <p v-if="redundant">
       The rhythm is redundant because the same pattern is repeated.
     </p>
-    <!--p v-else>
-      The rhythm is not redundant.  
-    </p-->
-    <!-- TODO: equivalent rhythms (when shifted) -->
+    <p v-if="info?.works">
+      <h3>Notable works</h3>
+      <ul>
+          <li v-for="(work) in info.works">
+              <InfoText :markdown="work" />
+          </li>
+      </ul>
+    </p>
   </div>
 </template>
