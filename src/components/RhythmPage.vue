@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from "vue"
+import { ref, computed, watch } from "vue"
 import { useRouter, useRoute } from "vue-router"
 import Rhythm from "../Rhythm.js"
 
@@ -21,6 +21,9 @@ watch(rhythm, value => {
   router.push({ query: { pattern: value.toString() }})
 }, {deep: true})
 
+const durations = computed(() => rhythm.value?.durations() || [])
+const beats = computed(() => rhythm.value?.beats() || 0)
+
 const toggle = i => rhythm.value[i] = rhythm.value[i] ? 0 : 1
 </script>
 
@@ -28,6 +31,8 @@ const toggle = i => rhythm.value[i] = rhythm.value[i] ? 0 : 1
   <div>
     <RhythmEditor v-model="rhythm" :step="step" />
     <RhythmTextInput v-model="rhythm" />
+    ({{ durations.join("-") }})
+    {{ beats }} beats in {{ rhythm.length }} steps
     <RhythmPlayer :rhythm="rhythm" @step="step = $event" />
     <RhythmCircle :rhythm="rhythm" :step="step" @toggle="toggle" />
     <RhythmInfo :rhythm="rhythm" />

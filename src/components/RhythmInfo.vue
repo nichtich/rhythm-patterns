@@ -37,18 +37,14 @@ const info = computed(() => rhythms[pattern.value])
       </h2>
       <InfoText :markdown="info.text" />
     </div>
-    <p>
-      <code>{{ pattern }}</code> is a rhythm with 
-      {{ beats }} beats in {{ rhythm.length }} steps.
-    </p>
     <div v-if="euclidean">
-    <p v-if="pattern == euclidean">
-      The rhythm is <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a>.
-    </p>
-    <p v-else>
-      The rhythm is not <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a>,
-      this would be <RhythmLink :pattern="euclidean" />.
-    </p>
+      <p v-if="pattern == euclidean">
+        The rhythm is <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a>.
+      </p>
+      <p v-else>
+        The rhythm is not <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a>,
+        this would be <RhythmLink :pattern="euclidean" />.
+      </p>
     </div>
     <p v-if="redundant">
       The rhythm is redundant because the same pattern is repeated.
