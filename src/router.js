@@ -11,7 +11,7 @@ export const router = createRouter({
     component: {
       render() {
         const pattern = this.$route?.query?.pattern
-        if (/^[x-][x-]+$/.test(pattern)) {
+        if (/^[x-]+$/.test(pattern)) {
           return h(RhythmPage, { pattern })
         }
         return h(IndexPage)

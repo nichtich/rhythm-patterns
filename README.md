@@ -1,8 +1,12 @@
-Rhythms can be described with:
+# Rhythm patterns
+
+## Rhythms
+
+Each rhythms can be described with:
 
 - a `name`
 - multiple `alias`
 - a corresponding Wikidata Q-identifier
-- a description in Markdown syntax
+- a textual description in Markdown syntax
 
-The description may reference other rhythms with this syntax: `` `|x-xx|` ``.
+The textual description may reference other rhythms with this syntax: `` `|x-xx|` ``.

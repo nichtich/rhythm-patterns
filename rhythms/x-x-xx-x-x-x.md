@@ -1,5 +1,9 @@
 ---
 name: Standard African Bell pattern
+alias:
+- Bembe
+category:
+- bell pattern
 ---
 
 Usually written in 12/8.

@@ -44,7 +44,7 @@ function toggle(i) {
       <button class="action" @click="append">
         +
       </button>
-      <button class="action" :disabled="rhythm.length < 3" @click="pop">
+      <button class="action" :disabled="rhythm.length < 2" @click="pop">
         -
       </button>
       <button class="action" @click="inverse">
@@ -53,7 +53,7 @@ function toggle(i) {
       <button class="action" @click="duplicate">
         𝄎
       </button>
-      <button class="action" :disabled="rhythm.length < 4 || rhythm.length % 2" @click="halve">
+      <button class="action" :disabled="rhythm.length < 2 || rhythm.length % 2" @click="halve">
         ½
       </button>
       <button class="action" disabled="true">

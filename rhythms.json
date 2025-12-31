@@ -1,4 +1,19 @@
 {
+  "x": {
+    "name": "pulse",
+    "text": "The minimal rhythm consists of a sequence of steady pulses.",
+    "pattern": "x"
+  },
+  "x-x": {
+    "name": "minimal shuffle",
+    "text": "The only core beat with three steps.",
+    "pattern": "x-x"
+  },
+  "x-xx": {
+    "name": "?",
+    "text": "",
+    "pattern": "x-xx"
+  },
   "x-x-x-": {
     "name": "waltz",
     "text": "Only recogniceable with an accent on the first beat.",
@@ -11,7 +26,7 @@
   },
   "x--x----": {
     "name": "charleston",
-    "text": "First two notes of |x--x--x-| tresillo.",
+    "text": "First two notes of `|x--x--x-|` tresillo.",
     "pattern": "x--x----"
   },
   "x--x--x-": {
@@ -25,10 +40,10 @@
       "Ayub",
       "Zaar"
     ],
-    "categories": [
+    "category": [
       "Dumbek rhythms"
     ],
-    "text": "Played as |D--kD-T-| on Darbuka in Arabian music.\n\nWritten in 2/4 meter\n\nSource: <https://web.archive.org/web/20141026164509/http://www.maqamworld.com/rhythms/muwashahat1.html#ayyub>\n\nIt's a Tresillo |x--x--x-| with the additional second beat.",
+    "text": "Played as `|D--kD-T-|` on Darbuka in Arabian music.\n\nWritten in 2/4 meter\n\nSource: <https://web.archive.org/web/20141026164509/http://www.maqamworld.com/rhythms/muwashahat1.html#ayyub>\n\nIt's a Tresillo `|x--x--x-|` with the additional second beat.",
     "pattern": "x--xx-x-"
   },
   "x-x-x-x-": {
@@ -46,7 +61,7 @@
     "categories": [
       "bell pattern"
     ],
-    "text": "Also a common bell pattern.\n\nEmbellishment of tresillo |x--x--x-|.\n\nUsed in Biguine music.",
+    "text": "Also a common bell pattern.\n\nEmbellishment of tresillo `|x--x--x-|`.\n\nUsed in Biguine music.",
     "pattern": "x-xx-xx-"
   },
   "xx-xx-x-": {
@@ -79,38 +94,89 @@
     "text": "A quadruplet (quartole) over three notes results in this rhythm.",
     "pattern": "x--xx-x-xx--"
   },
+  "x-x-x--x-x--": {
+    "name": "Fume-fume",
+    "text": "",
+    "pattern": "x-x-x--x-x--"
+  },
   "x-x-xx-x-x-x": {
     "name": "Standard African Bell pattern",
+    "alias": [
+      "Bembe"
+    ],
+    "category": [
+      "bell pattern"
+    ],
     "text": "Usually written in 12/8.\n\nMany many more bell patterns exist!",
     "pattern": "x-x-xx-x-x-x"
+  },
+  "x-x-xx-x-xx-": {
+    "name": "Yorumba",
+    "category": [
+      "bell pattern"
+    ],
+    "source": [
+      "beats exotiques"
+    ],
+    "text": "",
+    "pattern": "x-x-xx-x-xx-"
   },
   "x-xx-xx-xx-x": {
     "name": "shuffle",
     "text": "two eights played as triole (2-to-1)",
     "pattern": "x-xx-xx-xx-x"
   },
+  "x---x-x---x-x---": {
+    "name": "Shiko",
+    "alias": [
+      "Ashiko"
+    ],
+    "text": "Traditionally played on Ashiko drums.",
+    "pattern": "x---x-x---x-x---"
+  },
   "x--x---x--x-x---": {
     "name": "rumba clave",
     "text": "",
     "pattern": "x--x---x--x-x---"
   },
+  "x--x--x---x---x-": {
+    "name": "Gahu",
+    "text": "",
+    "pattern": "x--x--x---x---x-"
+  },
   "x--x--x---x--x--": {
     "name": "bossa nova",
-    "text": "Like 2-3 son clave, the first part is |x--x--x-| tresillo.",
+    "text": "Like 2-3 son clave, the first part is `|x--x--x-|` tresillo.",
     "pattern": "x--x--x---x--x--"
   },
   "x--x--x---x-x---": {
     "wikidata": "Q16244461",
     "name": "3-2 son clave",
     "alias": [
-      "Bo Diddley beat"
+      "Bo Diddley beat",
+      "Son"
     ],
-    "text": "First part of it |x--x--x-| is also known as Tresillo.",
+    "text": "First part of it `|x--x--x-|` is tresillo.",
     "pattern": "x--x--x---x-x---"
+  },
+  "x--x--x---xx----": {
+    "name": "Soukous",
+    "text": "",
+    "pattern": "x--x--x---xx----"
+  },
+  "x--x--x-x-x-x---": {
+    "name": "?",
+    "text": "Based on the son clave `|x--x--x---x-x---|`",
+    "pattern": "x--x--x-x-x-x---"
+  },
+  "x--x-x-x--x-x-x-": {
+    "name": "Samba",
+    "text": "",
+    "pattern": "x--x-x-x--x-x-x-"
   },
   "x--xx--xx--xx--x": {
     "name": "swing",
-    "text": "two eights played with length 3-to-1.\n\nThere is a lot of room between shuffle |x-xx-xx-xx-x| and swing pattern.",
+    "text": "two eights played with length 3-to-1.\n\nThere is a lot of room between shuffle `|x-xx-xx-xx-x|` and swing pattern.",
     "pattern": "x--xx--xx--xx--x"
   },
   "x-x-xxx-xxxx-xx-": {
@@ -131,7 +197,7 @@
   "x--x-xx--x-----x--x-----": {
     "name": "Shave and a haircut",
     "wikidata": "Q938427",
-    "text": "Related: |xxxx-xx-|",
+    "text": "Related: `|xxxx-xx-|`",
     "pattern": "x--x-xx--x-----x--x-----"
   }
 }

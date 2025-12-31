@@ -6,6 +6,7 @@ import Rhythm from "../Rhythm.js"
 import RhythmEditor from "./RhythmEditor.vue"
 import RhythmCircle from "./RhythmCircle.vue"
 import RhythmInfo from "./RhythmInfo.vue"
+import RhythmTextInput from "./RhythmTextInput.vue"
 import RhythmPlayer from "./RhythmPlayer.vue"
 
 const props = defineProps({ pattern: String }) // from route
@@ -26,6 +27,7 @@ const toggle = i => rhythm.value[i] = rhythm.value[i] ? 0 : 1
 <template>
   <div>
     <RhythmEditor v-model="rhythm" :step="step" />
+    <RhythmTextInput v-model="rhythm" />
     <RhythmPlayer :rhythm="rhythm" @step="step = $event" />
     <RhythmCircle :rhythm="rhythm" :step="step" @toggle="toggle" />
     <RhythmInfo :rhythm="rhythm" />

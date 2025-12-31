@@ -3,7 +3,7 @@ name: Ayoub
 alias:
 - Ayub
 - Zaar
-categories:
+category:
 - Dumbek rhythms
 ---
 

@@ -8,7 +8,7 @@ const props = defineProps({ rhythm: { validator: r => r instanceof Rhythm } })
 
 const beats = computed(() => props.rhythm.beats())
 const length = computed(() => props.rhythm.length)
-const euclidean = computed(() => Rhythm.euclidean(length.value, beats.value).toString())
+const euclidean = computed(() => length.value > 1 ? Rhythm.euclidean(length.value, beats.value).toString() : undefined)
 const pattern = computed(() => props.rhythm.toString())
 const even = computed(() => length.value % 2 === 0)
 const redundant = computed(() => {
@@ -41,6 +41,7 @@ const info = computed(() => rhythms[pattern.value])
       <code>{{ pattern }}</code> is a rhythm with 
       {{ beats }} beats in {{ rhythm.length }} steps.
     </p>
+    <div v-if="euclidean">
     <p v-if="pattern == euclidean">
       The rhythm is <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a>.
     </p>
@@ -48,6 +49,7 @@ const info = computed(() => rhythms[pattern.value])
       The rhythm is not <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a>,
       this would be <RhythmLink :pattern="euclidean" />.
     </p>
+    </div>
     <p v-if="redundant">
       The rhythm is redundant because the same pattern is repeated.
     </p>

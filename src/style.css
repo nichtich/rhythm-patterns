@@ -37,3 +37,6 @@ button.beat-button, button.action {
 .beat-button.active[aria-pressed="false"] {
   background: red;
 }
+.rhythm-link {
+  font-family: monospace;
+}
