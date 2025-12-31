@@ -77,11 +77,6 @@
     "text": "Also a common bell pattern.\n\nEmbellishment of tresillo `|x--x--x-|`.\n\nUsed in Biguine music.",
     "pattern": "x-xx-xx-"
   },
-  "xx-xx-x-": {
-    "name": "?",
-    "text": "Also used in calypso?",
-    "pattern": "xx-xx-x-"
-  },
   "xxxx-xx-": {
     "text": "",
     "pattern": "xxxx-xx-"

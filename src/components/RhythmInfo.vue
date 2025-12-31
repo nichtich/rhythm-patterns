@@ -19,6 +19,22 @@ const redundant = computed(() => {
   return pattern.value.slice(0, length.value / 2) === pattern.value.slice(length.value / 2)
 })
 
+const rotated = computed(() => {
+  const pp = pattern.value + pattern.value
+  const len = pattern.value.length
+  const rot = new Set()
+  for (let i=1; i<len; i++) {
+    const p = pp.substring(i, i+len)
+    if (p !== pp) {
+      rot.add(p)
+    }
+  }
+  return rot
+})
+
+const knownRotated = computed(() => 
+  new Set([...rotated.value].filter(p => rhythms[p])))
+
 const info = computed(() => rhythms[pattern.value])
 </script>
 
@@ -43,19 +59,30 @@ const info = computed(() => rhythms[pattern.value])
       </p>
       <p v-else>
         The rhythm is not <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a>,
-        this would be <RhythmLink :pattern="euclidean" />.
+        this would be 
+        <span v-if="rotated.has(euclidean)">rotated variant </span>
+        <RhythmLink :pattern="euclidean" />.
       </p>
     </div>
     <p v-if="redundant">
       The rhythm is redundant because the same pattern is repeated.
     </p>
-    <p v-if="info?.works">
+    <div v-if="knownRotated.size">
+      <h3>Rotated variants</h3>
+      <ul>
+        <li v-for="(rot,i) in knownRotated" :key="i">
+          <RhythmLink :pattern="rot" />
+          {{ rhythms[rot]?.name }}
+        </li>
+      </ul>
+    </div>
+    <div v-if="info?.works">
       <h3>Notable works</h3>
       <ul>
-          <li v-for="(work) in info.works">
-              <InfoText :markdown="work" />
-          </li>
+        <li v-for="(work,i) in info.works" :key="i">
+          <InfoText :markdown="work" />
+        </li>
       </ul>
-    </p>
+    </div>
   </div>
 </template>
