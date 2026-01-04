@@ -62,13 +62,16 @@ it("normalize, durations, gaps", () => {
 
 it("divisor / condense", () => {
   const divisor = r => (new Rhythm(r)).divisor()
+  const positions = r => (new Rhythm(r)).beatPositions()
 
+  assert.deepEqual(positions("x-x-x-"), [0,2,4])
   assert.deepEqual(divisor("x-x-x-"), 2)
   assert.deepEqual(divisor("xx"), 1)
-  assert.deepEqual(divisor("x-x"), undefined)
+  assert.deepEqual(divisor("x-x"), 1)
   assert.deepEqual(divisor("x--x-----"), 3)
+  assert.deepEqual(divisor("x"), 1)
   assert.deepEqual(divisor("x-----"), 6)
-  assert.deepEqual(divisor("--x---"), undefined)
+  assert.deepEqual(divisor("--x---"), 1)
 
   const r = new Rhythm("x-x-x-")
   assert.deepEqual(r.condense(2), [1,1,1])

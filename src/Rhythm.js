@@ -103,23 +103,18 @@ class Rhythm extends Array {
   }
 
   /**
-   * Get greatest common divisor of all durations, if the first step is a beat.
+   * Get greatest common divisor of all durations.
+   * Always returns 1 if the the first step is not a beat.
+   * Returns the length of the rhytm is empty.
    */
   divisor() {
-    if (this[0] === 1) {
-      const set = new Set(this.durations())
-      if (set.size === 1) {
-        return [...set][0]
-      }
-      const d = gcd(Math.min(...set), Math.max(...set))
-      return d > 1 ? d : undefined
-    }
+    return this[0] === 1 ? this.durations().reduce(gcd) : 1
   }
 
   condense(div=0) {
     const divisor = this.divisor()
     div = div || divisor
-    if (divisor && divisor % div === 0) {
+    if (divisor > 1 && divisor % div === 0) {
       const condensed = []
       for (let i=0; i<this.length; i+=div) {
         condensed.push(this[i])
@@ -127,6 +122,10 @@ class Rhythm extends Array {
       this.replace(condensed)
     }
     return this
+  }
+
+  expand(n=2) {
+    this.splice(0, this.length, ...this.map(x => [x,...Array(n-1).fill(0)]).flat())
   }
 
   gaps() {
@@ -160,15 +159,39 @@ class Rhythm extends Array {
     return this
   }
 
+  rotateBeat(steps=1) {
+    if (Math.abs(steps) > 0 && !this.empty()) {
+      const pos = this.beatPositions()
+      let shift = 0
+      if (this[0]) {
+        shift = pos[(-steps % pos.length + pos.length) % pos.length]
+      } else {
+        shift = pos[0]
+      }
+      this.rotate(-shift)
+    }
+    return this
+  }
+
   /** Get the number of beats in this rhythm. */
   beats() {
     return this.filter(x => x > 0).length 
   }
 
-  /** Get the position the the first beat or null if the rhythm contains none. */
+  /** Get index numbers of beats. **/
+  beatPositions() {
+    return this.map((x,i) => x > 0 ? i : null).filter(i => i !== null)
+  }
+
+  /** Get the position the the first beat, or null if the rhythm is empty. */
   first() {
     const index = this.findIndex(x => x > 0) 
     return index >= 0 ? index : null
+  }
+
+  /** Get whether the rhytm contains no beats. **/
+  empty() {
+    return this.first() === null
   }
 
   /** Stringify the rhythm with "x" for beat and "-" for rest. */

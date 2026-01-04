@@ -8,6 +8,7 @@ import RhythmCircle from "./RhythmCircle.vue"
 import RhythmInfo from "./RhythmInfo.vue"
 import RhythmTextInput from "./RhythmTextInput.vue"
 import RhythmPlayer from "./RhythmPlayer.vue"
+import RhythmScore from "./RhythmScore.vue"
 
 const props = defineProps({ pattern: String }) // from route
 const rhythm = ref(new Rhythm(props.pattern))
@@ -26,6 +27,10 @@ const durations = computed(() => rhythm.value?.durations() || [])
 const beats = computed(() => rhythm.value?.beats() || 0)
 
 const toggle = i => rhythm.value[i] = rhythm.value[i] ? 0 : 1
+
+const cssSheet = new CSSStyleSheet()
+document.adoptedStyleSheets = [cssSheet]
+watch(step, async i => cssSheet.replace(`.step-${i} { fill: red; stroke: red; }`))
 </script>
 
 <template>
@@ -35,12 +40,17 @@ const toggle = i => rhythm.value[i] = rhythm.value[i] ? 0 : 1
     ({{ durations.join("-") }})@{{ first }}
     has {{ beats }} beats in {{ rhythm.length }} steps
     <RhythmPlayer :rhythm="rhythm" @step="step = $event" />
+    <RhythmScore :rhythm="rhythm" :step="step" />
     <div style="display: flex;">
       <RhythmCircle :rhythm="rhythm" :step="step" @toggle="toggle" />
       <RhythmInfo :rhythm="rhythm" />
     </div>
   </div>
 </template>
+
+<style module="styles">
+
+</style>
 
 <style>
 .rhythm-player {
