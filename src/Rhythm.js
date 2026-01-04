@@ -128,6 +128,15 @@ class Rhythm extends Array {
     this.splice(0, this.length, ...this.map(x => [x,...Array(n-1).fill(0)]).flat())
   }
 
+  // TODO: add reverse action (length % 3 == 0 && every middle step is empty)
+  syncopate() {
+    const r = []
+    for (let i=0; i<this.length; i+=2) {
+      r.push(this[i],0,this[i+1])
+    }
+    this.replace(r)
+  }
+
   gaps() {
     const gaps = []
     const first = this.first()

@@ -1,5 +1,6 @@
 <script setup>
 import rhythms from "../rhythms.json"
+import Rhythm from "../src/Rhythm.js"
 import RhythmLink from "../src/components/RhythmLink.vue"
 </script>
 
@@ -20,6 +21,9 @@ import RhythmLink from "../src/components/RhythmLink.vue"
         </td>
         <td>
           <span v-if="rhythm.name">{{ rhythm.name }}</span>
+        </td>
+        <td>
+          <span v-if="(new Rhythm(rhythm)).divisor() == 1">condense</span>
         </td>
       </tr>
     </table>

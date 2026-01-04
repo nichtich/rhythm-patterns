@@ -62,10 +62,13 @@ const info = computed(() => rhythms[pattern.value])
         <RhythmLink :pattern="euclidean" />.
       </p>
     </div>
-    <div v-if="divisor">
-      The rhythm can be condensed (divisor {{ divisor }} results in 
-      <RhythmLink :pattern="(new Rhythm(pattern)).condense().toString()" />
+    <div v-if="divisor > 1">
+       The rhythm can be condensed to 
+      <RhythmLink :pattern="(new Rhythm(pattern)).condense(divisor).toString()" />
       )
+    </div>
+    <div v-else>
+      The rhythm is condense.
     </div>
     <div v-if="knownRotated.size">
       <h3>Rotated variants</h3>

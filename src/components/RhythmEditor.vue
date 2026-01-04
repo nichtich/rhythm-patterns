@@ -72,7 +72,9 @@ function toggle(i) {
       <button class="action" :disabled="rhythm.length > MAX/3" @click="rhythm.expand(3)">
         ×3
       </button>
-      <!-- TOOD: syncope -->
+      <button class="action" :disabled="rhythm.length % 2 || rhythm.empty() || rhythm.length > 2*MAX/3" @click="rhythm.syncopate()">
+        ²=³
+      </button>
     </div>
   </div>
 </template>
