@@ -4,6 +4,11 @@ import rhythms from "../rhythms.json"
 import Rhythm from "../src/Rhythm.js"
 import RhythmLink from "../src/components/RhythmLink.vue"
 
+// TODO: filters from route:
+// category
+// beats
+// match=x-??-x
+
 const initialized = ref(false)
 const euclideans = []
 
@@ -35,6 +40,7 @@ initialized.value = true
           <th />
           <th>pattern</th>
           <th>name</th>
+          <th>categories</th>
           <th>properties</th>
         </tr>
       </thead>
@@ -48,6 +54,13 @@ initialized.value = true
           </td>
           <td>
             <span v-if="rhythm.name">{{ rhythm.name }}</span>
+          </td>
+          <td>
+            <ul v-of="rhythm.category?.length" class="inline">
+              <li v-for="(c,i) in rhythm.category" :key="i">
+                {{ c }}
+              </li>
+            </ul>
           </td>
           <td v-if="initialized">
             <ul class="inline">

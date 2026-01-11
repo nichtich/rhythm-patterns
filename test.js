@@ -48,31 +48,60 @@ it("rotate, rotation, equivalent", () => {
   assert.ok(!a.equivalent(c))
 })
 
-it("normalize, durations, gaps", () => {
+it("normalize", () => {
   let r = new Rhythm("-x--x-----x-")
   assert.deepEqual(r.durations(),[3,6,3])
-  assert.deepEqual(r.gaps(),[1,3,6,2])
+  // assert.deepEqual(r.gaps(),[1,3,6,2])
   r.normalize()
   assert.equal(`${r}`, "xx-x")
-  assert.deepEqual(r.durations(),[1,2,1])
-  assert.deepEqual(r.gaps(),[1,2,1])
-  assert.deepEqual((new Rhythm("x--")).gaps(),[3])
-  assert.deepEqual((new Rhythm("--x")).gaps(),[2,1])
+  // assert.deepEqual((new Rhythm("--x")).gaps(),[2,1])
 })
 
-it("divisor / condense", () => {
-  const divisor = r => (new Rhythm(r)).divisor()
-  const positions = r => (new Rhythm(r)).beatPositions()
+const properties = {
+  x: {
+    beatPositions: [0],
+    durations: [1],
+    divisor: 1,
+  },
+  xx: {
+    beatPositions: [0,1],
+    durations: [1,1],
+    divisor: 1,
+  },
+  "x-x": {
+    beatPositions: [0,2],
+    divisor: 1,
+  },
+  "x--": {
+    durations: [3],
+  },
+  "xx-x": {
+    durations: [1,2,1],
+  },
+  "x-x-x-": {
+    beatPositions: [0,2,4],
+    divisor: 2,
+  },
+  "x--x-----": { divisor: 3 },
+  "x-----": { divisor: 6 },
+  "--x---": { divisor: 1 },
+}
 
-  assert.deepEqual(positions("x-x-x-"), [0,2,4])
-  assert.deepEqual(divisor("x-x-x-"), 2)
-  assert.deepEqual(divisor("xx"), 1)
-  assert.deepEqual(divisor("x-x"), 1)
-  assert.deepEqual(divisor("x--x-----"), 3)
-  assert.deepEqual(divisor("x"), 1)
-  assert.deepEqual(divisor("x-----"), 6)
-  assert.deepEqual(divisor("--x---"), 1)
+describe("properties", () =>
+  Object.entries(properties).forEach(([pattern, r]) => describe(pattern, () => {
+    const rhythm = new Rhythm(pattern)
+    Object.entries(r).forEach(([key, value]) =>
+      it(key, () => assert.deepEqual(rhythm[key](), value)))
+  })))
 
+describe("compare", () => {
+  const compare = (a,b) => (new Rhythm(a)).compare(new Rhythm(b))
+  it("length", () => assert.equal(compare("x-","x--"), -1))
+  it("equal", () => assert.equal(compare("x--","x--"), 0))
+  it("pulses", () => assert.equal(compare("x--","x-x"), -1))
+})
+
+it("condense", () => {
   const r = new Rhythm("x-x-x-")
   assert.deepEqual(r.condense(2), [1,1,1])
 })

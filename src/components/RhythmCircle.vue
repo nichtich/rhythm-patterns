@@ -28,12 +28,16 @@ const points = computed(() => props.rhythm.map(
     }
   },
 ))
+
+const polygon = computed(() => Object.values(points.value || {})
+  .filter(p => p.fill === "black").map(({x,y}) => `${x},${y}`).join(","))
 </script>
 
 <template>
   <div class="rhythm-circle">
     <svg viewBox="0 0 100 100" stroke="#000000">
       <circle cx="50" cy="50" :r="radius" fill="none" />
+      <polygon :points="polygon" class="polygon" />
       <g v-for="(p, i) in points" :key="i">
         <circle
           :class="{ 'beat-dot': true, 'active': pulse === i }"
@@ -48,6 +52,10 @@ const points = computed(() => props.rhythm.map(
 </template>
  
 <style>
+.polygon {
+  fill: #ccc;
+  stroke: #ccc;
+}
 .beat-dot:hover,
 .beat-dot.active {
   stroke: red;

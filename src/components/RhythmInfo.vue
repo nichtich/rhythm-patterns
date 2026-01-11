@@ -12,9 +12,7 @@ const euclidean = computed(() => beats.value ? Rhythm.euclidean(length.value, be
 const pattern = computed(() => props.rhythm.toString())
 
 const divisor = computed(() => props.rhythm.divisor())
-
-
-// TODO: reduced
+const repetitions = computed(() => props.rhythm.repetitions())
 
 const rotated = computed(() => {
   const pp = pattern.value + pattern.value
@@ -51,9 +49,22 @@ const info = computed(() => rhythms[pattern.value])
       </h2>
       <InfoText :markdown="info.text" />
     </div>
+    <div>
+      <span if="repetitions">
+        The rhythm consists of the same pattern repeated {{ repetitions }} times.
+      </span>
+      <span v-if="divisor > 1">
+        The rhythm can be condensed to 
+        <RhythmLink :pattern="(new Rhythm(pattern)).condense(divisor).toString()" />
+      </span>
+      <span v-else-if="repetitions == 1">
+        The rhythm is condense.
+        <!-- TODO: core rhytm? -->
+      </span>
+    </div>
     <div v-if="euclidean">
       <p v-if="pattern == euclidean">
-        The rhythm is <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a>.
+        The rhythm is <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a> E({{ beats }},{{ length }}).
       </p>
       <p v-else>
         The rhythm is not <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a>,
@@ -62,20 +73,23 @@ const info = computed(() => rhythms[pattern.value])
         <RhythmLink :pattern="euclidean" />.
       </p>
     </div>
-    <div v-if="divisor > 1">
-      The rhythm can be condensed to 
-      <RhythmLink :pattern="(new Rhythm(pattern)).condense(divisor).toString()" />
-      )
-    </div>
-    <div v-else>
-      The rhythm is condense.
-    </div>
     <div v-if="knownRotated.size">
       <h3>Rotated variants</h3>
+      <!-- TODO: if repeated, exclude same -->
       <ul>
         <li v-for="(rot,i) in knownRotated" :key="i">
           <RhythmLink :pattern="rot" />
           {{ rhythms[rot]?.name }}
+        </li>
+      </ul>
+    </div>
+    <div v-if="info?.category">
+      <h3>Categories</h3>
+      <ul>
+        <li v-for="(category,i) in info.category" :key="i">
+          <RouterLink :to="{ category }">
+            {{ category }}
+          </RouterLink>
         </li>
       </ul>
     </div>
@@ -84,6 +98,14 @@ const info = computed(() => rhythms[pattern.value])
       <ul>
         <li v-for="(work,i) in info.works" :key="i">
           <InfoText :markdown="work" />
+        </li>
+      </ul>
+    </div>
+    <div v-if="info?.source">
+      <h3>Sources</h3>
+      <ul>
+        <li v-for="(source,i) in info.source" :key="i">
+          <InfoText :markdown="source" />
         </li>
       </ul>
     </div>

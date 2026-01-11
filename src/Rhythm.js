@@ -1,6 +1,6 @@
 
 
-/** Calculates the greatest common divisor of two numbers */
+/** Calculate the greatest common divisor of two numbers */
 const gcd = (a, b) => b === 0 ? a : gcd(b, a % b)
 
 /**
@@ -9,13 +9,16 @@ const gcd = (a, b) => b === 0 ? a : gcd(b, a % b)
 class Rhythm extends Array {
 
   /**
-   * Returns whether a variable is read as beat. This is true for every true
+   * Return whether a variable is read as beat. This is true for every true
    * value except for the characters space, tab, underscore, dot and minus.
    */
   static isBeat(x) {
     return x && !(typeof x === "string" && x.match(/^[ \t_.-]/))
   }
 
+  /**
+   * Read a string, an array, or a list of values as rhythm.
+   */
   static parse(...beats) {
     if (beats.length === 1) {
       if (Array.isArray(beats[0])) {
@@ -35,7 +38,7 @@ class Rhythm extends Array {
    * Rhyth([1,0,0,1,0,0,1,0])
    * Rhyth("1","_","_","+","_","_","4","_")
    *
-   * Rhythm(n) 
+   * Rhythm(n) // empty rhythm of length n
    */
   constructor(...beats) {
     if (beats.length === 1 && typeof beats[0] === "number") {
@@ -47,6 +50,10 @@ class Rhythm extends Array {
     }
   }
 
+  /**
+   * Change the rhytm in-place. Takes same arguments as constructor but a single number is not
+   * read as number of pules.
+   */
   replace(...beats) {
     if (!(beats.length === 1 && beats[0] instanceof Rhythm)) {
       beats = Rhythm.parse(...beats)
@@ -78,6 +85,22 @@ class Rhythm extends Array {
       this.push(0)
     }
     return this
+  }
+
+  /**
+   * Compare two rhythms, first by length, then lexicographically.
+   */
+  compare(r) {
+    if (this.length === r.length) {
+      for (let i=0; i<r.length; i++) {
+        if (r[i] != this[i]) {
+          return this[i] - r[i]
+        }
+      }
+      return 0
+    } else {
+      return this.length - r.length
+    }
   }
 
   /**
@@ -149,6 +172,22 @@ class Rhythm extends Array {
     return this
   }
 
+  // TODO
+  isCore() {
+    if (this.first()) {
+      return false
+    } // shifted
+    if (this.divisor() > 1) {
+      return false
+    }
+    if (this.repetitions() > 1) {
+      return false
+    }
+
+    // TODO: is this lexicographically smaller than all its rotations
+    // check durations to do so is more performant?
+  }
+
   shuffle() {
     if (this.length % 2 === 0) {
       const r = []
@@ -183,26 +222,6 @@ class Rhythm extends Array {
     return false
   }
 
-  unshifföl
-  gaps() {
-    const gaps = []
-    const first = this.first()
-    if (first == null) {
-      return [this.length]
-    } else if (first > 0) {
-      gaps.push(first)
-    }
-    let prev = first
-    for (let i=first+1; i<this.length; i++) {
-      if (this[i] > 0) {
-        gaps.push(i-prev)
-        prev = i
-      }
-    }
-    gaps.push(this.length-prev)
-    return gaps
-  }
-
   /**
    * Rotate the rhythm one pulse to the right.
    * @param {number} pulses positive or negative number
@@ -231,7 +250,7 @@ class Rhythm extends Array {
 
   /** Get the number of beats in this rhythm. */
   beats() {
-    return this.filter(x => x > 0).length 
+    return this.filter(x => x > 0).length
   }
 
   /** Get index numbers of beats. **/
@@ -241,7 +260,7 @@ class Rhythm extends Array {
 
   /** Get the position the the first beat, or null if the rhythm is empty. */
   first() {
-    const index = this.findIndex(x => x > 0) 
+    const index = this.findIndex(x => x > 0)
     return index >= 0 ? index : null
   }
 
@@ -252,7 +271,7 @@ class Rhythm extends Array {
 
   /** Stringify the rhythm with "x" for beat and "-" for rest. */
   toString() {
-    return this.map(x => x > 0 ? "x" : "-").join("") 
+    return this.map(x => x > 0 ? "x" : "-").join("")
   }
 
   // TODO: document

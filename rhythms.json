@@ -32,6 +32,9 @@
     "alias": [
       "3 over 2"
     ],
+    "category": [
+      "polyrythm"
+    ],
     "text": "A triplet `|x-x-x-|` over two notes `|x--x--|` results in this rhythm.",
     "pattern": "x-xxx-"
   },
@@ -106,13 +109,77 @@
     "text": "",
     "pattern": "x--x--x-x-"
   },
+  "--x---xx-x-x": {
+    "name": "bulería",
+    "alias": [
+      "bulería moderna"
+    ],
+    "category": [
+      "flamenco"
+    ],
+    "source": [
+      "[El Compás Flamenco: A Phylogenetic Analysis](https://cgm.cs.mcgill.ca/~godfried/publications/winfield.pdf)"
+    ],
+    "text": "",
+    "pattern": "--x---xx-x-x"
+  },
+  "--x--x-x-x-x": {
+    "name": "soleá",
+    "alias": [
+      "bulería tradicional"
+    ],
+    "category": [
+      "flamenco"
+    ],
+    "source": [
+      "[El Compás Flamenco: A Phylogenetic Analysis](https://cgm.cs.mcgill.ca/~godfried/publications/winfield.pdf)"
+    ],
+    "text": "",
+    "pattern": "--x--x-x-x-x"
+  },
+  "x--x--x--x--": {
+    "name": "fandango",
+    "category": [
+      "flamenco"
+    ],
+    "source": [
+      "[El Compás Flamenco: A Phylogenetic Analysis](https://cgm.cs.mcgill.ca/~godfried/publications/winfield.pdf)"
+    ],
+    "text": "",
+    "pattern": "x--x--x--x--"
+  },
+  "x--x--x-x-x-": {
+    "name": "guajira",
+    "category": [
+      "flamenco"
+    ],
+    "source": [
+      "[El Compás Flamenco: A Phylogenetic Analysis](https://cgm.cs.mcgill.ca/~godfried/publications/winfield.pdf)"
+    ],
+    "text": "",
+    "pattern": "x--x--x-x-x-"
+  },
   "x--xx-x-xx--": {
     "name": "4:3 polyrhythm",
     "alias": [
       "4 over 3"
     ],
-    "text": "A quadruplet (quartole) `||` over three notes results in this rhythm.",
+    "category": [
+      "polyrythm"
+    ],
+    "text": "A quadruplet (quartole) `|x--x--x--x--|` over three notes `|x---x---x---|` results in this rhythm.",
     "pattern": "x--xx-x-xx--"
+  },
+  "x-x-x--x--x-": {
+    "name": "seguiriya",
+    "category": [
+      "flamenco"
+    ],
+    "source": [
+      "[El Compás Flamenco: A Phylogenetic Analysis](https://cgm.cs.mcgill.ca/~godfried/publications/winfield.pdf)"
+    ],
+    "text": "",
+    "pattern": "x-x-x--x--x-"
   },
   "x-x-x--x-x--": {
     "name": "Fume-fume",
@@ -160,6 +227,17 @@
     ],
     "text": "Bass Drum playing 16th `|x--x---|`, Snare 8th `|--x---x|`, and ride (not included here) 4th `|xxxxxxx|`",
     "pattern": "x--xx--x--x-x-"
+  },
+  "x--x-xx--xx-x--": {
+    "name": "5:3 polyrythm",
+    "alias": [
+      "5 over 3"
+    ],
+    "category": [
+      "polyrythm"
+    ],
+    "text": "A quintuplet `|x--x--x--x--x--|` over three notes `|x----x----x----|` results in this rhythm.",
+    "pattern": "x--x-xx--xx-x--"
   },
   "x---x-------x---": {
     "name": "Teental",
