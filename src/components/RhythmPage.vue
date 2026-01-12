@@ -1,15 +1,17 @@
 <script setup>
 import { ref, computed, watch } from "vue"
+import Rhythm from "../Rhythm.js"
 
 import RhythmEditor from "./RhythmEditor.vue"
 import RhythmCircle from "./RhythmCircle.vue"
 import RhythmInfo from "./RhythmInfo.vue"
-import RhythmTextInput from "./RhythmTextInput.vue"
 import RhythmPlayer from "./RhythmPlayer.vue"
 import RhythmScore from "./RhythmScore.vue"
 
-const props = defineProps({ rhythm: Object })
-const { rhythm } = props
+
+const rhythm = defineModel({ validator: r => r instanceof Rhythm })
+//const props = defineProps({ rhythm: Object })
+//const { rhythm } = props
 
 const first = computed(() => rhythm.value.first()+1)
 const pulse = ref(undefined)
@@ -27,15 +29,14 @@ watch(pulse, async i => cssSheet.replace(`.pulse-${i} { fill: red; stroke: red; 
 <template>
   <div>
     <RhythmEditor v-model="rhythm" :pulse="pulse" />
-    <RhythmTextInput v-model="rhythm" />
     ({{ durations.join("-") }})@{{ first }}
     has {{ beats }} beats in {{ rhythm.length }} pulses
     <RhythmPlayer :rhythm="rhythm" @pulse="pulse = $event" />
-    <RhythmScore v-if="rhythm.length <= 8" :rhythm="rhythm" :pulse="pulse" />
     <div style="display: flex;">
-      <RhythmCircle :rhythm="rhythm" :pulse="pulse" @toggle="toggle" />
       <RhythmInfo :rhythm="rhythm" />
+      <RhythmCircle :rhythm="rhythm" :pulse="pulse" @toggle="toggle" />
     </div>
+    <RhythmScore v-if="rhythm.length <= 8" :rhythm="rhythm" :pulse="pulse" />
   </div>
 </template>
 
