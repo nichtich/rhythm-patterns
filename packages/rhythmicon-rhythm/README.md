@@ -12,13 +12,21 @@ This Node package implements class [Rhythm] to store, analyze and manipulate rhy
 * [Rhythm](#Rhythm)
     * [new Rhythm()](#new_Rhythm_new)
     * _instance_
-        * [.replace()](#Rhythm+replace)
-        * [.beat([...durations])](#Rhythm+beat)
-        * [.rest([duration])](#Rhythm+rest)
-        * [.compare()](#Rhythm+compare)
+        * [.replace(rhythm)](#Rhythm+replace)
+        * [.beat(...durations)](#Rhythm+beat)
+        * [.rest(duration)](#Rhythm+rest)
+        * [.compare(rhythm)](#Rhythm+compare)
         * [.durations()](#Rhythm+durations)
         * [.divisor()](#Rhythm+divisor)
+        * [.condense(number)](#Rhythm+condense)
+        * [.expand(n)](#Rhythm+expand)
+        * [.repetitions()](#Rhythm+repetitions) ⇒
+        * [.cut()](#Rhythm+cut)
+        * [.shuffle()](#Rhythm+shuffle)
+        * [.unshuffle()](#Rhythm+unshuffle)
+        * [.isShuffle()](#Rhythm+isShuffle)
         * [.rotate(pulses)](#Rhythm+rotate)
+        * [.rotateBeat()](#Rhythm+rotateBeat)
         * [.beats()](#Rhythm+beats)
         * [.beatPositions()](#Rhythm+beatPositions)
         * [.first()](#Rhythm+first)
@@ -28,7 +36,7 @@ This Node package implements class [Rhythm] to store, analyze and manipulate rhy
         * [.equivalent()](#Rhythm+equivalent)
         * [.equal()](#Rhythm+equal)
     * _static_
-        * [.isBeat()](#Rhythm.isBeat)
+        * [.isBeat(x)](#Rhythm.isBeat)
         * [.parse()](#Rhythm.parse)
         * [.euclidean(beats, pulses)](#Rhythm.euclidean)
 * [Maintainers](#maintainers)
@@ -37,7 +45,7 @@ This Node package implements class [Rhythm] to store, analyze and manipulate rhy
 
 ## Background
 
-Class [Rhythm] implements a simplified model of musical rhythms. Every rhythm is an array of pulses, each being either a beat (value `1`) or a rest (value `0`).
+Class [Rhythm](#Rhythm) implements a simplified model of musical rhythms. Every rhythm is an array of pulses, each being either a beat (value `1`) or a rest (value `0`). For instance the tresillo rhythm is Array `[1,0,0,1,0,0,1,0]`.
 
 See [@tonaljs/rhythm-pattern](https://www.npmjs.com/package/@tonaljs/rhythm-pattern) for a similar (more limited) library.
 
@@ -62,12 +70,17 @@ console.log(`Rhythm has ${r.beats()} in ${r.length} pulses)
 
 ## Rhythm
 A rhythm is a sequence of beats and rests, encoded as Array of ones and zeroes.
-This is a subclass of Array.
+This is a subclass of [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array).
 
 <a name="new_Rhythm_new"></a>
 
 ### new Rhythm()
 Create a new Rhythm.
+
+
+| Param |
+| --- |
+| ...rhythm | 
 
 **Example**  
 ```js
@@ -80,34 +93,44 @@ Rhythm(n) // empty rhythm of length n
 ```
 <a name="Rhythm+replace"></a>
 
-### rhythm.replace()
+### rhythm.replace(rhythm)
 Change the rhytm in-place. Takes same arguments as constructor but a single number is not
 read as number of pules.
 
+
+| Param |
+| --- |
+| rhythm | 
+
 <a name="Rhythm+beat"></a>
 
-### rhythm.beat([...durations])
+### rhythm.beat(...durations)
 Add one or more beats with given durations.
 
 
 | Param | Type | Default |
 | --- | --- | --- |
-| [...durations] | <code>number</code> | <code>1</code> | 
+| ...durations | <code>number</code> | <code>1</code> | 
 
 <a name="Rhythm+rest"></a>
 
-### rhythm.rest([duration])
+### rhythm.rest(duration)
 Add a rest with given duration.
 
 
 | Param | Type | Default |
 | --- | --- | --- |
-| [duration] | <code>number</code> | <code>1</code> | 
+| duration | <code>number</code> | <code>1</code> | 
 
 <a name="Rhythm+compare"></a>
 
-### rhythm.compare()
+### rhythm.compare(rhythm)
 Compare two rhythms, first by length, then lexicographically.
+
+
+| Param |
+| --- |
+| rhythm | 
 
 <a name="Rhythm+durations"></a>
 
@@ -120,6 +143,52 @@ Return an array of durations between beats, starting with the first beat.
 Get greatest common divisor of all durations.
 Always returns 1 if the the first pulse is not a beat.
 Returns the length of the rhytm is empty.
+
+<a name="Rhythm+condense"></a>
+
+### rhythm.condense(number)
+Get whether the rhythm is condense.
+
+
+| Param | Description |
+| --- | --- |
+| number | [divisor=this.divisor()] |
+
+<a name="Rhythm+expand"></a>
+
+### rhythm.expand(n)
+Expand the rhythm. Each pulse is replaced by n pulses.
+
+
+| Param | Type | Default |
+| --- | --- | --- |
+| n | <code>number</code> | <code>2</code> | 
+
+<a name="Rhythm+repetitions"></a>
+
+### rhythm.repetitions() ⇒
+Get number of repetitions.
+
+**Returns**: number  
+<a name="Rhythm+cut"></a>
+
+### rhythm.cut()
+...
+
+<a name="Rhythm+shuffle"></a>
+
+### rhythm.shuffle()
+...
+
+<a name="Rhythm+unshuffle"></a>
+
+### rhythm.unshuffle()
+...
+
+<a name="Rhythm+isShuffle"></a>
+
+### rhythm.isShuffle()
+...
 
 <a name="Rhythm+rotate"></a>
 
@@ -135,6 +204,11 @@ Rotate the rhythm one pulse to the right.
 ```js
 (new Rhythm(1,0,0,1,0)).rotate(1) // => [0,1,0,0,1]
 ```
+<a name="Rhythm+rotateBeat"></a>
+
+### rhythm.rotateBeat()
+...
+
 <a name="Rhythm+beats"></a>
 
 ### rhythm.beats()
@@ -177,14 +251,24 @@ Whether the rythm is equal to another rythm.
 
 <a name="Rhythm.isBeat"></a>
 
-### Rhythm.isBeat()
+### Rhythm.isBeat(x)
 Return whether a variable is read as beat. This is true for every true
 value except for the characters space, tab, underscore, dot and minus.
+
+
+| Param | Type |
+| --- | --- |
+| x | <code>value</code> | 
 
 <a name="Rhythm.parse"></a>
 
 ### Rhythm.parse()
 Read a string, an array, or a list of values as rhythm.
+
+
+| Param |
+| --- |
+| ...rhythm | 
 
 <a name="Rhythm.euclidean"></a>
 

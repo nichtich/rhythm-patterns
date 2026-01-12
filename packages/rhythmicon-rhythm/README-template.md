@@ -18,7 +18,7 @@ This Node package implements class [Rhythm] to store, analyze and manipulate rhy
 
 ## Background
 
-Class [Rhythm] implements a simplified model of musical rhythms. Every rhythm is an array of pulses, each being either a beat (value `1`) or a rest (value `0`).
+Class [Rhythm](#Rhythm) implements a simplified model of musical rhythms. Every rhythm is an array of pulses, each being either a beat (value `1`) or a rest (value `0`). For instance the tresillo rhythm is Array `[1,0,0,1,0,0,1,0]`.
 
 See [@tonaljs/rhythm-pattern](https://www.npmjs.com/package/@tonaljs/rhythm-pattern) for a similar (more limited) library.
 

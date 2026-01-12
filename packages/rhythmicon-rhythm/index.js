@@ -5,13 +5,14 @@ const gcd = (a, b) => b === 0 ? a : gcd(b, a % b)
 
 /**
  * A rhythm is a sequence of beats and rests, encoded as Array of ones and zeroes.
- * This is a subclass of Array.
+ * This is a subclass of {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array|Array}.
  */
 class Rhythm extends Array {
 
   /**
    * Return whether a variable is read as beat. This is true for every true
    * value except for the characters space, tab, underscore, dot and minus.
+   * @param {value}
    */
   static isBeat(x) {
     return x && !(typeof x === "string" && x.match(/^[ \t_.-]/))
@@ -19,6 +20,7 @@ class Rhythm extends Array {
 
   /**
    * Read a string, an array, or a list of values as rhythm.
+   * @param ...rhythm
    */
   static parse(...beats) {
     if (beats.length === 1) {
@@ -33,6 +35,7 @@ class Rhythm extends Array {
 
   /**
    * Create a new Rhythm.
+   * @param ...rhythm
    * @example
    * Rhyth("x--x--x-")
    * Rhythm("|RL-RRL--|")
@@ -54,6 +57,7 @@ class Rhythm extends Array {
   /**
    * Change the rhytm in-place. Takes same arguments as constructor but a single number is not
    * read as number of pules.
+   * @param rhythm
    */
   replace(...beats) {
     if (!(beats.length === 1 && beats[0] instanceof Rhythm)) {
@@ -64,7 +68,7 @@ class Rhythm extends Array {
 
   /**
    * Add one or more beats with given durations.
-   * @param {...number} [durations=1]
+   * @param {...number} durations=1
    */
   beat(...durations) {
     for (let duration of durations.length ? durations : [1]) {
@@ -79,7 +83,7 @@ class Rhythm extends Array {
 
   /**
    * Add a rest with given duration.
-   * @param {number} [duration=1]
+   * @param {number} duration=1
    */
   rest(duration=1) {
     for (let i=1; i<duration; i++) {
@@ -90,6 +94,7 @@ class Rhythm extends Array {
 
   /**
    * Compare two rhythms, first by length, then lexicographically.
+   * @param rhythm
    */
   compare(r) {
     if (this.length === r.length) {
@@ -135,6 +140,10 @@ class Rhythm extends Array {
     return this[0] === 1 ? this.durations().reduce(gcd) : 1
   }
 
+  /**
+   * Get whether the rhythm is condense.
+   * @param number [divisor=this.divisor()]
+   */
   condense(div=0) {
     const divisor = this.divisor()
     div = div || divisor
@@ -148,10 +157,18 @@ class Rhythm extends Array {
     return this
   }
 
+  /**
+   * Expand the rhythm. Each pulse is replaced by n pulses.
+   * @param {number} n
+   */
   expand(n=2) {
     this.splice(0, this.length, ...this.map(x => [x,...Array(n-1).fill(0)]).flat())
   }
 
+  /**
+   * Get number of repetitions.
+   * @return number
+   */
   repetitions() {
     const s = this.join(",")
     for (let n=this.length; n>1; n--) {
@@ -165,6 +182,9 @@ class Rhythm extends Array {
     return 1
   }
 
+  /**
+   * ...
+   */
   cut() {
     const r = this.repetitions()
     if (r > 1) {
@@ -188,7 +208,10 @@ class Rhythm extends Array {
     // TODO: is this lexicographically smaller than all its rotations
     // check durations to do so is more performant?
   }
-
+    
+  /**
+   * ...
+   */
   shuffle() {
     if (this.length % 2 === 0) {
       const r = []
@@ -200,6 +223,9 @@ class Rhythm extends Array {
     return this
   }
 
+  /**
+   * ...
+   */
   unshuffle() {
     if (this.isShuffle()) {
       const r = []
@@ -211,6 +237,9 @@ class Rhythm extends Array {
     return this
   }
 
+  /**
+   * ...
+   */
   isShuffle() {
     if (this.length % 3 === 0) {
       for (let i=1; i<this.length; i++) {
@@ -235,6 +264,9 @@ class Rhythm extends Array {
     return this
   }
 
+  /**
+   * ...
+   */
   rotateBeat(pulses=1) {
     if (Math.abs(pulses) > 0 && !this.empty()) {
       const pos = this.beatPositions()
