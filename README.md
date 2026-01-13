@@ -10,7 +10,7 @@ This repository contains
 
 ## Rhythm programming library
 
-File [`src/rhythm.js`](src/rhythm.js) contains a NodeJS Class to store and process a rhythm.
+Package [rhythmicon-rhythm](packages/rhythmicon-rhythm/) contains a NodeJS Class to store and process a rhythm.
 
 This class is similar to package [@tonaljs/rhythm-pattern](https://www.npmjs.com/package/@tonaljs/rhythm-pattern).
 
@@ -18,7 +18,7 @@ This class is similar to package [@tonaljs/rhythm-pattern](https://www.npmjs.com
 
 Directory [rhythms](rhythms) contains one file for each rhythm in the collection.
 
-Each file is named by the pattern of the rhythm and file extension `.md`, for instance `x--x--x-.md` for tresillo rhythm. The file can contain arbitrary text in Markdown syntax, optionally preceeded by a YAML header demarcated by three dashes (`---`) on either end. This can best be illustrated with an example:
+Each file is named by the pattern of the rhythm and file extension `.md`, for instance [`x--x--x-.md`](rhythms/x--x--x-.md) for tresillo rhythm. The file can contain arbitrary text in Markdown syntax, optionally preceeded by a YAML header demarcated by three dashes (`---`) on either end. This can best be illustrated with an example:
 
 ~~~yaml
 ---

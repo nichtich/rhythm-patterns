@@ -32,11 +32,11 @@ watch(pulse, async i => cssSheet.replace(`.pulse-${i} { fill: red; stroke: red; 
     ({{ durations.join("-") }})@{{ first }}
     has {{ beats }} beats in {{ rhythm.length }} pulses
     <RhythmPlayer :rhythm="rhythm" @pulse="pulse = $event" />
+    <RhythmScore :rhythm="rhythm" :pulse="pulse" />
     <div style="display: flex;">
       <RhythmInfo :rhythm="rhythm" />
       <RhythmCircle :rhythm="rhythm" :pulse="pulse" @toggle="toggle" />
     </div>
-    <RhythmScore v-if="rhythm.length <= 8" :rhythm="rhythm" :pulse="pulse" />
   </div>
 </template>
 

@@ -15,7 +15,6 @@ const hasPattern = () => /^[x-]+$/.test(pattern)
 const rhythm = ref( new Rhythm(hasPattern() ? pattern : []) )
 
 watch(() => rhythm.value ? rhythm.value.toString() : "", pattern => {
-  console.log(`Rhythm changed: ${rhythm.value}`)
   router.push({ query: { pattern }})
 })
 

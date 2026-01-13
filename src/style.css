@@ -59,3 +59,11 @@ button.beat-button, button.action {
 .rhythm-link {
   font-family: monospace;
 }
+
+@font-face{
+  font-family: Bravura;
+  src: url(../fonts/Bravura.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
