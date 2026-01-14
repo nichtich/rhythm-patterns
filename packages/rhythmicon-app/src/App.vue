@@ -2,7 +2,7 @@
 import { ref, watch } from "vue"
 import { useRouter, useRoute } from "vue-router"
 
-import Rhythm from "../src/Rhythm.js"
+import Rhythm from "rhythmicon-rhythm"
 import { RhythmInput } from "rhythmicon-vue"
 import RhythmPage from "./components/RhythmPage.vue"
 import IndexPage from "../views/IndexPage.vue"

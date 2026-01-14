@@ -2,7 +2,7 @@
 import { computed } from "vue"
 
 import RhythmButtons from "./RhythmButtons.vue"
-import Rhythm from "../Rhythm.js"
+import Rhythm from "rhythmicon-rhythm"
 
 const MAX = 128
 

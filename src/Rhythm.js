@@ -1,1 +1,0 @@
-../packages/rhythmicon-rhythm/index.js

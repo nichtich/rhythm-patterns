@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue"
 import rhythms from "../rhythms.json"
-import Rhythm from "../src/Rhythm.js"
+import Rhythm from "rhythmicon-rhythm"
 import RhythmLink from "../src/components/RhythmLink.vue"
 
 // TODO: filters from route:

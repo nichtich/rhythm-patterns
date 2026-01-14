@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from "vue"
+import { ref, computed } from "vue"
 import Rhythm from "rhythmicon-rhythm"
 
 import { RhythmCircle, RhythmScore } from "rhythmicon-vue"
@@ -27,7 +27,7 @@ const toggle = i => rhythm.value[i] = rhythm.value[i] ? 0 : 1
     ({{ durations.join("-") }})@{{ first }}
     has {{ beats }} beats in {{ rhythm.length }} pulses
     <RhythmPlayer :rhythm="rhythm" @pulse="pulse = $event" />
-    <RhythmScore :rhythm="rhythm" :pulse="pulse" @toggle="toggle"/>
+    <RhythmScore :rhythm="rhythm" :pulse="pulse" @toggle="toggle" />
     <div style="display: flex;">
       <RhythmInfo :rhythm="rhythm" />
       <RhythmCircle :rhythm="rhythm" :pulse="pulse" @toggle="toggle" />

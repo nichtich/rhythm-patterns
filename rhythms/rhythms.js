@@ -20,6 +20,7 @@ fs.readdirSync(dir)
     const [pattern] = file.split(".")
     const text = fs.readFileSync(`${dir}/${file}`, { encoding: "utf8" })
     // TODO: fetch data from Wikidata
+    // TODO: precompute properties?
     rhythms[pattern] = { ...parse(text), pattern }
   })
 

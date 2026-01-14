@@ -1,36 +1,19 @@
 {
-  "name": "rythm-beats",
+  "name": "rhythmicon",
+  "private": true,
   "type": "module",
   "scripts": {
-    "test": "npm test -w ./packages",
     "lint": "eslint --ext .js,.vue .",
-    "fix": "npm run lint -- --fix",
-    "dev": "vite",
-    "build": "vite build",
-    "rhythms": "node rhythms/rhythms.js > rhythms.json",
-    "preview": "vite build && vite preview",
-    "docs": "npm run doc --if-present -w ./packages"
-  },
-  "dependencies": {
-    "js-yaml": "^4.1.1",
-    "markdown-it": "^14.1.0",
-    "vue": "^3.5.25",
-    "vue-router": "^4.6.4"
+    "rhythms": "node rhythms/rhythms.js > packages/rhythmicon/rhythms.json"
   },
   "devDependencies": {
     "@eslint/compat": "^2.0.0",
-    "@vitejs/plugin-vue": "^6.0.3",
     "@vue/test-utils": "^2.4.6",
     "eslint": "^9.39.2",
     "eslint-config-gbv": "^2.6.0",
     "eslint-plugin-vue": "^9.7.0",
-    "happy-dom": "^20.1.0",
-    "jsdoc": "^4.0.5",
-    "mocha": "^11.7.5",
-    "vite": "^7.2.7",
-    "vitest": "^4.0.17"
+    "js-yaml": "^4.1.1"
   },
-  "license": "MIT",
   "workspaces": [
     "packages/*"
   ]

@@ -1,20 +1,13 @@
 # rhythmicon
 
-> Web application and library to analyze rhythms
+The [Rhythmicon](https://en.wikipedia.org/wiki/Rhythmicon) one of the very first, short-lived electronic instruments. **rhythmicon** is a web application, a programming library, and a collection of rhythmic patterns. A rhythmic pattern is a repeated sequence of pulses.
 
-This repository contains
+## Contents
 
-- a NodeJS programming library to manage and analyze rhythms
-- a NodeJS programming library for Vue3 to visualize and manipulate rhythms
-- an interactive collection (lexicon) of rhythms
-
-## Rhythm programming library
-
-Package [rhythmicon-rhythm](packages/rhythmicon-rhythm/) contains a NodeJS Class to store and process a rhythm.
-
-## Rhythm vizualization library
-
-See package [rhythmicon-vue](packages/rhythmicon-vue/).
+- [rhythmicon-rhythm](packages/rhythmicon-rhythm) is a JavaScript library to analyze and compute rhythmic patterns
+- [rhythmicon-vue](packages/rhythmicon-vue) is a JavaScript library of Vue components to display and interact with rhythmic patterns
+- [rhythms](rhythms) is a directory of rhythms, each described with their pattern and other properties
+- [rhythmicon-app](packages/rhythmicon-app) is a web application to browse and analyze the collection of rhythms and other rhythmic patterns
 
 ## Collection of Rhythms
 

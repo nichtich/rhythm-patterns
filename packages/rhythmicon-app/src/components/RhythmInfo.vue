@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from "vue"
 import RhythmLink from "./RhythmLink.vue"
-import Rhythm from "../Rhythm.js"
+import Rhythm from "rhythmicon-rhythm"
 import rhythms from "../../rhythms.json"
 import InfoText from "./InfoText.vue"
 const props = defineProps({ rhythm: { validator: r => r instanceof Rhythm } })
