@@ -23,8 +23,8 @@
     "pattern": "xxx"
   },
   "x-xx": {
-    "name": "?",
-    "text": "",
+    "name": "Cumbia",
+    "text": "Prominent in the [Latin American musical rhythms of same name](https://en.wikipedia.org/wiki/Cumbia).",
     "pattern": "x-xx"
   },
   "x-xxx-": {
@@ -55,7 +55,8 @@
   },
   "x--x--x-": {
     "name": "tresillo",
-    "text": "",
+    "wikidata": "Q65089548",
+    "text": "Propably the most common, non-trivial rhythm.",
     "pattern": "x--x--x-"
   },
   "x--xx-x-": {

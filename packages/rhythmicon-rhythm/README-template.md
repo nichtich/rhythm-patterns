@@ -52,7 +52,7 @@ console.log(`Rhythm has ${r.beats()} in ${r.length} pulses)
 
 ## Contributing
 
-Contributions are welcome! Best use [the issue tracker](https://github.com/nichtich/rhythmicon/issues) for questions, bug reports, and/or feature requests!
+Contributions are welcome! Best use [the rhythmicon issue tracker](https://github.com/nichtich/rhythmicon/issues) for questions, bug reports, and/or feature requests!
 
 ## License
 

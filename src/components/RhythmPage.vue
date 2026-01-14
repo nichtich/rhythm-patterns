@@ -1,12 +1,11 @@
 <script setup>
 import { ref, computed, watch } from "vue"
-import Rhythm from "../Rhythm.js"
+import Rhythm from "rhythmicon-rhythm"
 
+import { RhythmCircle, RhythmScore } from "rhythmicon-vue"
 import RhythmEditor from "./RhythmEditor.vue"
-import RhythmCircle from "../../packages/rhythmicon-vue/components/RhythmCircle.vue"
 import RhythmInfo from "./RhythmInfo.vue"
 import RhythmPlayer from "./RhythmPlayer.vue"
-import RhythmScore from "./RhythmScore.vue"
 
 
 const rhythm = defineModel({ validator: r => r instanceof Rhythm })
@@ -20,10 +19,6 @@ const durations = computed(() => rhythm.value?.durations() || [])
 const beats = computed(() => rhythm.value?.beats() || 0)
 
 const toggle = i => rhythm.value[i] = rhythm.value[i] ? 0 : 1
-
-const cssSheet = new CSSStyleSheet()
-document.adoptedStyleSheets = [cssSheet]
-watch(pulse, async i => cssSheet.replace(`.pulse-${i} { fill: red; stroke: red; }`))
 </script>
 
 <template>
@@ -32,17 +27,13 @@ watch(pulse, async i => cssSheet.replace(`.pulse-${i} { fill: red; stroke: red; 
     ({{ durations.join("-") }})@{{ first }}
     has {{ beats }} beats in {{ rhythm.length }} pulses
     <RhythmPlayer :rhythm="rhythm" @pulse="pulse = $event" />
-    <RhythmScore :rhythm="rhythm" :pulse="pulse" />
+    <RhythmScore :rhythm="rhythm" :pulse="pulse" @toggle="toggle"/>
     <div style="display: flex;">
       <RhythmInfo :rhythm="rhythm" />
       <RhythmCircle :rhythm="rhythm" :pulse="pulse" @toggle="toggle" />
     </div>
   </div>
 </template>
-
-<style module="styles">
-
-</style>
 
 <style>
 .rhythm-player {

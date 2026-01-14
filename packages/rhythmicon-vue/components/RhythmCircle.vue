@@ -1,63 +1,72 @@
 <script setup>
 import { computed } from "vue"
 
-const emit = defineEmits(["toggle"])
-const props = defineProps({ rhythm: Array, pulse: Number })
-const length = computed(() => props.rhythm.length)
-
-const size = computed(() => {
-  if (props.rhythm.length > 32) {
-    return 2
-  }
-  if (props.rhythm.length > 24) {
-    return 3
-  }
-  return 4
+const props = defineProps({
+  rhythm: { type: Array, required: true },
+  pulse: { type: Number, default: undefined },
 })
 
-const radius = computed(() => 50 - size.value - 1)
+const emit = defineEmits(["toggle"])
+
+const size = 100 // viewBox
+
+const length = computed(() => props.rhythm.length)
+
+const dotRadius = computed(() => {
+  if (length.value > 32) {
+    return size/50
+  }
+  if (length.value > 24) {
+    return size/30 
+  }
+  return size/20
+})
+
+const radius = computed(() => size/2 - dotRadius.value - 4)
 
 const points = computed(() => props.rhythm.map(
   (beat, i) => {
     const angle = (2 * Math.PI * i) / length.value - Math.PI / 2
     return {
-      x: 50 + radius.value * Math.cos(angle),
-      y: 50 + radius.value * Math.sin(angle),
-      fill: beat ? "black" : "white",
+      x: size/2 + radius.value * Math.cos(angle),
+      y: size/2 + radius.value * Math.sin(angle),
+      beat,
       i,
     }
   },
 ))
 
 const polygon = computed(() => Object.values(points.value || {})
-  .filter(p => p.fill === "black").map(({x,y}) => `${x},${y}`).join(","))
+  .filter(p => p.beat).map(({x,y}) => `${x},${y}`).join(","))
 </script>
 
 <template>
-  <div class="rhythm-circle">
-    <svg viewBox="0 0 100 100" stroke="#000000">
-      <circle cx="50" cy="50" :r="radius" fill="none" />
-      <polygon :points="polygon" class="polygon" />
-      <g v-for="(p, i) in points" :key="i">
-        <circle
-          :class="{ 'beat-dot': true, 'active': pulse === i }"
-          :cx="p.x" :cy="p.y"
-          :fill="p.fill"
-          :r="size"
-          @click="emit('toggle', p.i)"
-        />
-      </g> 
-    </svg> 
-  </div>
+  <svg class="rhythm-circle" :viewBox="`0 0 ${size} ${size}`">
+    <circle :cx="size/2" :cy="size/2" :r="radius" fill="none" />
+    <polygon :points="polygon" class="polygon" />
+    <g v-for="(p, i) in points" :key="i">
+      <circle
+        :class="{ 'beat-dot': p.beat, 'rest-dot': !p.beat, 'active': pulse === i }"
+        :cx="p.x" :cy="p.y"
+        :r="dotRadius"
+        @click="emit('toggle', p.i)"
+      />
+    </g> 
+  </svg> 
 </template>
  
 <style>
+.rhythm-circle {
+  stroke: #000;
+}
 .polygon {
   fill: #ccc;
   stroke: #ccc;
 }
-.beat-dot:hover,
-.beat-dot.active {
-  stroke: red;
+.beat-dot {
+  fill: #000;
+}
+.rest-dot {
+  fill: #fff;
 }
 </style>

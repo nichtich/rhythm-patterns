@@ -1,8 +1,7 @@
 <script setup>
 import { ref, watch, computed } from "vue"
-import Rhythm from "rhythmicon-rhythm"
 
-const rhythm = defineModel({ validator: r => r instanceof Rhythm })
+const rhythm = defineModel({ type: Array })
 const pattern = computed(() => rhythm.value?.toString() || "")
 const text = ref(pattern.value)
 

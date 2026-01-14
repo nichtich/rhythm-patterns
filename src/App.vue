@@ -3,7 +3,7 @@ import { ref, watch } from "vue"
 import { useRouter, useRoute } from "vue-router"
 
 import Rhythm from "../src/Rhythm.js"
-import RhythmTextInput from "../packages/rhythmicon-vue/components/RhythmTextInput.vue"
+import { RhythmInput } from "rhythmicon-vue"
 import RhythmPage from "./components/RhythmPage.vue"
 import IndexPage from "../views/IndexPage.vue"
       
@@ -37,7 +37,7 @@ watch(() => route.query?.pattern, pattern => {
         <router-link id="title" to="/">
           𝄥 <span>rhythmicon</span> 𝄇
         </router-link>
-        <RhythmTextInput v-model="rhythm" />
+        <RhythmInput v-model="rhythm" />
       </h1>
     </header>
     <main>
