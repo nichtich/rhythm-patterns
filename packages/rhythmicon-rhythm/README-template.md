@@ -26,7 +26,9 @@ See [@tonaljs/rhythm-pattern](https://www.npmjs.com/package/@tonaljs/rhythm-patt
 
 This packages comes as single file without dependencies.
 
-...
+```bash
+npm install rhythmicon-rhythm
+```
 
 ## Usage
 

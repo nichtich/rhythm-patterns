@@ -13,15 +13,19 @@
 
 ## Install
 
-...
+```bash
+npm install rhythmicon-vue
+```
 
 ## Usage
 
-...
+~~~js 
+import { RhythmCircle, RhythmScore } from "rhythmicon-vue"
+~~~
 
 ## Components
 
-Most components require Rhythms to be representated as instances of class Rhythm from package `rhythmicon-rhythm`.
+Rhythms must be provided as array of pulses, each being either a beat (value `1`) or a rest (value `0`), for instance `[1,0,0,1,0,0,1,0]` for the tresillo rhythm. See package `rhythmicon-rhythm` for an extension of this data structure as class.
 
 ### RhythmInput
 
@@ -41,7 +45,7 @@ A circular visualization of a rhythm as SVG image. Pulses are spread evenly arou
 
 ![](img/rhythm-circle.png)
 
-Properties:
+**Properties:**
 
 - `rhythm`: the rhythm to display (Array or instance of Rhythm)
 - `pulse`: index of the currently active pulse (optional)
@@ -59,7 +63,7 @@ The layout can be configured with the following CSS classes:
 
 A staff with notes and rests to show a rhythm. Details depend on time signature, this is still being worked on!
 
-Requires the [Bravura font](https://www.w3.org/2021/03/smufl14/tables/smufl14-fonts.html#bravura) to be loaded.
+Requires the [Bravura font](https://www.smufl.org/fonts/) to be loaded.
 
 Implementation is based on an [idea Stephen Band](https://cruncher.ch/blog/printing-music-with-css-grid/). See his library [Scribe](https://github.com/stephband/scribe/) for a more sophisticated music rendering.
 
@@ -69,10 +73,11 @@ Implementation is based on an [idea Stephen Band](https://cruncher.ch/blog/print
 
 ![](img/rhythm-score.png)
 
-Properties:
+**Properties:**
 
 - `rhythm`: the rhythm to display (Array or instance of Rhythm)
 - `pulse`: index of the currently active pulse (optional)
+- `@toggle`: event emitted when a note or rest is clicked on
 
 ## Maintainers
 
