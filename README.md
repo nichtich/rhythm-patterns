@@ -12,7 +12,9 @@ This repository contains
 
 Package [rhythmicon-rhythm](packages/rhythmicon-rhythm/) contains a NodeJS Class to store and process a rhythm.
 
-This class is similar to package [@tonaljs/rhythm-pattern](https://www.npmjs.com/package/@tonaljs/rhythm-pattern).
+## Rhythm vizualization library
+
+See package [rhythmicon-vue](packages/rhythmicon-vue/).
 
 ## Collection of Rhythms
 

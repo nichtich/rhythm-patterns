@@ -2,11 +2,14 @@
   "name": "rhythmicon-vue",
   "version": "0.1.0",
   "description": "Vue components to display and interact with rhythmic patterns",
+  "keywords": [ "music", "rhythm", "percussion" ],
   "type": "module",
   "files": [
+    "index.js",
     "components",
     "img"
   ],
+  "homepage": "https://github.com/nichtich/rhythmicon/tree/main/packages/rhythmicon-vue#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/nichtich/rhythmicon.git"

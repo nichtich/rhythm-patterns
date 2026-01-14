@@ -29,7 +29,7 @@ Rhythms must be provided as array of pulses, each being either a beat (value `1`
 
 ### RhythmInput
 
-A text input field to show and edit a rhythm pattern. Editing is submitted on Enter or aborted on Esc.
+A text input field to show and edit a rhythm pattern. Editing is submitted on *Enter* or aborted on *Esc*. The input is normalized to characters `x` for beat and `-` for rest.
 
 ~~~html
 <RhythmInput v-model="rhythm" />
@@ -61,11 +61,11 @@ The layout can be configured with the following CSS classes:
 
 ## RhythmScore
 
-A staff with notes and rests to show a rhythm. Details depend on time signature, this is still being worked on!
+A staff with notes and rests to show a rhythm.
+
+*Details depend on time signature, this is still being worked on!*
 
 Requires the [Bravura font](https://www.smufl.org/fonts/) to be loaded.
-
-Implementation is based on an [idea Stephen Band](https://cruncher.ch/blog/printing-music-with-css-grid/). See his library [Scribe](https://github.com/stephband/scribe/) for a more sophisticated music rendering.
 
 ~~~html
 <RhythmScore :rhythm="rhythm" />
@@ -78,6 +78,8 @@ Implementation is based on an [idea Stephen Band](https://cruncher.ch/blog/print
 - `rhythm`: the rhythm to display (Array or instance of Rhythm)
 - `pulse`: index of the currently active pulse (optional)
 - `@toggle`: event emitted when a note or rest is clicked on
+
+*Implementation is based on an [idea by Stephen Band](https://cruncher.ch/blog/printing-music-with-css-grid/). See his library [Scribe](https://github.com/stephband/scribe/) for a more sophisticated music rendering!*
 
 ## Maintainers
 

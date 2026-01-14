@@ -2,8 +2,13 @@
   "name": "rhythmicon-rhythm",
   "version": "0.1.0",
   "description": "Analyze and compute rhythmic patterns",
+  "keywords": [ "music", "rhythm", "percussion" ],
   "type": "module",
   "author": "Jakob Voß",
+  "homepage": "https://github.com/nichtich/rhythmicon/tree/main/packages/rhythmicon-rhythm#readme",
+  "scripts": {
+    "test": "mocha"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nichtich/rhythmicon.git"
