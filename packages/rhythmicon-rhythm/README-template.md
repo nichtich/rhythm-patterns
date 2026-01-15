@@ -1,8 +1,10 @@
 # rhythmicon-rhythm
 
+[![NPM package name](https://img.shields.io/badge/npm-rhythmicon--vue-blue.svg)](https://www.npmjs.com/package/rhythmicon-vue)
+
 > Analyze and compute rhythmic patterns
 
-This Node package implements class [Rhythm] to store, analyze and manipulate rhythms. 
+This Node package implements class [Rhythm](#Rhythm) to store, analyze and manipulate rhythms. 
 
 ## Table of Contents
 

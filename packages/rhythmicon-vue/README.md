@@ -1,5 +1,7 @@
 # rhythmicon-vue
 
+[![NPM package name](https://img.shields.io/badge/npm-rhythmicon--vue-blue.svg)](https://www.npmjs.com/package/rhythmicon-vue)
+
 > Vue components to display and interact with rhythmic patterns
 
 ## Table of Contents
