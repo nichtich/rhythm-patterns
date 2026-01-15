@@ -1,30 +1,50 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>rhythmicon</title>
-    <link rel="stylesheet" href="/src/style.css">
-  </head>
-  <body>
-    <div id="app">
-      <header>
-        <h1>
-          rhythmicon
-        </h1>
-      </header>
-      <main>
-        <p>
-          ...
-        </p>
-      </main>
-    </div>
-    <script type="module" src="/src/main.js"></script>
-    <footer>
-      𝄕
-      <a href="https://github.com/nichtich/rhythmicon">sources</a>
-       𝄩
-      <a href="https://github.com/nichtich/rhythmicon/issues">issues</a>
-    </footer>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rhythmicon</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <h1>
+        <span>rhythmicon</span> 𝄇
+      </h1>
+      <a href="?category=all">rhythms</a>
+    </header>
+    <main>
+      <p>
+        This page allows to analyze and experiment with rhythmic patterns (aka rhythms).
+      </p>
+      <p>
+        A rhythm is a repeated sequence of beats and rests, for instance
+        <a href="?pattern=x--x--x" class="rhythm-link">x--x--x-</a>.
+        See the <a href="?category=all"><b>collection of rhythms</b></a> for more examples.
+      </p>
+      <p>
+        There are 2<sup><i>n</i></sup> possible rhythms in a sequence of <i>n</i> pulses,
+        but some of these are more interesting then others.
+      </p>
+      <h2>Background</h2>
+      <p>
+      <ul>
+        <li><a href="?page=glossary">glossary</a></li>
+        <li><a href="?page=theory">theory</a></li>
+      </ul>
+      </p>
+    </main>
+  </div>
+  <script type="module" src="/main.js"></script>
+  <footer>
+    𝄕
+    <a href="https://github.com/nichtich/rhythmicon">sources</a>
+    𝄩
+    <a href="https://github.com/nichtich/rhythmicon/issues">issues</a>
+  </footer>
+</body>
+
 </html>

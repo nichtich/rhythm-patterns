@@ -1,17 +1,18 @@
 <script setup>
-import { ref } from "vue"
-import rhythms from "../rhythms.json"
-import Rhythm from "rhythmicon-rhythm"
-import RhythmLink from "../src/components/RhythmLink.vue"
+import { ref, inject } from "vue"
 
-// TODO: filters from route:
-// category
-// beats
-// match=x-??-x
+const store = inject("store")
+
+import Rhythm from "rhythmicon-rhythm"
+import RhythmLink from "./RhythmLink.vue"
+
+// TODO: filter with search
+const props = defineProps({ search: Object })
 
 const initialized = ref(false)
 
-Object.entries(rhythms).forEach(([pattern,r]) =>{
+/*
+Object.entries(store.rhythms.value).forEach(([pattern,r]) =>{
   const rhythm = new Rhythm(pattern) 
   if (!("first" in r)) {
     r.first = rhythm.first()
@@ -26,18 +27,13 @@ Object.entries(rhythms).forEach(([pattern,r]) =>{
   r.euclidean = Rhythm.euclidean(r.beats,r.length).equal(rhythm)
   // TODO: core?
 })
+*/
 initialized.value = true
 
 </script>
 
 <template>
-  <div>
-    <p>
-      This page allows to analyze and experiment with rhythmic patterns (aka rhythms).
-      Here a rhythm is a repeated sequence of beats and rests. There are
-      2<sup>n</sup> rhythms in a sequence of n pulses but some of these
-      are more interesting then others.
-    </p>
+  <div>    
     <h2>Examples</h2>
     <table>
       <thead>
@@ -50,7 +46,7 @@ initialized.value = true
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(rhythm, pattern) in rhythms" :key="pattern">
+        <tr v-for="(rhythm, pattern) in store.rhythms.value" :key="pattern">
           <td style="text-align:right; padding-right: 1em;">
             <small>{{ rhythm.beats }}/{{ pattern.length }}</small>
           </td>

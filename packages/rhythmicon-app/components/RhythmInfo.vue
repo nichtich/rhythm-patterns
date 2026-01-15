@@ -1,9 +1,12 @@
 <script setup>
-import { computed } from "vue"
+import { computed, inject } from "vue"
+
 import RhythmLink from "./RhythmLink.vue"
 import Rhythm from "rhythmicon-rhythm"
-import rhythms from "../../rhythms.json"
-import InfoText from "./InfoText.vue"
+
+const store = inject("store")
+
+import MarkdownText from "./MarkdownText.vue"
 const props = defineProps({ rhythm: { validator: r => r instanceof Rhythm } })
 
 const beats = computed(() => props.rhythm.beats())
@@ -29,9 +32,9 @@ const rotated = computed(() => {
 })
 
 const knownRotated = computed(() => 
-  new Set([...rotated.value].filter(p => rhythms[p])))
+  new Set([...rotated.value].filter(p => store.rhythms.value[p])))
 
-const info = computed(() => rhythms[pattern.value])
+const info = computed(() => store.rhythms.value[pattern.value])
 </script>
 
 <template>
@@ -47,7 +50,7 @@ const info = computed(() => rhythms[pattern.value])
           : <a :href="`https://www.wikidata.org/wiki/${info.wikidata}`">{{ info.wikidata }}</a>
         </span>
       </h2>
-      <InfoText :markdown="info.text" />
+      <MarkdownText :markdown="info.text" />
     </div>
     <div>
       <span v-if="repetitions > 1">
@@ -79,7 +82,7 @@ const info = computed(() => rhythms[pattern.value])
       <ul>
         <li v-for="(rot,i) in knownRotated" :key="i">
           <RhythmLink :pattern="rot" />
-          {{ rhythms[rot]?.name }}
+          {{ store.rhythms.value[rot]?.name }}
         </li>
       </ul>
     </div>
@@ -97,7 +100,7 @@ const info = computed(() => rhythms[pattern.value])
       <h3>Notable works</h3>
       <ul>
         <li v-for="(work,i) in info.works" :key="i">
-          <InfoText :markdown="work" />
+          <MarkdownText :markdown="work" />
         </li>
       </ul>
     </div>
@@ -105,7 +108,7 @@ const info = computed(() => rhythms[pattern.value])
       <h3>Sources</h3>
       <ul>
         <li v-for="(source,i) in info.source" :key="i">
-          <InfoText :markdown="source" />
+          <MarkdownText :markdown="source" />
         </li>
       </ul>
     </div>

@@ -1,7 +1,11 @@
 {
   "name": "rythmicon",
   "version": "0.1.0",
-  "keywords": [ "music", "rhythm", "percussion" ],
+  "keywords": [
+    "music",
+    "rhythm",
+    "percussion"
+  ],
   "type": "module",
   "scripts": {
     "test": "echo 'not implemented yet'",

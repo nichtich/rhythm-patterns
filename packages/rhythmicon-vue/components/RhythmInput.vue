@@ -23,7 +23,7 @@ function submit() {
   <input
     v-model="text" class="rhythm-text-input"
     type="text" pattern="[A-Za-z0-9&\+ _.\-]+"
-    placeholder="type rhythm pattern (x-x...) and press Enter/Esc"
+    placeholder="rhythm pattern (x-x--...)"
     @keydown.esc="reset" @blur="reset"
     @keydown.enter="submit"
   >

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, onUnmounted } from "vue"
-import Looper from "../Looper.js"
+import Looper from "./Looper.js"
 
 const props = defineProps({ rhythm: Array })
 
