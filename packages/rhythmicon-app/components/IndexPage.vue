@@ -9,32 +9,11 @@ import RhythmLink from "./RhythmLink.vue"
 // TODO: filter with search
 const props = defineProps({ search: Object })
 
-const initialized = ref(false)
-
-/*
-Object.entries(store.rhythms.value).forEach(([pattern,r]) =>{
-  const rhythm = new Rhythm(pattern) 
-  if (!("first" in r)) {
-    r.first = rhythm.first()
-  }
-
-  // TODO: shift back
-  r.length = rhythm.length
-  r.divisor = rhythm.divisor()
-  r.beats = rhythm.beats()
-  r.repetitions = rhythm.repetitions()
-
-  r.euclidean = Rhythm.euclidean(r.beats,r.length).equal(rhythm)
-  // TODO: core?
-})
-*/
-initialized.value = true
-
 </script>
 
 <template>
   <div>    
-    <h2>Examples</h2>
+    <!-- TODO: short text -->
     <table>
       <thead>
         <tr>
@@ -63,7 +42,7 @@ initialized.value = true
               </li>
             </ul>
           </td>
-          <td v-if="initialized">
+          <td>
             <ul class="inline">
               <li v-if="rhythm.euclidean">
                 E({{ rhythm.beats }},{{ rhythm.length }})
