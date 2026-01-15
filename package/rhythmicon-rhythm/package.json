@@ -5,7 +5,7 @@
   "keywords": [ "music", "rhythm", "percussion" ],
   "type": "module",
   "author": "Jakob Voß",
-  "homepage": "https://github.com/nichtich/rhythmicon/tree/main/packages/rhythmicon-rhythm#readme",
+  "homepage": "https://github.com/nichtich/rhythmicon/tree/main/package/rhythmicon-rhythm#readme",
   "scripts": {
     "test": "mocha"
   },
