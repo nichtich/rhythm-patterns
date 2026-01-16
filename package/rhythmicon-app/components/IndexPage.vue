@@ -1,80 +1,93 @@
 <script setup>
-import { inject } from "vue"
+import { inject, computed } from "vue"
+import { useRouter } from "vue-router"
+import RhythmTable from "./RhythmTable.vue"
 
 const store = inject("store")
+const router = useRouter()
 
-import RhythmLink from "./RhythmLink.vue"
+const props = defineProps({
+  search: {
+    type: Object,
+    default: null
+  }
+})
 
-// TODO: filter with search
-// const props = defineProps({ search: Object })
+const categories = computed(() => 
+  new Set(props.search.category.split(',').map(c => c.trim()).filter(c => c && c !== "all"))
+)
 
+const filteredRhythms = computed(() => {
+  if (!categories.value.size) {
+    return store.rhythms.value
+  }
+  
+  const filtered = {}
+  for (const [pattern, rhythm] of Object.entries(store.rhythms.value)) {
+    if (rhythm.category && rhythm.category.some(c => categories.value.has(c))) {
+      filtered[pattern] = rhythm
+    }
+  }
+  return filtered
+})
+
+function removeCategory(category) {
+  const remaining = [...categories.value].filter(c => c !== category)
+  if (remaining.length > 0) {
+    router.push({ query: { category: remaining.join(',') } })
+  } else {
+    router.push({ query: { category: "all" } })
+  }
+}
+
+function selectCategory(category) {
+  const updated = [...categories.value, category]
+  router.push({ query: { category: updated.join(',') } })
+}
 </script>
 
 <template>
-  <div>    
-    <!-- TODO: short text -->
-    <table>
-      <thead>
-        <tr>
-          <th />
-          <th>pattern</th>
-          <th>name</th>
-          <th>categories</th>
-          <th>properties</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(rhythm, pattern) in store.rhythms.value" :key="pattern">
-          <td style="text-align:right; padding-right: 1em;">
-            <small>{{ rhythm.beats }}/{{ pattern.length }}</small>
-          </td>
-          <td>
-            <rhythm-link :pattern="pattern" />
-          </td>
-          <td>
-            <span v-if="rhythm.name">{{ rhythm.name }}</span>
-          </td>
-          <td>
-            <ul v-if="rhythm.category" class="inline">
-              <li v-for="(c,i) in rhythm.category" :key="i">
-                {{ c }}
-              </li>
-            </ul>
-          </td>
-          <td>
-            <ul class="inline">
-              <li v-if="rhythm.euclidean">
-                E({{ rhythm.beats }},{{ rhythm.length }})
-              </li>
-              <li v-if="rhythm.divisor > 1">
-                expanded ÷{{ rhythm.divisor }} 
-              </li>
-              <li v-if="rhythm.repetitions > 1">
-                repeated ×{{ rhythm.repetitions }}
-              </li>
-              <li v-if="rhythm.first">
-                shifted
-              </li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div>
+    <div v-if="categories.size" class="filters">
+      <span>Selected categories:</span>
+      <button
+        v-for="category in categories.values()"
+        :key="category"
+        class="filter-chip"
+        @click="removeCategory(category)"
+        :title="`Click to remove ${category} filter`"
+      >
+        {{ category }} ×
+      </button>
+    </div>
+    
+    <RhythmTable :rhythms="filteredRhythms" :categories="categories" @select-category="selectCategory" />
   </div>
 </template>
 
 <style>
-th { text-align: left; }
-ul.inline {
-  display: inline;
-  list-style: none;
-  padding-left: 0;
+.filters {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex-wrap: wrap;
 }
-ul.inline li {
-  display: inline;
-  font-size: 80%;
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25em 0.75em;
+  background-color: #e0e0e0;
+  border: 1px solid #999;
+  border-radius: 1em;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
-ul.inline li + li:before {
-  content: ", ";
+
+.filter-chip:hover {
+  background-color: #d0d0d0;
 }
 </style>
+
