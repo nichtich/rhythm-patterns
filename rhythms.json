@@ -14,7 +14,7 @@
   },
   "x-x": {
     "name": "minimal shuffle",
-    "text": "The only core beat with three steps.",
+    "text": "The only core beat in three pulses.",
     "pattern": "x-x"
   },
   "xx-": {
@@ -26,6 +26,14 @@
     "name": "Cumbia",
     "text": "Prominent in the [Latin American musical rhythms of same name](https://en.wikipedia.org/wiki/Cumbia).",
     "pattern": "x-xx"
+  },
+  "x-x--": {
+    "name": "Pajduško",
+    "category": [
+      "aksak"
+    ],
+    "text": "",
+    "pattern": "x-x--"
   },
   "x-xxx-": {
     "name": "3:2 polyrhythm",
@@ -60,11 +68,11 @@
     "pattern": "x--x--x-"
   },
   "x--xx-x-": {
-    "name": "Ayoub",
+    "name": "Habanera",
     "alias": [
+      "Ayoub",
       "Ayub",
-      "Zaar",
-      "Habanera"
+      "Zaar"
     ],
     "category": [
       "Dumbek rhythms"
@@ -72,7 +80,10 @@
     "works": [
       "Carmen"
     ],
-    "text": "Played as `|D--kD-T-|` on Darbuka in Arabian music.\n\nWritten in 2/4 meter\n\nSource: <https://web.archive.org/web/20141026164509/http://www.maqamworld.com/rhythms/muwashahat1.html#ayyub>\n\nTresillo `|x--x--x-|` with the additional second beat.",
+    "source": [
+      "<https://web.archive.org/web/20141026164509/http://www.maqamworld.com/rhythms/muwashahat1.html#ayyub>"
+    ],
+    "text": "Played as `|D--kD-T-|` on Darbuka in Arabian music.\n\nOften written in 2/4 meter.\n\nTresillo `|x--x--x-|` with the additional second beat.",
     "pattern": "x--xx-x-"
   },
   "x-x-x-x-": {
@@ -101,6 +112,21 @@
   "xxxx-xx-": {
     "text": "",
     "pattern": "xxxx-xx-"
+  },
+  "x-x-x-x--": {
+    "name": "Čoček",
+    "alias": [
+      "Aksak",
+      "Dajchovo horo"
+    ],
+    "category": [
+      "aksak"
+    ],
+    "works": [
+      "[Blue Rondo à la Turk](https://en.wikipedia.org/wiki/Blue_Rondo_%C3%A0_la_Turk)"
+    ],
+    "text": "",
+    "pattern": "x-x-x-x--"
   },
   "x--x--x-x-": {
     "name": "5/4 clave",
@@ -286,6 +312,11 @@
     "text": "",
     "pattern": "x--x--x---xx----"
   },
+  "x--x--x--x--x-x-": {
+    "name": "double tresillo",
+    "text": "",
+    "pattern": "x--x--x--x--x-x-"
+  },
   "x--x--x-x-x-x---": {
     "name": "?",
     "text": "Based on the son clave `|x--x--x---x-x---|`",
@@ -301,6 +332,17 @@
     "text": "two eights played with length 3-to-1.\n\nThere is a lot of room between shuffle `|x-xx-xx-xx-x|` and swing pattern.",
     "pattern": "x--xx--xx--xx--x"
   },
+  "x-x-x--x-x-xx---": {
+    "name": "Barbara Ann",
+    "works": [
+      "[Barbara Ann](https://en.wikipedia.org/wiki/Barbara_Ann)",
+      "[Are You Gonna Be My Girl](https://en.wikipedia.org/wiki/Are_You_Gonna_Be_My_Girl)",
+      "[You Can't Hurry Love](https://en.wikipedia.org/wiki/You_Can%27t_Hurry_Love)",
+      "[Lust for Life](https://en.wikipedia.org/wiki/Lust_for_Life_(Iggy_Pop_song))"
+    ],
+    "text": "",
+    "pattern": "x-x-x--x-x-xx---"
+  },
   "x-x-xxx-xxxx-xx-": {
     "name": "stadium clap",
     "text": "Used in sports to cheer a team.",
@@ -310,6 +352,11 @@
     "name": "Baqueteo",
     "text": "Cinquillo `|x-xx-xx-|` followed by four unsyncopated notes.",
     "pattern": "x-xx-xx-x-x-x-x-"
+  },
+  "x-xxx-xxx-xxx-xx": {
+    "name": "gallop",
+    "text": "",
+    "pattern": "x-xxx-xxx-xxx-xx"
   },
   "xx--xx--xx--xx--": {
     "name": "Scotch Snap",
