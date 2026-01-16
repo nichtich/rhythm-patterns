@@ -1,7 +1,7 @@
 ---
-name: bulería
+name: Bulería
 alias:
-- bulería moderna
+- Bulería moderna
 category:
 - flamenco
 source:

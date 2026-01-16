@@ -22,6 +22,7 @@ Several collections of rhythms and rhythm applications exist.
 
 - [50 Rhythms of the world](https://www.songlines.co.uk/features/50-rhythms-of-the-world-part-1-a-to-m)
 - [Arabic Rhythmic Cycles](https://www.maqamworld.com/en/iqaa.php) lists a large number of rhythms (part of the book [*Inside Arabic Music*](https://www.maqamworld.com/en/book.php))
+- [18 Rhythms you should know](https://www.youtube.com/watch?v=ZROR_E5bFEI) and [7 Rhythms you should know](https://www.youtube.com/watch?v=fyVFC9JI_Pw) by Dave Bennet
 - ...
 
 ## Other

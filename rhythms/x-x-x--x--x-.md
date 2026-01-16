@@ -1,5 +1,5 @@
 ---
-name: seguiriya
+name: Seguiriya
 category:
 - flamenco
 source:

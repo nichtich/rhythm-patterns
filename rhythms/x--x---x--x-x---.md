@@ -1,3 +1,3 @@
 ---
-name: rumba clave
+name: Rumba clave
 ---

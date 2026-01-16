@@ -1,3 +1,3 @@
 ---
-name: double tresillo
+name: Double Tresillo
 ---

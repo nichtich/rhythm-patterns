@@ -1,5 +1,5 @@
 ---
-name: guajira
+name: Guajira
 category:
 - flamenco
 source:

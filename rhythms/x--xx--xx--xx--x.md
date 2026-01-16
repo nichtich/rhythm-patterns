@@ -1,5 +1,5 @@
 ---
-name: swing
+name: Swing
 ---
 
 two eights played with length 3-to-1.

@@ -4,8 +4,8 @@ import { createRouter, createWebHistory } from "vue-router"
 import Rhythm from "rhythmicon-rhythm"
 import App from "./App.vue"
 
-function enrichRhythm([pattern,r]) {
-  const rhythm = new Rhythm(pattern) 
+function enrichRhythm([pattern, r]) {
+  const rhythm = new Rhythm(pattern)
   if (!("first" in r)) {
     r.first = rhythm.first()
   }
@@ -25,10 +25,12 @@ function enrichRhythm([pattern,r]) {
     r.category.push("core")
   }
 
-  r.euclidean = Rhythm.euclidean(r.beats,r.length).equal(rhythm)
+  r.euclidean = Rhythm.euclidean(r.beats, r.length).equal(rhythm)
   if (r.euclidean) {
     r.category.push("euclidean")
   }
+
+  r.durations = rhythm.durations()
 }
 
 const store = {
@@ -40,7 +42,7 @@ fetch("rhythms.json")
   .then(res => res.json())
   .then(rhythms => {
     Object.entries(rhythms).forEach(enrichRhythm)
-    store.rhythms.value = rhythms 
+    store.rhythms.value = rhythms
   })
 
 const router = createRouter({

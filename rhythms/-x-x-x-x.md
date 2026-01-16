@@ -1,3 +1,3 @@
 ---
-name: off-beat
+name: Off-Beat
 ---

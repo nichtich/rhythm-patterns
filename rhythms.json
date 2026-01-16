@@ -1,6 +1,6 @@
 {
   "-": {
-    "name": "pause",
+    "name": "Pause",
     "works": [
       "[4′33″](https://en.wikipedia.org/wiki/4%E2%80%B233%E2%80%B3)"
     ],
@@ -8,18 +8,18 @@
     "pattern": "-"
   },
   "x": {
-    "name": "pulse",
+    "name": "Pulse",
     "text": "The minimal rhythm consists of a sequence of steady pulses.",
     "pattern": "x"
   },
   "x-x": {
-    "name": "minimal shuffle",
+    "name": "Minimal Shuffle",
     "text": "The only core beat in three pulses.",
     "pattern": "x-x"
   },
   "xx-": {
-    "name": "waltz",
-    "text": "",
+    "name": "Waltz",
+    "text": "The waltz as *musical* category is based on 3/4 meter using this Waltz rhythm or one beat `|x--|`.",
     "pattern": "xx-"
   },
   "x-xx": {
@@ -38,7 +38,8 @@
   "x-xxx-": {
     "name": "3:2 polyrhythm",
     "alias": [
-      "3 over 2"
+      "3 over 2",
+      "Hemiola"
     ],
     "category": [
       "polyrythm"
@@ -47,24 +48,24 @@
     "pattern": "x-xxx-"
   },
   "x-x-x-x": {
-    "name": "?",
-    "text": "Used in *Râčenica* (Bulgarian folk dance)",
+    "name": "Râčenica",
+    "text": "Used in Bulgarian folk dance Râčenica",
     "pattern": "x-x-x-x"
   },
   "-x-x-x-x": {
-    "name": "off-beat",
+    "name": "Off-Beat",
     "text": "",
     "pattern": "-x-x-x-x"
   },
   "x--x----": {
-    "name": "charleston",
+    "name": "Charleston",
     "text": "First two notes of `|x--x--x-|` tresillo.",
     "pattern": "x--x----"
   },
   "x--x--x-": {
-    "name": "tresillo",
+    "name": "Tresillo",
     "wikidata": "Q65089548",
-    "text": "Propably the most common, non-trivial rhythm.",
+    "text": "Propably the most important rhythm next to the simple Pulse `|x|` and to the Cumbia `|x-xx|`.",
     "pattern": "x--x--x-"
   },
   "x--xx-x-": {
@@ -87,7 +88,7 @@
     "pattern": "x--xx-x-"
   },
   "x-x-x-x-": {
-    "name": "four on the floor",
+    "name": "4 on the floor",
     "text": "When played in 4/4 on the bass drum.",
     "pattern": "x-x-x-x-"
   },
@@ -137,9 +138,9 @@
     "pattern": "x--x--x-x-"
   },
   "--x---xx-x-x": {
-    "name": "bulería",
+    "name": "Bulería",
     "alias": [
-      "bulería moderna"
+      "Bulería moderna"
     ],
     "category": [
       "flamenco"
@@ -151,9 +152,9 @@
     "pattern": "--x---xx-x-x"
   },
   "--x--x-x-x-x": {
-    "name": "soleá",
+    "name": "Soleá",
     "alias": [
-      "bulería tradicional"
+      "Bulería tradicional"
     ],
     "category": [
       "flamenco"
@@ -165,7 +166,7 @@
     "pattern": "--x--x-x-x-x"
   },
   "x--x--x--x--": {
-    "name": "fandango",
+    "name": "Fandango",
     "category": [
       "flamenco"
     ],
@@ -283,7 +284,7 @@
     "pattern": "x---x-x---x-x---"
   },
   "x--x---x--x-x---": {
-    "name": "rumba clave",
+    "name": "Rumba clave",
     "text": "",
     "pattern": "x--x---x--x-x---"
   },
@@ -293,8 +294,8 @@
     "pattern": "x--x--x---x---x-"
   },
   "x--x--x---x--x--": {
-    "name": "bossa nova",
-    "text": "Like 2-3 son clave, the first part is `|x--x--x-|` tresillo.",
+    "name": "Bossa Nova",
+    "text": "Like 2-3 son clave `|x--x--x---x-x---|`, the first part is `|x--x--x-|` tresillo.",
     "pattern": "x--x--x---x--x--"
   },
   "x--x--x---x-x---": {

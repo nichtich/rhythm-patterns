@@ -1,5 +1,5 @@
 ---
-name: fandango
+name: Fandango
 category:
 - flamenco
 source:

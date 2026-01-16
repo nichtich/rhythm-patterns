@@ -26,9 +26,10 @@ function handleCategoryClick(category) {
     <thead>
       <tr>
         <th />
+        <th>name</th>        
         <th>pattern</th>
-        <th>name</th>
-        <th>categories</th>
+        <th>durations</th>
+        <th>categories</th>        
         <th>properties</th>
       </tr>
     </thead>
@@ -38,11 +39,14 @@ function handleCategoryClick(category) {
           <small>{{ rhythm.beats }}/{{ pattern.length }}</small>
         </td>
         <td>
+          <span v-if="rhythm.name">{{ rhythm.name }}</span>
+        </td>
+        <td>
           <rhythm-link :pattern="pattern" />
         </td>
         <td>
-          <span v-if="rhythm.name">{{ rhythm.name }}</span>
-        </td>
+          {{ rhythm.durations.join("+") }}
+        </td>                
         <td>
           <ul v-if="rhythm.category" class="inline">
             <li v-for="(c,i) in rhythm.category" :key="i"

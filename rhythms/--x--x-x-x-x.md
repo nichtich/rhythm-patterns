@@ -1,7 +1,7 @@
 ---
-name: soleá
+name: Soleá
 alias:
-- bulería tradicional
+- Bulería tradicional
 category:
 - flamenco
 source:
