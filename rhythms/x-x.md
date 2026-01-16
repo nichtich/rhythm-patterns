@@ -2,4 +2,4 @@
 name: "minimal shuffle"
 ---
 
-The only core beat with three steps.
+The only core beat in three pulses.

@@ -1,13 +1,12 @@
 <script setup>
-import { ref, inject } from "vue"
+import { inject } from "vue"
 
 const store = inject("store")
 
-import Rhythm from "rhythmicon-rhythm"
 import RhythmLink from "./RhythmLink.vue"
 
 // TODO: filter with search
-const props = defineProps({ search: Object })
+// const props = defineProps({ search: Object })
 
 </script>
 

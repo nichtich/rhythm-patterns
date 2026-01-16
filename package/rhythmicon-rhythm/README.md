@@ -1,10 +1,10 @@
 # rhythmicon-rhythm
 
-[![NPM package name](https://img.shields.io/badge/npm-rhythmicon--rhythm-blue.svg)](https://www.npmjs.com/package/rhythmicon-rhythm)
+[![NPM package name](https://img.shields.io/badge/npm-rhythmicon--vue-blue.svg)](https://www.npmjs.com/package/rhythmicon-vue)
 
 > Analyze and compute rhythmic patterns
 
-This Node package implements class [Rhythm] to store, analyze and manipulate rhythms. 
+This Node package implements class [Rhythm](#Rhythm) to store, analyze and manipulate rhythms. 
 
 ## Table of Contents
 
@@ -20,8 +20,8 @@ This Node package implements class [Rhythm] to store, analyze and manipulate rhy
         * [.compare(rhythm)](#Rhythm+compare)
         * [.durations()](#Rhythm+durations)
         * [.divisor()](#Rhythm+divisor)
-        * [.condense(divisor)](#Rhythm+condense)
-        * [.expand(n)](#Rhythm+expand)
+        * [.deflate(divisor)](#Rhythm+deflate)
+        * [.inflate(n)](#Rhythm+inflate)
         * [.repetitions()](#Rhythm+repetitions) ⇒ <code>number</code>
         * [.cut()](#Rhythm+cut)
         * [.shuffle()](#Rhythm+shuffle)
@@ -148,20 +148,20 @@ Get greatest common divisor of all durations.
 Always returns 1 if the the first pulse is not a beat.
 Returns the length of the rhytm is empty.
 
-<a name="Rhythm+condense"></a>
+<a name="Rhythm+deflate"></a>
 
-### rhythm.condense(divisor)
-Get whether the rhythm is condense.
+### rhythm.deflate(divisor)
+Deflate the rhythm if it has a divisor > 1.
 
 
 | Param | Type | Default |
 | --- | --- | --- |
 | divisor | <code>number</code> | <code>this.divisor</code> | 
 
-<a name="Rhythm+expand"></a>
+<a name="Rhythm+inflate"></a>
 
-### rhythm.expand(n)
-Expand the rhythm. Each pulse is replaced by n pulses.
+### rhythm.inflate(n)
+Inflate the rhythm. Each pulse is replaced by n pulses.
 
 
 | Param | Type | Default |

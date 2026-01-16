@@ -62,18 +62,23 @@ const properties = {
     beatPositions: [0],
     durations: [1],
     divisor: 1,
+    core: true,
   },
   xx: {
     beatPositions: [0,1],
     durations: [1,1],
     divisor: 1,
+    repetitions: 2,
+    core: false,
   },
   "x-x": {
     beatPositions: [0,2],
     divisor: 1,
+    core: true,
   },
   "x--": {
     durations: [3],
+    core: false,
   },
   "xx-x": {
     durations: [1,2,1],
@@ -101,9 +106,9 @@ describe("compare", () => {
   it("pulses", () => assert.equal(compare("x--","x-x"), -1))
 })
 
-it("condense", () => {
+it("deflate", () => {
   const r = new Rhythm("x-x-x-")
-  assert.deepEqual(r.condense(2), [1,1,1])
+  assert.deepEqual(r.deflate(2), [1,1,1])
 })
 
 it("euclidean", () => {

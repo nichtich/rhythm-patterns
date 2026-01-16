@@ -1,38 +1,29 @@
 <script setup>
 import { computed, inject } from "vue"
-
-import RhythmLink from "./RhythmLink.vue"
 import Rhythm from "rhythmicon-rhythm"
+import RhythmLink from "./RhythmLink.vue"
+import MarkdownText from "./MarkdownText.vue"
 
 const store = inject("store")
 
-import MarkdownText from "./MarkdownText.vue"
 const props = defineProps({ rhythm: { validator: r => r instanceof Rhythm } })
 
 const beats = computed(() => props.rhythm.beats())
 const length = computed(() => props.rhythm.length)
 const euclidean = computed(() => beats.value ? Rhythm.euclidean(beats.value, length.value).toString() : undefined)
 const pattern = computed(() => props.rhythm.toString())
-
 const divisor = computed(() => props.rhythm.divisor())
 const repetitions = computed(() => props.rhythm.repetitions())
+const cut = computed(() => repetitions.value > 1 ? props.rhythm.copy().cut() : null)
 
-const rotated = computed(() => {
-  const pp = pattern.value + pattern.value
-  const len = pattern.value.length
-  const rot = new Set()
-  for (let i=1; i<len; i++) {
-    const p = pp.substring(i, i+len)
-    if (p !== pp) {
-      //  console.log(p)
-      rot.add(p)
-    }
-  }
-  return rot
-})
+const rotations = computed(() => props.rhythm.rotations())
 
-const knownRotated = computed(() => 
-  new Set([...rotated.value].filter(p => store.rhythms.value[p])))
+const allRotated = computed(() => [...rotations.value].sort().reverse())
+
+// TODO: add Euclidean variant to knownRotated if it is a variant?
+const knownRotated = computed(() => new Set(allRotated.value.filter(p => store.rhythms.value[p])))
+
+const core = computed(() => props.rhythm.core())
 
 const info = computed(() => store.rhythms.value[pattern.value])
 </script>
@@ -54,27 +45,34 @@ const info = computed(() => store.rhythms.value[pattern.value])
     </div>
     <div>
       <span v-if="repetitions > 1">
-        The rhythm consists of the same pattern repeated {{ repetitions }} times.
+        The rhythm consists of the same pattern repeated {{ repetitions }} times, so it
+        can be cut to <RhythmLink :pattern="cut.toString()" />.
       </span>
       <span v-if="divisor > 1">
-        The rhythm can be condensed to 
-        <RhythmLink :pattern="(new Rhythm(pattern)).condense(divisor).toString()" />
+        The rhythm can be deflated to 
+        <RhythmLink :pattern="(new Rhythm(pattern)).deflate(divisor).toString()" />.
       </span>
-      <span v-else-if="repetitions == 1">
-        The rhythm is condense.
-        <!-- TODO: core rhytm? -->
+      <span v-else-if="repetitions === 1">
+        <span v-if="rhythm.first() > 0">
+          The rhythm is condense but shifted.
+        </span>
+        <span v-else-if="!core">
+          The rhythm is condense.
+        </span>
       </span>
-    </div>
-    <div v-if="euclidean">
-      <p v-if="pattern == euclidean">
-        The rhythm is <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a> E({{ beats }},{{ length }}).
-      </p>
-      <p v-else>
-        The rhythm is not <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a>,
-        E({{ beats }},{{ length }}) would be 
-        <span v-if="rotated.has(euclidean)">rotated variant </span>
-        <RhythmLink :pattern="euclidean" />.
-      </p>
+      <span v-if="core">
+        This is a <b><router-link to="?page=glossary">core rhythm</router-link></b>.
+      </span>
+      <span v-if="euclidean">
+        <span v-if="pattern == euclidean">
+          The rhythm is <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a> E({{ beats }},{{ length }}).
+        </span>
+        <span v-else>
+          The rhythm is not <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm">euclidean</a>:
+          E({{ beats }},{{ length }}) is <span v-if="rotations.has(euclidean)">rotations variant </span>
+          <RhythmLink :pattern="euclidean" />.
+        </span>
+      </span>
     </div>
     <div v-if="knownRotated.size">
       <h3>Rotated variants</h3>
@@ -86,7 +84,7 @@ const info = computed(() => store.rhythms.value[pattern.value])
         </li>
       </ul>
     </div>
-    <div v-if="info?.category">
+    <div v-if="info?.category?.length">
       <h3>Categories</h3>
       <ul>
         <li v-for="(category,i) in info.category" :key="i">

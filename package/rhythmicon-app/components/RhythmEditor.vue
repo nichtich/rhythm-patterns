@@ -65,13 +65,13 @@ function toggle(i) {
       <!--button class="action" :disabled="rhythm.length < 2 || rhythm.length % 2" @click="halve">
         ½
       </button-->
-      <button class="action" :disabled="divisor === 1" @click="rhythm.condense()">
+      <button class="action" :disabled="divisor === 1" @click="rhythm.deflate()">
         ÷{{ divisor > 1 ? divisor : "n" }}
       </button>
-      <button class="action" :disabled="rhythm.length > MAX/2" @click="rhythm.expand()">
+      <button class="action" :disabled="rhythm.length > MAX/2" @click="rhythm.inflate()">
         ×2
       </button>
-      <button class="action" :disabled="rhythm.length > MAX/3" @click="rhythm.expand(3)">
+      <button class="action" :disabled="rhythm.length > MAX/3" @click="rhythm.inflate(3)">
         ×3
       </button>
       <button class="action" :disabled="rhythm.length % 2 || rhythm.empty() || rhythm.length > 2*MAX/3" @click="rhythm.shuffle()">

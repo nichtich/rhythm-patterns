@@ -10,22 +10,33 @@ function enrichRhythm([pattern,r]) {
     r.first = rhythm.first()
   }
 
-  // TODO: shift back
   r.length = rhythm.length
   r.divisor = rhythm.divisor()
   r.beats = rhythm.beats()
   r.repetitions = rhythm.repetitions()
+  r.condense = r.divisor === 1 && r.repetitions === 1
+
+  if (!r.category) {
+    r.category = []
+  }
+
+  r.core = rhythm.core()
+  if (r.core) {
+    r.category.push("core")
+  }
 
   r.euclidean = Rhythm.euclidean(r.beats,r.length).equal(rhythm)
-  // TODO: core?
+  if (r.euclidean) {
+    r.category.push("euclidean")
+  }
 }
 
 const store = {
   index: document.querySelector("#app main").innerHTML,
-  rhythms: shallowRef({})
+  rhythms: shallowRef({}),
 }
 
-fetch("/rhythms.json")
+fetch("rhythms.json")
   .then(res => res.json())
   .then(rhythms => {
     Object.entries(rhythms).forEach(enrichRhythm)
@@ -38,7 +49,7 @@ const router = createRouter({
 })
 
 createApp({ template: "<router-view></router-view>" })
-  .provide('store', store)
+  .provide("store", store)
   .use(router)
   .mount("#app")
 

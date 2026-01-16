@@ -17,10 +17,10 @@
     "text": "The only core beat with three steps.",
     "pattern": "x-x"
   },
-  "xxx": {
+  "xx-": {
     "name": "waltz",
-    "text": "Only recogniceable with an accent on the first beat.",
-    "pattern": "xxx"
+    "text": "",
+    "pattern": "xx-"
   },
   "x-xx": {
     "name": "Cumbia",

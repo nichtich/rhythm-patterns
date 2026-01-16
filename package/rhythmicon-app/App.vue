@@ -59,13 +59,15 @@ onBeforeMount(() => routing(route))
           rhythmicon
         </router-link> 𝄇
       </h1>        
-      <router-link id="title" to="?category=all">rhythms</router-link>
+      <router-link id="title" to="?category=all">
+        rhythms
+      </router-link>
       <RhythmInput v-model="rhythm" />
     </header>
     <main>
       <MarkdownPage v-if="page" :page="page" />
       <RhythmPage v-else-if="rhythm.length" v-model="rhythm" />
-      <IndexPage v-else-if="search" :search="search"/>
+      <IndexPage v-else-if="search" :search="search" />
       <div v-else v-html="store.index" />
     </main>
   </div>

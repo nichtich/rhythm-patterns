@@ -16,6 +16,7 @@ Several collections of rhythms and rhythm applications exist.
 - [Rhythm Exercises](https://rhythmexercises.github.io/) lists all combinations of beats in 4/4 up to sixteenth, including triples
 - [The Book of Rhythm](https://blakethedrummer.com/the-book-of-rhythm/) by Blake Fleming
 - [Rhythm generator](https://www.rhythmrandomizer.com/) generates random rhythms
+- ...
 
 ### Cultural
 
@@ -27,6 +28,7 @@ Several collections of rhythms and rhythm applications exist.
 
 - The book *Encyclopedia of rhythms* by Joseph Schillinger
 - The book *The Geometry of Musical Rhythm* by Godfried T. Toussaint
+- ...
 
 ## Collections of drum grooves
 
@@ -36,6 +38,5 @@ Drum grooves mainly consist of multiple rhythms.
 - The book *1000 Faces of Drum Styles* by Dirk Brandt (in German)
 - The application [theDrumDictionary](https://appadvice.com/app/thedrumdictionary/341510632)
 - [World Rhythms Encyclopedia](https://worldmusicmethod.com/courses/world-rhythms-encyclopedia/)
-
-...
+- ...
 

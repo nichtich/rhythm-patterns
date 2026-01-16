@@ -141,10 +141,10 @@ class Rhythm extends Array {
   }
 
   /**
-   * Get whether the rhythm is condense.
+   * Deflate the rhythm if it has a divisor > 1.
    * @param {number} divisor=this.divisor
    */
-  condense(div=0) {
+  deflate(div=0) {
     const divisor = this.divisor()
     div = div || divisor
     if (divisor > 1 && divisor % div === 0) {
@@ -158,10 +158,10 @@ class Rhythm extends Array {
   }
 
   /**
-   * Expand the rhythm. Each pulse is replaced by n pulses.
+   * Inflate the rhythm. Each pulse is replaced by n pulses.
    * @param {number} n
    */
-  expand(n=2) {
+  inflate(n=2) {
     this.splice(0, this.length, ...this.map(x => [x,...Array(n-1).fill(0)]).flat())
   }
 
@@ -183,30 +183,49 @@ class Rhythm extends Array {
   }
 
   /**
-   * ...
+   * Remove all repetitions.
    */
   cut() {
     const r = this.repetitions()
     if (r > 1) {
-      this.splice(0, this.length / r)
+      this.splice(0, this.length - this.length / r)
     }
     return this
   }
 
-  // TODO
-  isCore() {
-    if (this.first()) {
-      return false
-    } // shifted
-    if (this.divisor() > 1) {
-      return false
-    }
-    if (this.repetitions() > 1) {
-      return false
-    }
+  copy() {
+    return new Rhythm(this)
+  }
 
-    // TODO: is this lexicographically smaller than all its rotations
-    // check durations to do so is more performant?
+  rotations() {
+    const pattern = this.toString()
+    const pp = `${pattern}${pattern}`
+    const set = new Set()
+    for (let i=1; i<this.length; i++) {
+      const p = pp.substring(i, i+this.length)
+      if (p !== pattern) {
+        set.add(p)
+      }
+    }
+    return set
+  }
+
+  core() {
+    if (this.divisor() === 1 && this.repetitions() === 1 && this[0]) {
+      const pattern = this.toString()
+      const pp = `${pattern}${pattern}`
+      // TODO: use beat positions instead
+      for (let i=1; i<this.length; i++) {
+        if (pp[i] === "x" && pattern > pp.substring(i, i+this.length)) {
+          if (pattern === "x-x") {
+            console.log(`${pattern} > ${pp.substring(i, i+this.length)} => NOT CORE`) 
+          }  
+          return false
+        }
+      }
+      return true
+    }
+    return false
   }
     
   /**
