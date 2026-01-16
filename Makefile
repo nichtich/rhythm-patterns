@@ -16,4 +16,8 @@ build:
 docs:
 	npm run doc --if-present --workspaces
 
+rhythms: rhythms.json
+rhythms.json: rhythms/*.md
+	npm run rhythms
+
 all: ci test build

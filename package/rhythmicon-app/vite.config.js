@@ -10,7 +10,7 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           if (req.url.endsWith(".md")) {
-            const file = path.join(process.cwd(), "pages", req.url)
+            const file = path.join(process.cwd(), "public", req.url)
             if (!fs.existsSync(file)) {
               res.statusCode = 404
               res.end("Not Found")
@@ -22,7 +22,6 @@ export default defineConfig({
       },
     },
   ],
-  publicDir: "pages",
   resolve: {
     alias: {
       vue: "vue/dist/vue.esm-bundler.js",

@@ -24,4 +24,4 @@ fs.readdirSync(dir)
     rhythms[pattern] = { ...parse(text), pattern }
   })
 
-console.log(JSON.stringify(rhythms,0,2))
+fs.writeFileSync(`${dir}/../rhythms.json`, JSON.stringify(rhythms,0,2))
