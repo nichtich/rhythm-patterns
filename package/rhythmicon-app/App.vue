@@ -68,6 +68,7 @@ onBeforeMount(() => routing(route))
       <MarkdownPage v-if="page" :page="page" />
       <RhythmPage v-else-if="rhythm.length" v-model="rhythm" />
       <IndexPage v-else-if="search" :search="search" />
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <div v-else v-html="store.index" />
     </main>
   </div>

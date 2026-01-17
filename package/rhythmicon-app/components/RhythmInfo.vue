@@ -53,7 +53,7 @@ const info = computed(() => store.rhythms.value[pattern.value])
       in {{ rhythm.length }} pulses
       <span v-if="first">starting at {{ first }}</span>
     </div>
-    <MarkdownText v-if="info?.text" :markdown="info.text" />
+    <MarkdownText :markdown="info.markdown" />
     <div>
       <span v-if="repetitions > 1">
         The rhythm consists of the same pattern repeated {{ repetitions }} times, so it
@@ -101,7 +101,7 @@ const info = computed(() => store.rhythms.value[pattern.value])
     <div v-if="info?.category?.size">
       <h3>Categories</h3>
       <ul>
-        <li v-for="category of info.category">
+        <li v-for="category of info.category" :key="category">
           <RouterLink :to="{ query: { category } }">
             {{ category }}
           </RouterLink>

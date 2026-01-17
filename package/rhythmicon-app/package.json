@@ -8,6 +8,7 @@
     "percussion"
   ],
   "type": "module",
+  "exports": "index.js",
   "scripts": {
     "test": "vitest run",
     "dev": "vite",
@@ -15,6 +16,7 @@
     "preview": "vite build && vite preview"
   },
   "dependencies": {
+    "js-yaml": "^4.1.1",
     "markdown-it": "^14.1.0",
     "vue": "^3.5.25",
     "vue-router": "^4.6.4"

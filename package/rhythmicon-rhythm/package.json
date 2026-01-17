@@ -6,6 +6,7 @@
   "type": "module",
   "author": "Jakob Voß",
   "homepage": "https://github.com/nichtich/rhythmicon/tree/main/package/rhythmicon-rhythm#readme",
+  "main": "index.js",
   "scripts": {
     "test": "mocha"
   },

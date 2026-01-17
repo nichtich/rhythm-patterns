@@ -10,19 +10,15 @@ fix:
 ci:
 	npm ci --workspaces
 
-build:
+build: rhythms
 	npm run build --if-present --workspaces
 
 docs:
 	npm run doc --if-present --workspaces
 
-data: rhythms.json categories.json
-
+rhythms: rhythms.json
 rhythms.json: rhythms/*.md
 	npm run rhythms
-
-categories.json: categories/*.md
-	npm run categories
 
 dev:
 	cd package/rhythmicon-app; npm run dev

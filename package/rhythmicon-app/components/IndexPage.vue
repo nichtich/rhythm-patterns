@@ -14,8 +14,8 @@ const categories = computed(() =>
 
 const currentCategory = computed(() => {
   if (categories.value.size == 1) {
-    const [cat] = categories.value.values()
-    return store.categories.value[cat]
+    const [id] = categories.value.values()
+    return store.getCategory(id)
   }
   return null
 })
@@ -39,8 +39,6 @@ function removeCategory(name) {
   router.push({ query: { category } })
 }
 
-const ucfirst =  s => s[0].toUpperCase() + s.slice(1)
-
 function selectCategory(category) {
   router.push({ query: { category: [...categories.value, category].join(",") } })
 }
@@ -54,15 +52,15 @@ function selectCategory(category) {
           v-for="category of categories"
           :key="category"
           :title="`Click to remove ${category} filter`"
-          @click="removeCategory(category)"
           style="padding-right: 0.5em"
+          @click="removeCategory(category)"
         >
-          {{ store.categories[category] || ucfirst(category) }}
+          {{ store.getCategory(category).value.name }}
         </a>
       </span>
       Rhythms
     </h2>
-    <MarkdownText v-if="currentCategory?.text" :markdown="currentCategory?.text" />
+    <MarkdownText :markdown="currentCategory?.value?.markdown" />
     <RhythmTable :rhythms="filteredRhythms" :categories="categories" @select-category="selectCategory" />
   </div>
 </template>

@@ -41,3 +41,6 @@ Drum grooves mainly consist of multiple rhythms.
 - [World Rhythms Encyclopedia](https://worldmusicmethod.com/courses/world-rhythms-encyclopedia/)
 - ...
 
+## The original rhythmicon
+
+- <https://120years.net/the-rhythmiconhenry-cowell-leon-termenusa1930/>

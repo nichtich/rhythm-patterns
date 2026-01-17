@@ -4,8 +4,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint --ext .js,.vue .",
-    "rhythms": "node bin/data.js rhythms",
-    "categories": "node bin/data.js categories"
+    "rhythms": "node bin/build.js"
   },
   "devDependencies": {
     "@eslint/compat": "^2.0.0",

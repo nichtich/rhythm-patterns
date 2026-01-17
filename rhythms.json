@@ -4,39 +4,46 @@
     "works": [
       "[4′33″](https://en.wikipedia.org/wiki/4%E2%80%B233%E2%80%B3)"
     ],
-    "text": "Take a rest!",
+    "markdown": "Take a rest!",
     "pattern": "-"
   },
   "x": {
     "name": "Pulse",
-    "text": "The minimal rhythm consists of a sequence of steady pulses.",
+    "markdown": "The minimal rhythm consists of a sequence of steady pulses.",
     "pattern": "x"
   },
   "x-x": {
     "name": "Minimal Shuffle",
-    "text": "The only core beat in three pulses.",
+    "markdown": "The only core beat in three pulses.",
     "pattern": "x-x"
   },
   "xx-": {
     "name": "Waltz",
-    "text": "The waltz as *musical* category is based on 3/4 meter using this Waltz rhythm or one beat `|x--|`.",
+    "markdown": "The waltz as *musical* category is based on 3/4 meter using this Waltz rhythm or one beat `|x--|`.",
     "pattern": "xx-"
   },
   "x--x": {
-    "text": "",
+    "markdown": "",
     "pattern": "x--x"
   },
   "x-xx": {
     "name": "Cumbia",
-    "text": "Prominent in the [Latin American musical rhythms of same name](https://en.wikipedia.org/wiki/Cumbia).",
+    "alias": [
+      "Ayyub",
+      "Zar"
+    ],
+    "source": [
+      "<https://www.maqamworld.com/en/iqaa/ayyub.php>"
+    ],
+    "markdown": "Prominent in the [Latin American musical rhythms of same name](https://en.wikipedia.org/wiki/Cumbia).\n\nKnown as *Ayyub* in arabic music.",
     "pattern": "x-xx"
   },
   "x---x": {
-    "text": "",
+    "markdown": "",
     "pattern": "x---x"
   },
   "x--xx": {
-    "text": "",
+    "markdown": "",
     "pattern": "x--xx"
   },
   "x-x--": {
@@ -44,15 +51,25 @@
     "category": [
       "aksak"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "x-x--"
   },
   "x-x-x": {
-    "text": "",
+    "name": "Aqsaq Turki",
+    "alias": [
+      "Iqa‘ Thurayya"
+    ],
+    "source": [
+      "<https://www.maqamworld.com/en/iqaa/thurayya.php>"
+    ],
+    "category": [
+      "iqa"
+    ],
+    "markdown": "Used in the [*Muwashah*](https://en.wikipedia.org/wiki/Muwashshah) vocal genre of arabic music.",
     "pattern": "x-x-x"
   },
   "x-xxx": {
-    "text": "",
+    "markdown": "",
     "pattern": "x-xxx"
   },
   "x-xxx-": {
@@ -64,28 +81,28 @@
     "category": [
       "polyrhythm"
     ],
-    "text": "A triplet `|x-x-x-|` over two notes `|x--x--|` results in this rhythm.",
+    "markdown": "A triplet `|x-x-x-|` over two notes `|x--x--|` results in this rhythm.",
     "pattern": "x-xxx-"
   },
   "x-x-x-x": {
     "name": "Râčenica",
-    "text": "Used in Bulgarian folk dance Râčenica",
+    "markdown": "Used in Bulgarian folk dance Râčenica",
     "pattern": "x-x-x-x"
   },
   "-x-x-x-x": {
     "name": "Off-Beat",
-    "text": "",
+    "markdown": "",
     "pattern": "-x-x-x-x"
   },
   "x--x----": {
     "name": "Charleston",
-    "text": "First two notes of `|x--x--x-|` tresillo.",
+    "markdown": "First two notes of `|x--x--x-|` tresillo.",
     "pattern": "x--x----"
   },
   "x--x--x-": {
     "name": "Tresillo",
     "wikidata": "Q65089548",
-    "text": "Propably the most important rhythm next to the simple Pulse `|x|` and to the Cumbia `|x-xx|`.",
+    "markdown": "Propably the most important rhythm next to the simple Pulse `|x|` and to the Cumbia `|x-xx|`.",
     "pattern": "x--x--x-"
   },
   "x--xx-x-": {
@@ -104,17 +121,17 @@
     "source": [
       "<https://web.archive.org/web/20141026164509/http://www.maqamworld.com/rhythms/muwashahat1.html#ayyub>"
     ],
-    "text": "Played as `|D--kD-T-|` on Darbuka in Arabian music.\n\nOften written in 2/4 meter.\n\nTresillo `|x--x--x-|` with the additional second beat.",
+    "markdown": "Played as `|D--kD-T-|` on Darbuka in Arabian music.\n\nOften written in 2/4 meter.\n\nTresillo `|x--x--x-|` with the additional second beat.",
     "pattern": "x--xx-x-"
   },
   "x-x-x-x-": {
     "name": "4 on the floor",
-    "text": "When played in 4/4 on the bass drum.",
+    "markdown": "When played in 4/4 on the bass drum.",
     "pattern": "x-x-x-x-"
   },
   "x-xx--x-": {
     "name": "?",
-    "text": "Also used in Calypso",
+    "markdown": "Also used in Calypso",
     "pattern": "x-xx--x-"
   },
   "x-xx-xx-": {
@@ -122,16 +139,16 @@
     "categories": [
       "bell pattern"
     ],
-    "text": "Embellishment of tresillo `|x--x--x-|`.\n\nUsed in Biguine music.",
+    "markdown": "Embellishment of tresillo `|x--x--x-|`.\n\nUsed in Biguine music.",
     "pattern": "x-xx-xx-"
   },
   "xx-x--x-": {
     "name": "?",
-    "text": "",
+    "markdown": "",
     "pattern": "xx-x--x-"
   },
   "xxxx-xx-": {
-    "text": "",
+    "markdown": "",
     "pattern": "xxxx-xx-"
   },
   "x-x-x-x--": {
@@ -146,7 +163,7 @@
     "works": [
       "[Blue Rondo à la Turk](https://en.wikipedia.org/wiki/Blue_Rondo_%C3%A0_la_Turk)"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "x-x-x-x--"
   },
   "x--x--x-x-": {
@@ -154,7 +171,7 @@
     "works": [
       "[Mission: Impossible](https://en.wikipedia.org/wiki/Theme_from_Mission:_Impossible)"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "x--x--x-x-"
   },
   "x-x-xxx-x-": {
@@ -162,7 +179,7 @@
     "category": [
       "polyrhythm"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "x-x-xxx-x-"
   },
   "x-x-x--x-x-": {
@@ -173,7 +190,7 @@
     "source": [
       "<https://en.wikipedia.org/wiki/Kopanitsa>"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "x-x-x--x-x-"
   },
   "--x---xx-x-x": {
@@ -187,7 +204,7 @@
     "source": [
       "[El Compás Flamenco: A Phylogenetic Analysis](https://cgm.cs.mcgill.ca/~godfried/publications/winfield.pdf)"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "--x---xx-x-x"
   },
   "--x--x-x-x-x": {
@@ -201,7 +218,7 @@
     "source": [
       "[El Compás Flamenco: A Phylogenetic Analysis](https://cgm.cs.mcgill.ca/~godfried/publications/winfield.pdf)"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "--x--x-x-x-x"
   },
   "x--x--x--x--": {
@@ -212,7 +229,7 @@
     "source": [
       "[El Compás Flamenco: A Phylogenetic Analysis](https://cgm.cs.mcgill.ca/~godfried/publications/winfield.pdf)"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "x--x--x--x--"
   },
   "x--x--x-x-x-": {
@@ -223,7 +240,7 @@
     "source": [
       "[El Compás Flamenco: A Phylogenetic Analysis](https://cgm.cs.mcgill.ca/~godfried/publications/winfield.pdf)"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "x--x--x-x-x-"
   },
   "x--xx-x-xx--": {
@@ -234,7 +251,7 @@
     "category": [
       "polyrhythm"
     ],
-    "text": "A quadruplet (quartole) `|x--x--x--x--|` over three notes `|x---x---x---|` results in this rhythm.",
+    "markdown": "A quadruplet (quartole) `|x--x--x--x--|` over three notes `|x---x---x---|` results in this rhythm.",
     "pattern": "x--xx-x-xx--"
   },
   "x-x-x--x--x-": {
@@ -245,12 +262,12 @@
     "source": [
       "[El Compás Flamenco: A Phylogenetic Analysis](https://cgm.cs.mcgill.ca/~godfried/publications/winfield.pdf)"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "x-x-x--x--x-"
   },
   "x-x-x--x-x--": {
     "name": "Fume-fume",
-    "text": "",
+    "markdown": "",
     "pattern": "x-x-x--x-x--"
   },
   "x-x-xx-x-x-x": {
@@ -261,7 +278,7 @@
     "category": [
       "bell pattern"
     ],
-    "text": "Usually written in 12/8 or 4/4 with trioles.\n\nMany more bell patterns exist!",
+    "markdown": "Usually written in 12/8 or 4/4 with trioles.\n\nMany more bell patterns exist!",
     "pattern": "x-x-xx-x-x-x"
   },
   "x-x-xx-x-xx-": {
@@ -272,12 +289,12 @@
     "source": [
       "beats exotiques"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "x-x-xx-x-xx-"
   },
   "x-xx-xx-xx-x": {
     "name": "Shuffle",
-    "text": "two eights played as triole (2-to-1)",
+    "markdown": "two eights played as triole (2-to-1)",
     "pattern": "x-xx-xx-xx-x"
   },
   "x--x------x---": {
@@ -285,14 +302,14 @@
     "category": [
       "tala"
     ],
-    "text": "The Jhoomra tala is divided into four Vibhag of length 3+4+3+4. The Vibhaga pattern `|x--x---_--x---|` (3-7-4) cannot be reduced.",
+    "markdown": "The Jhoomra tala is divided into four Vibhag of length 3+4+3+4. The Vibhaga pattern `|x--x---_--x---|` (3-7-4) cannot be reduced.",
     "pattern": "x--x------x---"
   },
   "x--xx--x--x-x-": {
     "works": [
       "[Saint Augustine in Hell](https://www.youtube.com/watch?v=jA2CWdzj4HM) (7/8 at 168 BPM)"
     ],
-    "text": "Bass Drum playing 16th `|x--x---|`, Snare 8th `|--x---x|`, and ride (not included here) 4th `|xxxxxxx|`",
+    "markdown": "Bass Drum playing 16th `|x--x---|`, Snare 8th `|--x---x|`, and ride (not included here) 4th `|xxxxxxx|`",
     "pattern": "x--xx--x--x-x-"
   },
   "x--x-xx--xx-x--": {
@@ -303,7 +320,7 @@
     "category": [
       "polyrhythm"
     ],
-    "text": "A quintuplet `|x--x--x--x--x--|` over three notes `|x----x----x----|` results in this rhythm.",
+    "markdown": "A quintuplet `|x--x--x--x--x--|` over three notes `|x----x----x----|` results in this rhythm.",
     "pattern": "x--x-xx--xx-x--"
   },
   "x-x-x-x-x--x-x-": {
@@ -314,7 +331,7 @@
     "source": [
       "<https://socalfolkdance.org/articles/bucimis_unciano.htm>"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "x-x-x-x-x--x-x-"
   },
   "x---x-------x---": {
@@ -322,7 +339,7 @@
     "category": [
       "tala"
     ],
-    "text": "The most common tala consists of 16 beats in in four equal divisions (Vibhag). The beginning of the first, second, and fourth Vibhagis stressed: `|x---x---_---x---|`. This can be reduced to `|xx-x|`.",
+    "markdown": "The most common tala consists of 16 beats in in four equal divisions (Vibhag). The beginning of the first, second, and fourth Vibhagis stressed: `|x---x---_---x---|`. This can be reduced to `|xx-x|`.",
     "pattern": "x---x-------x---"
   },
   "x---x-x---x-x---": {
@@ -330,22 +347,22 @@
     "alias": [
       "Ashiko"
     ],
-    "text": "Traditionally played on Ashiko drums.\n\nSame as `|x-xx-xx-|` (cinquillo)",
+    "markdown": "Traditionally played on Ashiko drums.\n\nSame as `|x-xx-xx-|` (cinquillo)",
     "pattern": "x---x-x---x-x---"
   },
   "x--x---x--x-x---": {
     "name": "Rumba clave",
-    "text": "",
+    "markdown": "",
     "pattern": "x--x---x--x-x---"
   },
   "x--x--x---x---x-": {
     "name": "Gahu",
-    "text": "",
+    "markdown": "",
     "pattern": "x--x--x---x---x-"
   },
   "x--x--x---x--x--": {
     "name": "Bossa Nova",
-    "text": "Like 2-3 son clave `|x--x--x---x-x---|`, the first part is `|x--x--x-|` tresillo.",
+    "markdown": "Like 2-3 son clave `|x--x--x---x-x---|`, the first part is `|x--x--x-|` tresillo.",
     "pattern": "x--x--x---x--x--"
   },
   "x--x--x---x-x---": {
@@ -355,32 +372,32 @@
       "Bo Diddley beat",
       "Son"
     ],
-    "text": "First part of it `|x--x--x-|` is tresillo.",
+    "markdown": "First part of it `|x--x--x-|` is tresillo.",
     "pattern": "x--x--x---x-x---"
   },
   "x--x--x---xx----": {
     "name": "Soukous",
-    "text": "",
+    "markdown": "",
     "pattern": "x--x--x---xx----"
   },
   "x--x--x--x--x-x-": {
     "name": "Double Tresillo",
-    "text": "",
+    "markdown": "",
     "pattern": "x--x--x--x--x-x-"
   },
   "x--x--x-x-x-x---": {
     "name": "?",
-    "text": "Based on the son clave `|x--x--x---x-x---|`",
+    "markdown": "Based on the son clave `|x--x--x---x-x---|`",
     "pattern": "x--x--x-x-x-x---"
   },
   "x--x-x-x--x-x-x-": {
     "name": "Samba",
-    "text": "",
+    "markdown": "",
     "pattern": "x--x-x-x--x-x-x-"
   },
   "x--xx--xx--xx--x": {
     "name": "Swing",
-    "text": "two eights played with length 3-to-1.\n\nThere is a lot of room between shuffle `|x-xx-xx-xx-x|` and swing pattern.",
+    "markdown": "two eights played with length 3-to-1.\n\nThere is a lot of room between shuffle `|x-xx-xx-xx-x|` and swing pattern.",
     "pattern": "x--xx--xx--xx--x"
   },
   "x-x-x--x-x-xx---": {
@@ -391,22 +408,22 @@
       "[You Can't Hurry Love](https://en.wikipedia.org/wiki/You_Can%27t_Hurry_Love)",
       "[Lust for Life](https://en.wikipedia.org/wiki/Lust_for_Life_(Iggy_Pop_song))"
     ],
-    "text": "",
+    "markdown": "",
     "pattern": "x-x-x--x-x-xx---"
   },
   "x-x-xxx-xxxx-xx-": {
     "name": "Stadium Clap",
-    "text": "Used in sports to cheer a team.",
+    "markdown": "Used in sports to cheer a team.",
     "pattern": "x-x-xxx-xxxx-xx-"
   },
   "x-xx-xx-x-x-x-x-": {
     "name": "Baqueteo",
-    "text": "Cinquillo `|x-xx-xx-|` followed by four unsyncopated notes.",
+    "markdown": "Cinquillo `|x-xx-xx-|` followed by four unsyncopated notes.",
     "pattern": "x-xx-xx-x-x-x-x-"
   },
   "x-xxx-xxx-xxx-xx": {
     "name": "Gallop",
-    "text": "",
+    "markdown": "",
     "pattern": "x-xxx-xxx-xxx-xx"
   },
   "xx--xx--xx--xx--": {
@@ -416,7 +433,7 @@
       "Strathspey"
     ],
     "wikidata": "Q165805",
-    "text": "",
+    "markdown": "",
     "pattern": "xx--xx--xx--xx--"
   },
   "x---xx--x-x-x--xx---": {
@@ -427,13 +444,17 @@
     "category": [
       "polyrhythm"
     ],
-    "text": "`|x---x---x---x---x---|` and `|x----x----x----x----|`",
+    "markdown": "`|x---x---x---x---x---|` and `|x----x----x----x----|`",
     "pattern": "x---xx--x-x-x--xx---"
   },
   "x--x-xx--x-----x--x-----": {
     "name": "Shave and a haircut",
     "wikidata": "Q938427",
-    "text": "Related: `|xxxx-xx-|`",
+    "markdown": "Related: `|xxxx-xx-|`",
     "pattern": "x--x-xx--x-----x--x-----"
+  },
+  "x--x--x--x--x--x--x--x--x-------": {
+    "markdown": "tresillo `|x--x--x-|` with the first two notes played as quintuplets.\n\nCan be shown with tuplets in meter `3+3+2/8`\n",
+    "pattern": "x--x--x--x--x--x--x--x--x-------"
   }
 }
