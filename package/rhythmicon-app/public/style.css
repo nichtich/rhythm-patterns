@@ -77,6 +77,19 @@ a:hover {
   text-decoration: underline;
 }
 
+ul.inline {
+  display: inline-block;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+ul.inline li {
+  display: inline;
+}
+ul.inline li + li:before {
+  content: ", ";
+}
+
 button.action {
   padding: 2px;
 }

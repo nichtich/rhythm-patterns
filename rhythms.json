@@ -102,6 +102,9 @@
   "x--x--x-": {
     "name": "Tresillo",
     "wikidata": "Q65089548",
+    "category": [
+      "bell-pattern"
+    ],
     "markdown": "Propably the most important rhythm next to the simple Pulse `|x|` and to the Cumbia `|x-xx|`.",
     "pattern": "x--x--x-"
   },
@@ -137,9 +140,9 @@
   "x-xx-xx-": {
     "name": "Cinquillo",
     "categories": [
-      "bell pattern"
+      "bell-pattern"
     ],
-    "markdown": "Embellishment of tresillo `|x--x--x-|`.\n\nUsed in Biguine music.",
+    "markdown": "Embellishment of tresillo `|x--x--x-|`.\n\nUsed in *Biguine* music.",
     "pattern": "x-xx-xx-"
   },
   "xx-x--x-": {
@@ -270,21 +273,36 @@
     "markdown": "",
     "pattern": "x-x-x--x-x--"
   },
+  "x-x-x-x--x--": {
+    "name": "horizontal hemiola",
+    "category": [
+      "bell-pattern"
+    ],
+    "source": [
+      "<https://en.wikipedia.org/wiki/Bell_pattern>"
+    ],
+    "markdown": "Used by the *Hausa* people of Nigeria and in the Cuban-Congolese rhythm *palo*.\n\nThe name refers to simple hemiola `|x-xxx-|`.",
+    "pattern": "x-x-x-x--x--"
+  },
   "x-x-xx-x-x-x": {
     "name": "Standard African Bell pattern",
     "alias": [
-      "Bembe"
+      "Standard pattern",
+      "Bembé"
     ],
     "category": [
-      "bell pattern"
+      "bell-pattern"
     ],
-    "markdown": "Usually written in 12/8 or 4/4 with trioles.\n\nMany more bell patterns exist!",
+    "source": [
+      "<https://en.wikipedia.org/wiki/Bell_pattern>"
+    ],
+    "markdown": "Usually written in 12/8 or 4/4 with trioles.",
     "pattern": "x-x-xx-x-x-x"
   },
   "x-x-xx-x-xx-": {
     "name": "Yorumba",
     "category": [
-      "bell pattern"
+      "bell-pattern"
     ],
     "source": [
       "beats exotiques"

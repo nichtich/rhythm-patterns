@@ -3,6 +3,7 @@ import { computed, inject } from "vue"
 import Rhythm from "rhythmicon-rhythm"
 import RhythmLink from "./RhythmLink.vue"
 import MarkdownText from "./MarkdownText.vue"
+import SourcesList from "./SourcesList.vue"
 
 const store = inject("store")
 
@@ -116,14 +117,7 @@ const info = computed(() => store.rhythms.value[pattern.value])
         </li>
       </ul>
     </div>
-    <div v-if="info?.source">
-      <h3>Sources</h3>
-      <ul>
-        <li v-for="(source,i) in info.source" :key="i">
-          <MarkdownText :markdown="source" />
-        </li>
-      </ul>
-    </div>
+    <SourcesList :sources="info?.source" />
   </div>
 </template>
 

@@ -16,3 +16,12 @@ export function yamlHeaderMarkdown(markdown) {
   }
   return { ...data, markdown }
 }
+
+export function routerQuery(url) {
+  if (url[0] === "?") {
+    url = URL.parse(url,"http://example.org/")
+    if (url) {
+      return Object.fromEntries(url.searchParams.entries())
+    }
+  }
+}

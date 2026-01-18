@@ -33,10 +33,10 @@ function enrichRhythm([pattern, r]) {
 
 const ucfirst =  s => s[0].toUpperCase() + s.slice(1)
 
-const categories = shallowRef({})
+const categories = ref({})
 
 const store = {
-  index: document.querySelector("#app main").innerHTML,
+  index: document.querySelector("#app main").innerHTML, // TODO: replace <a href="?...">...</a> with <RouterLink>
   rhythms: shallowRef({}),
   categories,
   getCategory(id) {
@@ -50,6 +50,7 @@ const store = {
     return categories[id]
   },
 }
+
 
 fetch("rhythms.json")
   .then(res => res.json())

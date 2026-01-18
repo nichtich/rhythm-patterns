@@ -2,7 +2,7 @@
 import { inject, computed } from "vue"
 import { useRouter } from "vue-router"
 import RhythmTable from "./RhythmTable.vue"
-import MarkdownText from "./MarkdownText.vue"
+import CategoryInfo from "./CategoryInfo.vue"
 
 const store = inject("store")
 const router = useRouter()
@@ -12,12 +12,11 @@ const props = defineProps({ search: { type: Object } })
 const categories = computed(() => 
   new Set(props.search.category.split(",").filter(c => c && c !== "all")))
 
-const currentCategory = computed(() => {
+const categoryId = computed(() => {
   if (categories.value.size == 1) {
     const [id] = categories.value.values()
-    return store.getCategory(id)
+    return id
   }
-  return null
 })
 
 const filteredRhythms = computed(() => {
@@ -60,7 +59,7 @@ function selectCategory(category) {
       </span>
       Rhythms
     </h2>
-    <MarkdownText :markdown="currentCategory?.value?.markdown" />
+    <CategoryInfo v-if="categoryId" :category="store.categories[categoryId]" />
     <RhythmTable :rhythms="filteredRhythms" :categories="categories" @select-category="selectCategory" />
   </div>
 </template>

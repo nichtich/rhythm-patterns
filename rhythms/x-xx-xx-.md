@@ -1,9 +1,9 @@
 ---
 name: Cinquillo 
 categories:
-- bell pattern
+- bell-pattern
 ---
 
 Embellishment of tresillo `|x--x--x-|`.
 
-Used in Biguine music.
+Used in *Biguine* music.

@@ -1,7 +1,7 @@
 ---
 name: Yorumba
 category:
-- bell pattern
+- bell-pattern
 source:
 - beats exotiques
 ---

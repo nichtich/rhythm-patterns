@@ -81,6 +81,13 @@ function handleCategoryClick(category) {
 </template>
 
 <style scoped>
+table { 
+    border-collapse: collapse;
+}
+table td {
+      border: 1px solid #AAAAAA;
+        padding: 0.25em;
+}
 .category.active {
   font-weight: bold;
 }
@@ -89,16 +96,4 @@ function handleCategoryClick(category) {
   text-decoration: underline;  
 }
 th { text-align: left; }
-ul.inline {
-  display: inline;
-  list-style: none;
-  padding-left: 0;
-}
-ul.inline li {
-  display: inline;
-  font-size: 80%;
-}
-ul.inline li + li:before {
-  content: ", ";
-}
 </style>
