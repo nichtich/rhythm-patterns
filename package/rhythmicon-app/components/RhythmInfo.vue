@@ -53,7 +53,7 @@ const info = computed(() => store.rhythms.value[pattern.value])
       in {{ rhythm.length }} pulses
       <span v-if="first">starting at {{ first }}</span>
     </div>
-    <MarkdownText :markdown="info.markdown" />
+    <MarkdownText :markdown="info?.markdown" />
     <div>
       <span v-if="repetitions > 1">
         The rhythm consists of the same pattern repeated {{ repetitions }} times, so it
