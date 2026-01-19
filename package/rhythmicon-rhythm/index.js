@@ -19,6 +19,14 @@ class Rhythm extends Array {
   }
 
   /**
+   * Return whether a string specifies durations with optional rotation.
+   * @param {string} str
+   */
+  static isDurationsString(s) {
+    return s.match(/^(\+*)([1-9][0-9]*(\+[1-9][0-9]*)*)$/)
+  }
+
+  /**
    * Read a string, an array, or a list of values as rhythm.
    * @param ...rhythm
    */
@@ -278,8 +286,10 @@ class Rhythm extends Array {
    * (new Rhythm(1,0,0,1,0)).rotate(1) // => [0,1,0,0,1]
    */
   rotate(pulses=1) {
-    const len = this.length
-    this.push(...this.splice(0, (-pulses % len + len) % len))
+    if (pulses) {
+      const len = this.length
+      this.push(...this.splice(0, (-pulses % len + len) % len))
+    }
     return this
   }
 
@@ -394,7 +404,22 @@ class Rhythm extends Array {
     return new Rhythm(pattern)
   }
 
-  // Related app: <https://www.mikeslessons.com/groove/>
+  /**
+   * Generate a rhythm from an array or string of durations.
+   */
+  static fromDurations(durations) {
+    if (Array.isArray(durations)) {
+      return new Rhythm(durations.map(n => "x"+"-".repeat(n-1)).join(""))
+    } else if (typeof durations === "string") {
+      const match = Rhythm.isDurationsString(durations)
+      if (match) {
+        durations = match[2].split("+")
+        const rot = match[1].length 
+        return Rhythm.fromDurations(durations).rotate(-rot)
+      }
+    }
+    throw ValueError("Malformed durations")  
+  }
 }
 
 export default Rhythm

@@ -1,7 +1,6 @@
 import assert from "assert"
 import Rhythm from "./index.js"
 
-
 it("empty rythm", () => {
   let r = new Rhythm()
   assert.equal(`${r}`, "")
@@ -97,8 +96,23 @@ describe("properties", () =>
     const rhythm = new Rhythm(pattern)
     Object.entries(r).forEach(([key, value]) =>
       it(key, () => assert.deepEqual(rhythm[key](), value)))
+    if (r.durations) {
+      it("fromDurations(array)", () => assert.deepEqual(Rhythm.fromDurations(r.durations), rhythm))
+    }
   })))
 
+describe("fromDurations", () => {
+  const tests = {
+    1: "x",
+    "1+2": "xx-",
+    "++1+3": "--xx",
+    // TODO: malformed
+  }
+  Object.entries(tests).forEach(([s, p]) => it(s, () => {
+    assert.deepEqual(Rhythm.fromDurations(s), new Rhythm(p))
+  }))
+})
+ 
 describe("compare", () => {
   const compare = (a,b) => (new Rhythm(a)).compare(new Rhythm(b))
   it("length", () => assert.equal(compare("x-","x--"), -1))
