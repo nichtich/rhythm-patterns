@@ -1,6 +1,6 @@
 {
   "name": "rhythmicon-rhythm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Analyze and compute rhythmic patterns",
   "keywords": [ "music", "rhythm", "percussion" ],
   "type": "module",

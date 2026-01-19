@@ -39,8 +39,10 @@ This Node package implements class [Rhythm](#Rhythm) to store, analyze and manip
         * [.equal(rhythm)](#Rhythm+equal)
     * _static_
         * [.isBeat(x)](#Rhythm.isBeat)
+        * [.isDurationsString(str)](#Rhythm.isDurationsString)
         * [.parse()](#Rhythm.parse)
         * [.euclidean(beats, pulses)](#Rhythm.euclidean)
+        * [.fromDurations()](#Rhythm.fromDurations)
 * [Maintainers](#maintainers)
 * [Contributing](#contributing)
 * [License](#license)
@@ -176,7 +178,7 @@ Get number of repetitions.
 <a name="Rhythm+cut"></a>
 
 ### rhythm.cut()
-...
+Remove all repetitions.
 
 <a name="Rhythm+shuffle"></a>
 
@@ -283,6 +285,16 @@ value except for the characters space, tab, underscore, dot and minus.
 | --- | --- |
 | x | <code>value</code> | 
 
+<a name="Rhythm.isDurationsString"></a>
+
+### Rhythm.isDurationsString(str)
+Return whether a string specifies durations with optional rotation.
+
+
+| Param | Type |
+| --- | --- |
+| str | <code>string</code> | 
+
 <a name="Rhythm.parse"></a>
 
 ### Rhythm.parse()
@@ -303,6 +315,11 @@ Generate an euclidean rhythm.
 | --- | --- | --- |
 | beats | <code>number</code> | number of beats |
 | pulses | <code>number</code> | length of the rhythm |
+
+<a name="Rhythm.fromDurations"></a>
+
+### Rhythm.fromDurations()
+Generate a rhythm from an array or string of durations.
 
 
 ## Maintainers
