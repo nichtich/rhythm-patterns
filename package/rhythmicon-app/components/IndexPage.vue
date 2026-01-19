@@ -17,6 +17,7 @@ const categoryId = computed(() => {
     const [id] = categories.value.values()
     return id
   }
+  return null
 })
 
 const filteredRhythms = computed(() => {
