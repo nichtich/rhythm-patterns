@@ -31,7 +31,7 @@ Rhythms must be provided as array of pulses, each being either a beat (value `1`
 
 ### RhythmInput
 
-A text input field to show and edit a rhythm pattern. Editing is submitted on *Enter* or aborted on *Esc*. The input is normalized to characters `x` for beat and `-` for rest.
+A text input field to show and edit a rhythm pattern. Editing is submitted on *Enter* or aborted on *Esc*. Rhythm can be entered in form of beats and rests (e.g. `x--x--x-`) or in form of durations (e.g. `3+3+2` or `++3+2+3` for rotated variant `--x--x-x`). The input is normalized to characters `x` for beat and `-` for rest.
 
 ~~~html
 <RhythmInput v-model="rhythm" />

@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch, computed } from "vue"
+import Rhythm from "rhythmicon-rhythm"
 
 const rhythm = defineModel({ type: Array })
 const pattern = computed(() => rhythm.value?.toString() || "")
@@ -14,9 +15,16 @@ function reset() {
 }
 
 function submit() {
-  text.value = text.value.replaceAll(/[^A-Za-z0-9&+_ .-]/g,"")
-  rhythm.value.replace(text.value)
+  let input = text.value.trim()
+  if (Rhythm.isDurationsString(input)) {
+    input = Rhythm.fromDurations(input).toString()
+  } else {
+    input = text.value.replaceAll(/[^A-Za-z0-9&+_ .-]/g,"")
+  }
+  rhythm.value.replace(input)
 }
+
+// TODO: display mode: pattern or durations
 </script>
 
 <template>
