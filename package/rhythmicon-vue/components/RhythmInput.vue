@@ -27,20 +27,28 @@ function submit() {
 }
 
 function toggleDurations() {
-  try {
-    const r = durations.value ? Rhythm.fromDurations(input.value) : Rhythm.fromPattern(input.value)
-    durations.value = !durations.value 
+  let str = input.value.trim()
+  let r
+  console.log(`toggleDurations: ${input.value}`)
+  if (Rhythm.isDurationsString(str)) {
+    r = Rhythm.fromDurations(str)
+    console.log(`=> fromDuration => ${r}`)
+    durations.value = false
+  } else if (str.match(/^[a-z._ -]+$/i)) { // TODO: document this
+    r = Rhythm.fromPattern(str)
+    console.log(`=> fromPattern=> ${r}`)
+    durations.value = true
+  }
+  if (r) {
     input.value = durations.value ? r.toDurationString() : r.toString()
-  } catch {
-    return
   }
 }
 </script>
 
 <template>
   <input
-    v-model="input" class="rhythm-text-input"
-    type="text" pattern="[A-Za-z0-9&\+ _.\-]+"
+    v-model="input" class="rhythm-input"
+    type="text" pattern="^([A-Za-z_.\-]+|\+*[1-9][0-9]*(\+[1-9][0-9]*)*)$"
     placeholder="pattern (x-x--...) or durations (2+3...)"
     @keydown.esc="reset"
     @blur="reset"
@@ -51,8 +59,11 @@ function toggleDurations() {
 </template>
 
 <style>
-.rhythm-text-input {
+.rhythm-input {
   font-family: monospace;
   width: 32em;
 }
+.rhythm-input:invalid {
+  background: #f66;
+} 
 </style>

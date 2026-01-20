@@ -1,7 +1,4 @@
 <script setup>
-/**
- * A single button with status (pressed or not pressed).
- */
 defineProps({
   pressed: Boolean,
   active: Boolean,
@@ -23,14 +20,15 @@ const emit = defineEmits(["toggle"])
 <style>
 .beat-button {
   font-family: monospace;
+  border-radius: 0.1rem;
 }
 .beat-button[aria-pressed="true"] {
   background: #222;
-  border: 2px inset;
-  color: white
+  border: none;
+  color: #fff
 }
 .beat-button[aria-pressed="false"] {
   background: #ddd;
-  border: 2px outset;
+  border: none;
 }
 </style>

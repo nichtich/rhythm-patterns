@@ -1,17 +1,14 @@
 <script setup>
-/**
- * A sequence of beat buttons, encoding a Rhythm.
- */
-import BeatButton from "./BeatButton.vue"
+import SequencerPulse from "./SequencerPulse.vue"
 
 defineProps({ rhythm: Array, pulse: Number })
 const emit = defineEmits(["toggle"])
 </script>
 
 <template>
-  <ul class="rhythm-buttons">
+  <ul class="rhythm-sequencer">
     <li v-for="(item, i) in rhythm" :key="i">
-      <BeatButton
+      <SequencerPulse
         :pressed="!!rhythm[i]" :active="pulse === i"
         @toggle="emit('toggle',i)"
       />
@@ -20,14 +17,14 @@ const emit = defineEmits(["toggle"])
 </template>
 
 <style>
-.rhythm-buttons {
+.rhythm-sequencer {
   list-style-type: none;
   display: inline-block;
   padding: 0;
   margin: 0;
 }
-.rhythm-buttons li {
+.rhythm-sequencer li {
   display: inline-block;
-  padding: 1px;
+  padding: 0.2rem;
 }
 </style>

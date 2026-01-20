@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from "vue"
 
-import RhythmButtons from "./RhythmButtons.vue"
 import Rhythm from "rhythmicon-rhythm"
 
 const MAX = 128
@@ -20,7 +19,7 @@ function halve() { // TODO: if length >= 4
 }
 */
 
-function inverse() {
+function complement() {
   rhythm.value.replace(...rhythm.value.map(x => x ? 0 : 1))
 }
 function append() {
@@ -29,14 +28,10 @@ function append() {
 function pop() {
   rhythm.value.pop()
 }
-function toggle(i) {
-  rhythm.value[i] = rhythm.value[i] ? 0 : 1
-}
 </script>
 
 <template>
   <div class="rhythm-editor">
-    <RhythmButtons :rhythm="rhythm" :pulse="pulse" @toggle="toggle" />
     <div>
       <button class="action" :disabled="rhythm.empty()" @click="rhythm.rotate(-1)">
         &lt;
@@ -56,7 +51,7 @@ function toggle(i) {
       <button class="action" :disabled="rhythm.length < 2" @click="pop">
         -
       </button>
-      <button class="action" @click="inverse">
+      <button class="action" @click="complement">
         ⇅
       </button>
       <button class="action" @click="duplicate">
@@ -83,9 +78,3 @@ function toggle(i) {
     </div>
   </div>
 </template>
-
-<style>
-.rhythm-buttons {
-  margin: 0.5em 0;
-}
-</style>

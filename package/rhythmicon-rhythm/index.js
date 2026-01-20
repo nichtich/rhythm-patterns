@@ -217,6 +217,14 @@ class Rhythm extends Array {
   }
 
   /**
+   * Convert rhythm into its complement by swapping beats and rests.
+   */
+  complement() {
+    this.replace(...this.map(x => x ? 0 : 1))
+    return this
+  }
+
+  /**
    * Calculate all rotations.
    * @param {boolean} beat only consider beat rotations
    * @returns {array} of patterns

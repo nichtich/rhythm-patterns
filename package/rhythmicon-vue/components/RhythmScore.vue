@@ -120,8 +120,7 @@ const scoreNotes = computed(() => {
 .score-renderer {
   font-family: Bravura;
   font-size: 2.5rem;
-  padding: 0 1rem;
-  line-height: 7rem;
+  padding: 0;
 }
 
 .stave {

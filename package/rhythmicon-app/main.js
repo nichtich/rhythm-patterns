@@ -12,23 +12,23 @@ function enrichRhythm([pattern, r]) {
   }
 
   r.length = rhythm.length
-  r.divisor = rhythm.divisor()
   r.beats = rhythm.beats()
+  r.durations = rhythm.durations()
+  r.divisor = rhythm.divisor()
   r.repetitions = rhythm.repetitions()
-  r.condense = r.divisor === 1 && r.repetitions === 1
 
+  r.condense = r.divisor === 1 && r.repetitions === 1
   r.category = new Set(r.category || [])
-  r.core = rhythm.core()
-  if (r.core) {
+
+  r.core = rhythm.normalize()
+  if (pattern == r.core.toString() ) {
     r.category.add("core")
   }
 
-  r.euclidean = Rhythm.euclidean(r.beats, r.length).equal(rhythm)
+  r.euclidean = Rhythm.euclidean(r.beats, r.length).equals(rhythm)
   if (r.euclidean) {
     r.category.add("euclidean")
   }
-
-  r.durations = rhythm.durations()
 }
 
 const ucfirst =  s => s[0].toUpperCase() + s.slice(1)

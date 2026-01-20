@@ -9,6 +9,10 @@
 - [Install](#install)
 - [Usage](#usage)
 - [Components](#components)
+  - [RhythmSequencer](#rhythmsequencer)
+  - [RhythmInput](#rhythminput)
+  - [RhythmCircle](#rhythmcircle)
+  - [RhythmScore](#rhythmscore)
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 - [License](#license)
@@ -22,20 +26,41 @@ npm install rhythmicon-vue
 ## Usage
 
 ~~~js 
-import { RhythmCircle, RhythmScore } from "rhythmicon-vue"
+import { RhythmSequencer, RhythmInput, RhythmCircle, RhythmScore } from "rhythmicon-vue"
 ~~~
 
 ## Components
 
 Rhythms must be provided as array of pulses, each being either a beat (value `1`) or a rest (value `0`), for instance `[1,0,0,1,0,0,1,0]` for the tresillo rhythm. See package `rhythmicon-rhythm` for an extension of this data structure as class.
 
+### RhythmSequencer
+
+A row of buttons representing the pulses of a Rhythm. Pulses can be toggled to represent a beat or a rest.
+
+~~~html
+<RhythmSequencer :rhythm="rhythm" :pulse="pulse" @toggle="toggle" />
+~~~
+
+![](img/rhythm-sequencer.png)
+
+**Properties:**
+
+- `rhythm`: the rhythm to display (Array or instance of Rhythm)
+- `pulse`: index of the currently active pulse (optional)
+- `@toggle`: event emitted when a pulse is toggled
+
+
 ### RhythmInput
 
-A text input field to show and edit a rhythm pattern. Editing is submitted on *Enter* or aborted on *Esc*. Rhythm can be entered in form of beats and rests (e.g. `x--x--x-`) or in form of durations (e.g. `3+3+2` or `++3+2+3` for rotated variant `--x--x-x`). The input is normalized to characters `x` for beat and `-` for rest.
+A text input field to show and edit a rhythm pattern. Editing is submitted on *Enter* or aborted on *Esc*. Rhythm can be entered in form of beats and rests (e.g. `x--x--x-`) or in form of durations (e.g. `3+3+2` or `++3+2+3` for rotated variant `--x--x-x`). The input is normalized to characters `x` for beat and `-` for rest. Display mode can be switched between beats/rests and durations with arrow up/down on valid input.
 
 ~~~html
 <RhythmInput v-model="rhythm" />
 ~~~
+
+The layout can be configured with the following **CSS classes**:
+
+- `rhythm-input` for the input element
 
 ### RhythmCircle
 
@@ -53,7 +78,7 @@ A circular visualization of a rhythm as SVG image. Pulses are spread evenly arou
 - `pulse`: index of the currently active pulse (optional)
 - `@toggle`: event emitted when a pulse is toggled
 
-The layout can be configured with the following CSS classes:
+The layout can be configured with the following **CSS classes**:
 
 - `rhythm-circle` for the SVG root element
 - `beat-dot` for a dot representing a beat

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest"
 import { mount } from "@vue/test-utils"
-import RhythmScore from "../components/RhythmScore.vue"
+import { RhythmScore } from "../index.js"
 
 describe("RhythmScore", () => {
   it("renders correctly with given rhythm", () => {

@@ -1,6 +1,9 @@
 test:
 	npm run test --workspaces
 
+coverage:
+	npm run coverage --if-present --workspaces
+
 lint:
 	npm run lint
 
