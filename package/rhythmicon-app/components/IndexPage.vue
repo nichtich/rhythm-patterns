@@ -3,6 +3,7 @@ import { inject, computed } from "vue"
 import { useRouter } from "vue-router"
 import RhythmTable from "./RhythmTable.vue"
 import CategoryInfo from "./CategoryInfo.vue"
+import WikidataLink from "./WikidataLink.vue"
 
 const store = inject("store")
 const router = useRouter()
@@ -46,20 +47,20 @@ function selectCategory(category) {
 
 <template>
   <div>
-    <h2>
-      <span v-if="categories.size">
+    <h1>
+      <span v-for="category of categories" :key="category">
         <a
-          v-for="category of categories"
-          :key="category"
+         
           :title="`Click to remove ${category} filter`"
           style="padding-right: 0.5em"
           @click="removeCategory(category)"
         >
           {{ store.getCategory(category).value.name }}
         </a>
+        <wikidata-link :qid="store.getCategory(category).value.wikidata" :title="`This category in Wikidata`" />
       </span>
       Rhythms
-    </h2>
+    </h1>
     <CategoryInfo v-if="categoryId" :category="store.categories[categoryId]" />
     <RhythmTable :rhythms="filteredRhythms" :categories="categories" @select-category="selectCategory" />
   </div>
@@ -69,5 +70,9 @@ function selectCategory(category) {
 h2 a:hover {
   color: #ccc;
 }
+h1 .wikidata-link {
+  margin-left: -0.25em;
+  margin-right: 0.25em;
+  vertical-align: top;
+}
 </style>
-

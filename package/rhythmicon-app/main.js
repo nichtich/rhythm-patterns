@@ -20,7 +20,8 @@ function enrichRhythm([pattern, r]) {
   r.condense = r.divisor === 1 && r.repetitions === 1
   r.category = new Set(r.category || [])
 
-  r.core = rhythm.normalize()
+  r.rhythm = rhythm
+  r.core = rhythm.copy().normalize()
   if (pattern == r.core.toString() ) {
     r.category.add("core")
   }

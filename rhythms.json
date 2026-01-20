@@ -133,8 +133,7 @@
     "pattern": "x-x-x-x-"
   },
   "x-xx--x-": {
-    "name": "?",
-    "markdown": "Also used in Calypso",
+    "markdown": "Also used in Calypso\n\n",
     "pattern": "x-xx--x-"
   },
   "x-xx-xx-": {
@@ -146,8 +145,7 @@
     "pattern": "x-xx-xx-"
   },
   "xx-x--x-": {
-    "name": "?",
-    "markdown": "",
+    "markdown": "\n",
     "pattern": "xx-x--x-"
   },
   "xxxx-xx-": {

@@ -26,6 +26,7 @@ const toggle = i => rhythm.value[i] = rhythm.value[i] ? 0 : 1
         <RhythmCircle :rhythm="rhythm" :pulse="pulse" @toggle="toggle" />
       </div>
     </div>
+    <a :href="`https://github.com/nichtich/rhythmicon/blob/main/rhythms/${rhythm.toString()}.md`" class="source-link">source file</a>
   </div>
 </template>
 
@@ -42,5 +43,8 @@ const toggle = i => rhythm.value[i] = rhythm.value[i] ? 0 : 1
 }
 button.action {
   padding: 2px;
+}
+.source-link {
+  font-size: small;
 }
 </style>

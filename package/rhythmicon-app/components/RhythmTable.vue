@@ -1,7 +1,8 @@
 <script setup>
 import RhythmLink from "./RhythmLink.vue"
+import WikidataLink from "./WikidataLink.vue"
 
-const props = defineProps({
+defineProps({
   rhythms: {
     type: Object,
     required: true,
@@ -10,15 +11,11 @@ const props = defineProps({
     type: Set,
     default: () => new Set(),
   },
+  beats: Number,
+  length: Number,
 })
 
-const emit = defineEmits(["selectCategory"])
-
-function handleCategoryClick(category) {
-  if (!props.categories.has(category)) {
-    emit("selectCategory", category)
-  }
-}
+const emit = defineEmits(["selectCategory","selectBeats","selectLength"])
 </script>
 
 <template>
@@ -26,7 +23,7 @@ function handleCategoryClick(category) {
     <thead>
       <tr>
         <th />
-        <th>name</th>        
+        <th>names</th>        
         <th>pattern</th>
         <th>durations</th>
         <th>categories</th>        
@@ -36,16 +33,26 @@ function handleCategoryClick(category) {
     <tbody>
       <tr v-for="(rhythm, pattern) in rhythms" :key="pattern">
         <td style="text-align:right; padding-right: 1em;">
-          <small>{{ rhythm.beats }}/{{ pattern.length }}</small>
+          <small>
+            {{ rhythm.beats }} /{{ pattern.length }}
+          </small>
         </td>
         <td>
-          <span v-if="rhythm.name">{{ rhythm.name }}</span>
+          <RouterLink :to="{ query: { pattern } }">
+            {{ rhythm.name }}
+          </RouterLink>
+          <ul v-if="rhythm.alias?.length" class="inline alias">
+            <li v-for="alias in rhythm.alias" :key="alias">
+              {{ alias }}
+            </li>
+          </ul>
+          <wikidata-link :qid="rhythm.wikidata" :title="`This rhythm in Wikidata`" />
         </td>
         <td>
           <rhythm-link :pattern="pattern" />
         </td>
         <td>
-          {{ rhythm.durations.join("+") }}
+          {{ rhythm.rhythm.toDurationString() }}
         </td>                
         <td>
           <ul v-if="rhythm.category.size" class="inline">
@@ -53,7 +60,7 @@ function handleCategoryClick(category) {
               v-for="c of rhythm.category" :key="c"
               :class="{ 'category': true, 'active': categories.has(c), 'clickable': !categories.has(c) }"
               :title="categories.has(c) ? '' : `Click to filter by ${c}`"
-              @click="handleCategoryClick(c)"
+              @click="emit('selectCategory', c)"
             >
               {{ c }}
             </li>
@@ -96,4 +103,17 @@ table td {
   text-decoration: underline;  
 }
 th { text-align: left; }
+ul.inline.alias { 
+  padding-left: 0.25em;
+}
+ul.inline.alias:before { 
+  content: " / ";
+}
+ul.inline li + li:before {
+  content: " / ";
+}
+.wikidata-link {
+  margin-left: 0.5em;
+  float: right;
+}
 </style>
