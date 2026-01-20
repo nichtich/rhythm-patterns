@@ -1,0 +1,61 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/nichtich/rhythm-patterns/rhythms/schema.json",
+    "title": "rhythmicon rhythms",
+    "type": "object",
+    "required": [
+        "pattern",
+        "markdown"
+    ],
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Name of the rhythm"
+        },
+        "alias": {
+            "type": "array",
+            "description": "Alternative names for the rhythm",
+            "items": {
+                "type": "string"
+            }
+        },
+        "category": {
+            "type": "array",
+            "description": "Categories the rhythm belongs to",
+            "items": {
+                "type": "string"
+            }
+        },
+        "source": {
+            "type": "array",
+            "description": "Source references",
+            "items": {
+                "type": "string",
+                "description": "URL or other reference in Markdown format"
+            }
+        },
+        "works": {
+            "type": "array",
+            "description": "Musical works using this rhythm",
+            "items": {
+                "type": "string",
+                "description": "Markdown format"
+            }
+        },
+        "wikidata": {
+            "type": "string",
+            "description": "Wikidata Q-Identifier",
+            "pattern": "^Q[0-9]+$"
+        },
+        "markdown": {
+            "type": "string",
+            "description": "Description in Markdown format"
+        },
+        "pattern": {
+            "type": "string",
+            "description": "The rhythm pattern using 'x' and '-' characters",
+            "pattern": "^[x-]+$"
+        }
+    },
+    "additionalProperties": false
+}

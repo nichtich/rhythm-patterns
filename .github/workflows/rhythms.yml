@@ -17,4 +17,4 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 24.x
-    - run: npm run rhythms
+    - run: npm ci && npm run rhythms

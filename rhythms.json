@@ -139,7 +139,7 @@
   },
   "x-xx-xx-": {
     "name": "Cinquillo",
-    "categories": [
+    "category": [
       "bell-pattern"
     ],
     "markdown": "Embellishment of tresillo `|x--x--x-|`.\n\nUsed in *Biguine* music.",

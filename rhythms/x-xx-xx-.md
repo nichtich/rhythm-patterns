@@ -1,6 +1,6 @@
 ---
 name: Cinquillo 
-categories:
+category:
 - bell-pattern
 ---
 
