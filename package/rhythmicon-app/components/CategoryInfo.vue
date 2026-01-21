@@ -8,6 +8,6 @@ defineProps({ category: { type: Object } })
 <template>
   <div v-if="category">
     <MarkdownText :markdown="category.value.markdown" />
-    <SourcesList :sources="category.value.source" :inline="true" />
+    <SourcesList :sources="category.value.source" />
   </div>
 </template>

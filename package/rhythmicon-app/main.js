@@ -26,6 +26,10 @@ function enrichRhythm([pattern, r]) {
     r.category.add("core")
   }
 
+  if (r.rhythm.odd()) {
+    r.category.add("odd")
+  }
+
   r.euclidean = Rhythm.euclidean(r.beats, r.length).equals(rhythm)
   if (r.euclidean) {
     r.category.add("euclidean")

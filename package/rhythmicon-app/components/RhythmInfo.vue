@@ -28,6 +28,20 @@ const knownRotated = computed(() => new Set(allRotated.value.filter(p => store.r
 const core = computed(() => props.rhythm.core())
 
 const info = computed(() => store.rhythms.value[pattern.value])
+
+const categories = computed(() => {
+  let cats = info.value?.category
+  if (!cats) {
+    cats = new Set()
+    if (euclidean.value) {
+      cats.add("euclidean")
+    }
+    if (props.rhythm.odd()) {
+      cats.add("odd")
+    }
+  }
+  return cats
+})
 </script>
 
 <template>
@@ -89,6 +103,16 @@ const info = computed(() => store.rhythms.value[pattern.value])
         </span>
       </span>
     </div>
+    <div v-if="categories.size">
+      <h3>Categories</h3>
+      <ul>
+        <li v-for="category of categories" :key="category">
+          <RouterLink :to="{ query: { category } }">
+            {{ category }}
+          </RouterLink>
+        </li>
+      </ul>
+    </div>
     <div v-if="knownRotated.size">
       <h3>Rotated variants</h3>
       <!-- TODO: if repeated, exclude same -->
@@ -99,25 +123,21 @@ const info = computed(() => store.rhythms.value[pattern.value])
         </li>
       </ul>
     </div>
-    <div v-if="info?.category?.size">
-      <h3>Categories</h3>
-      <ul>
-        <li v-for="category of info.category" :key="category">
-          <RouterLink :to="{ query: { category } }">
-            {{ category }}
-          </RouterLink>
-        </li>
-      </ul>
+    <div v-if="info">
+      <div v-if="info.works">
+        <h3>Notable works</h3>
+        <ul>
+          <li v-for="(work,i) in info.works" :key="i">
+            <MarkdownText :markdown="work" />
+          </li>
+        </ul>
+      </div>
+      <SourcesList :sources="info.source" />
+      <a :href="`https://github.com/nichtich/rhythmicon/blob/main/rhythms/${rhythm.toString()}.md`" class="source-link">source record</a>
     </div>
-    <div v-if="info?.works">
-      <h3>Notable works</h3>
-      <ul>
-        <li v-for="(work,i) in info.works" :key="i">
-          <MarkdownText :markdown="work" />
-        </li>
-      </ul>
+    <div v-else>
+      <a :href="`https://github.com/nichtich/rhythmicon/new/main/rhythms?filename=${rhythm.toString()}.md&value=---%0Aname%3A%20...%0A---%0A%0Adescription`" class="source-link">create record</a>
     </div>
-    <SourcesList :sources="info?.source" />
   </div>
 </template>
 
