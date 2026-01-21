@@ -364,6 +364,13 @@
     "markdown": "",
     "pattern": "x-x-x-x-x--x-x-"
   },
+  "--x--x--x--x----": {
+    "works": [
+      "*I Got Rhythm* by George Gershwin"
+    ],
+    "markdown": "",
+    "pattern": "--x--x--x--x----"
+  },
   "x---x-------x---": {
     "name": "Teental",
     "category": [

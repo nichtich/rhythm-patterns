@@ -15,7 +15,7 @@ function reset() {
 watch(rhythm.value, reset)
 
 function submit() {
-  let str = input.value.trim()
+  let str = input.value.replaceAll(/\s+/g,"")
   if (Rhythm.isDurationsString(str)) {
     str = Rhythm.fromDurations(str).toString()
     durations.value = true
@@ -27,7 +27,7 @@ function submit() {
 }
 
 function toggleDurations() {
-  let str = input.value.trim()
+  let str = input.value.replaceAll(/\s+/g,"")
   let r
   console.log(`toggleDurations: ${input.value}`)
   if (Rhythm.isDurationsString(str)) {
@@ -46,7 +46,7 @@ function toggleDurations() {
 <template>
   <input
     v-model="input" class="rhythm-input"
-    type="text" pattern="^([A-Za-z_.\-]+|\+*[1-9][0-9]*(\+[1-9][0-9]*)*)$"
+    type="text" pattern="^([A-Za-z_. \t\-]+|\s*\+*\s*[1-9][0-9]*(\s*\+\s*[1-9][0-9]*)*)\s*$"
     placeholder="pattern (x-x--...) or durations (2+3...)"
     @keydown.esc="reset"
     @blur="reset"

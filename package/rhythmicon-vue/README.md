@@ -52,7 +52,7 @@ A row of buttons representing the pulses of a Rhythm. Pulses can be toggled to r
 
 ### RhythmInput
 
-A text input field to show and edit a rhythm pattern. Editing is submitted on *Enter* or aborted on *Esc*. Rhythm can be entered in form of beats and rests (e.g. `x--x--x-`) or in form of durations (e.g. `3+3+2` or `++3+2+3` for rotated variant `--x--x-x`). The input is normalized to characters `x` for beat and `-` for rest. Display mode can be switched between beats/rests and durations with arrow up/down on valid input.
+A text input field to show and edit a rhythm pattern. Editing is submitted on *Enter* or aborted on *Esc*. Rhythm can be entered in form of beats and rests (e.g. `x--x--x-`) or in form of durations (e.g. `3+3+2` or `++3+2+3` for rotated variant `--x--x-x`). The input is normalized to characters `x` for beat (from any letter) and `-` for rest (from characters `.`, `_`, `-`). Whitespace is ignored. Display mode can be switched between beats/rests and durations with arrow up/down on valid input.
 
 ~~~html
 <RhythmInput v-model="rhythm" />

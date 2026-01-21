@@ -8,7 +8,7 @@ const props = defineProps({
 
 const emit = defineEmits(["toggle"])
 
-const size = 100 // viewBox
+const size = 300 // viewBox
 
 const length = computed(() => props.rhythm.length)
 
@@ -22,14 +22,18 @@ const dotRadius = computed(() => {
   return size/20
 })
 
-const radius = computed(() => size/2 - dotRadius.value - 4)
+const radius = computed(() => size/2 - dotRadius.value - 18)
 
 const points = computed(() => props.rhythm.map(
   (beat, i) => {
     const angle = (2 * Math.PI * i) / length.value - Math.PI / 2
+    const r = radius.value
+    const r2 = r + dotRadius.value + 10
     return {
-      x: size/2 + radius.value * Math.cos(angle),
-      y: size/2 + radius.value * Math.sin(angle),
+      x: size/2 + r * Math.cos(angle),
+      y: size/2 + r * Math.sin(angle),
+      tx: size/2 + r2 * Math.cos(angle),
+      ty: size/2 + r2 * Math.sin(angle),
       beat,
       i,
     }
@@ -51,13 +55,26 @@ const polygon = computed(() => Object.values(points.value || {})
         :r="dotRadius"
         @click="emit('toggle', p.i)"
       />
+      <text :x="p.tx" :y="p.ty">{{ i }}</text>
     </g> 
   </svg> 
 </template>
  
 <style>
+.rhythm-circle g text {
+  display: none;
+  font-size: small;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.rhythm-circle g:hover text {
+  display: block;
+}
 .rhythm-circle {
   stroke: #000;
+}
+.rhythm-circle > circle {
+  stroke-width: 2;
 }
 .polygon {
   fill: #ccc;
