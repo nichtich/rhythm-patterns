@@ -11,7 +11,7 @@ fix:
 	npm run lint -- --fix
 
 ci:
-	npm ci --workspaces
+	npm ci && npm ci --workspaces
 
 build: rhythms
 	npm run build --if-present --workspaces
