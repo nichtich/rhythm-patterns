@@ -1,6 +1,6 @@
-# 0.2.1
+# 0.3.0
 
-- disallow optional `|` before and after pattern
+- Disallow optional `|` before and after pattern
 
 # 0.2.1
 

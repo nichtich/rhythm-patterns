@@ -1,41 +1,40 @@
 <script setup>
 import { computed } from "vue"
-
 import Rhythm from "rhythmicon-rhythm"
 
-const MAX = 128
-
 const rhythm = defineModel({ validator: r => r instanceof Rhythm })
-defineProps({ pulse: Number })
+
+defineProps({ max: { type: Number, default: () => 128 } })
 
 const divisor = computed(() => rhythm.value.divisor())
+const empty = computed(() => rhythm.value.empty())
 </script>
 
 <template>
   <div class="rhythm-editor">
     <button
-      class="action" :disabled="rhythm.empty()" 
+      class="action" :disabled="empty" 
       title="rotate one pulse left" @click="rhythm.rotate(-1)"
     >
       &lt;
     </button>
     <button
-      class="action" :disabled="rhythm.empty()" 
+      class="action" :disabled="empty"
+      title="rotate one pulse right" @click="rhythm.rotate(1)"
+    >
+      &gt;
+    </button>
+    <button
+      class="action" :disabled="empty" 
       title="rotate one beat left" @click="rhythm.rotateBeats(rhythm[0] ? -1 : 0)"
     >
       ⋖
     </button>
     <button
-      class="action" :disabled="rhythm.empty()"
+      class="action" :disabled="empty"
       title="rotate one beat right" @click="rhythm.rotateBeats(1)"
     >
       ⋗
-    </button>
-    <button
-      class="action" :disabled="rhythm.empty()"
-      title="rotate one pulse right" @click="rhythm.rotate(1)"
-    >
-      &gt;
     </button>
     <button
       class="action" title="add one pulse" 
@@ -75,6 +74,18 @@ const divisor = computed(() => rhythm.value.divisor())
       𝄍
     </button>    
     <button
+      class="action" :disabled="rhythm.length > max/2"
+      title="inflate rhythm (double)" @click="rhythm.inflate()"
+    >
+      ×2
+    </button>
+    <button
+      class="action" :disabled="rhythm.length > max/3"
+      title="inflate rhythm (triple)" @click="rhythm.inflate(3)"
+    >
+      ×3
+    </button>
+    <button
       class="action" :disabled="divisor === 1"
       title="deflate rhythm"
       @click="rhythm.deflate()"
@@ -82,19 +93,7 @@ const divisor = computed(() => rhythm.value.divisor())
       ÷{{ divisor > 1 ? divisor : "n" }}
     </button>
     <button
-      class="action" :disabled="rhythm.length > MAX/2"
-      title="inflate rhythm (double)" @click="rhythm.inflate()"
-    >
-      ×2
-    </button>
-    <button
-      class="action" :disabled="rhythm.length > MAX/3"
-      title="inflate rhythm (triple)" @click="rhythm.inflate(3)"
-    >
-      ×3
-    </button>
-    <button
-      class="action" :disabled="rhythm.length % 2 || rhythm.empty() || rhythm.length > 2*MAX/3"
+      class="action" :disabled="empty || rhythm.length % 2 || rhythm.length > 2*max/3"
       title="shuffle rhythm" @click="rhythm.shuffle()"
     >
       ²=³
@@ -110,16 +109,9 @@ const divisor = computed(() => rhythm.value.divisor())
 
 <style>
 .rhythm-editor {
-  position: fixed;
-  right: 0.2em;
-  top: 2.5em;
   display: flex;
-  flex-direction: column;
-  border-right: none;
-  border-radius: 4px 0 0 4px;
   padding: 0.25em;
   gap: 0.25em;
-  z-index: 100;
 }
 .rhythm-editor button {
   font-weight: bold;
@@ -128,4 +120,3 @@ const divisor = computed(() => rhythm.value.divisor())
   font-weight: normal;
 }
 </style>
-

@@ -1,7 +1,9 @@
-# 0.2.1
+# 0.3.0
 
-- RhythCircle: show pulse index on hover, show symmetry
+- RhythmCircle: show pulse index on hover, show symmetry
 - RhythmInput: allow more characters
+- Change property `rhythm` to Vue model
+- Add RhythmControls component
 
 # 0.2.0
 

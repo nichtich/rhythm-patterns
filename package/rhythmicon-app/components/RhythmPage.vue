@@ -2,8 +2,7 @@
 import { ref, inject, computed } from "vue"
 import Rhythm from "rhythmicon-rhythm"
 
-import { RhythmSequencer, RhythmCircle, RhythmScore } from "rhythmicon-vue"
-import RhythmEditor from "./RhythmEditor.vue"
+import { RhythmSequencer, RhythmControls, RhythmCircle, RhythmScore } from "rhythmicon-vue"
 import RhythmInfo from "./RhythmInfo.vue"
 
 const rhythm = defineModel({ validator: r => r instanceof Rhythm })
@@ -30,16 +29,19 @@ const info = computed(() => store.rhythms.value[rhythm.value.toString()])
       A rhythm
     </h2>
     <div class="subtitle">
+      <span v-if="rhythm.beats() == 0">
+        silence for
+      </span>
       <span v-if="rhythm.beats() == 1">
-        one beat
+        one beat in
       </span>
       <span v-else-if="rhythm.beats() > 1">
-        {{ rhythm.beats() }} beats ({{ rhythm.toDurationString() }}) 
+        {{ rhythm.beats() }} beats ({{ rhythm.toDurationString() }}) in
       </span>
-      in {{ rhythm.length }} pulses
+      {{ rhythm.length }} pulses
     </div>    
     <RhythmSequencer :rhythm="rhythm" :pulse="pulse" @toggle="toggle" />
-    <RhythmEditor v-model="rhythm" :pulse="pulse" />
+    <RhythmControls v-model="rhythm" :pulse="pulse" />
     <div style="display: flex; flex-wrap: wrap;">
       <div style="flex-grow:1; flex-shrink:1;">
         <RhythmScore :rhythm="rhythm" :pulse="pulse" @toggle="toggle" />

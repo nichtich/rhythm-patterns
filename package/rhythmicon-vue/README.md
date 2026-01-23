@@ -11,6 +11,7 @@
 - [Components](#components)
   - [RhythmSequencer](#rhythmsequencer)
   - [RhythmInput](#rhythminput)
+  - [RhythmControls](#rhythmcontrols)
   - [RhythmCircle](#rhythmcircle)
   - [RhythmScore](#rhythmscore)
 - [Maintainers](#maintainers)
@@ -26,7 +27,8 @@ npm install rhythmicon-vue
 ## Usage
 
 ~~~js 
-import { RhythmSequencer, RhythmInput, RhythmCircle, RhythmScore } from "rhythmicon-vue"
+import { RhythmSequencer, RhythmInput, RhythmControls,
+         RhythmCircle, RhythmScore } from "rhythmicon-vue"
 ~~~
 
 ## Components
@@ -61,6 +63,21 @@ A text input field to show and edit a rhythm pattern. Editing is submitted on *E
 The layout can be configured with the following **CSS classes**:
 
 - `rhythm-input` for the input element
+
+### RhythmControls
+
+A row of buttons to modify a rhythm.
+
+~~~html
+<RhythmControl v-model="rhythm" max="64" />
+~~~
+
+- `<` and `>` to rotate the rhythm one pulse left or right
+- ...
+
+**Properties:**
+
+- `max`: maximum number of pulses the rhythm is allowed to get. Set to 128 by default.
 
 ### RhythmCircle
 

@@ -13,46 +13,55 @@ This Node package implements class [Rhythm](#rhythm) to store, analyze and manip
 - [Usage](#usage)
 - [Rhythm](#rhythm)
 - [Rhythm](#Rhythm)
-  - [Constructor](#constructor)
-  - [Methods](#methods)
-        * [.beat(...durations)](#Rhythm+beat)
-        * [.rest(duration)](#Rhythm+rest)
-        * [.replace(...rhythm)](#Rhythm+replace)
-        * [.compare(rhythm)](#Rhythm+compare)
-        * [.durations()](#Rhythm+durations)
-        * [.divisor()](#Rhythm+divisor)
-        * [.repetitions()](#Rhythm+repetitions) ⇒ <code>number</code>
-        * [.deflate(divisor)](#Rhythm+deflate)
-        * [.inflate(n)](#Rhythm+inflate)
-        * [.repeat()](#Rhythm+repeat)
-        * [.cut()](#Rhythm+cut)
-        * [.copy()](#Rhythm+copy)
-        * [.complement()](#Rhythm+complement)
-        * [.rotations(beat)](#Rhythm+rotations) ⇒ <code>array</code>
-        * [.core()](#Rhythm+core)
-        * [.odd()](#Rhythm+odd)
-        * [.shuffle()](#Rhythm+shuffle)
-        * [.unshuffle()](#Rhythm+unshuffle)
-        * [.isShuffle()](#Rhythm+isShuffle)
-        * [.rotate(pulses)](#Rhythm+rotate)
-        * [.rotateBeats(beats)](#Rhythm+rotateBeats)
-        * [.beats()](#Rhythm+beats)
-        * [.beatPulses()](#Rhythm+beatPulses)
-        * [.first()](#Rhythm+first)
-        * [.empty()](#Rhythm+empty)
-        * [.toString()](#Rhythm+toString)
-        * [.toDurationString()](#Rhythm+toDurationString)
-        * [.normalize()](#Rhythm+normalize)
-        * [.rotation(rhythm)](#Rhythm+rotation)
-        * [.equivalent(rhythm)](#Rhythm+equivalent)
-        * [.equals(rhythm)](#Rhythm+equals)
-    - [static methods](#static-methods)
-        * [.isBeat(value)](#Rhythm.isBeat)
-        * [.isDurationsString(str)](#Rhythm.isDurationsString)
-        * [.parse(rhythm)](#Rhythm.parse) ⇒ <code>array</code>
-        * [.fromPattern(pattern)](#Rhythm.fromPattern)
-        * [.fromDurations(durations)](#Rhythm.fromDurations)
-        * [.euclidean(beats, pulses)](#Rhythm.euclidean)
+  - [Constructors](#constructors)
+        - [new](#copy)
+        - [copy()](#copy)
+  - [Static methods](#static-methods)
+        - [fromPattern(pattern)](#frompatternpattern)
+        - [fromDurations(durations)](#fromdurationsdurations)
+        - [euclidean(beats, pulses)](#euclideanbeatspulses)
+  - [Accessor methods](#accesor-methods)
+        * [beats()](#beats)
+        * [beatPulses()](#beatPulses)
+        * [first()](#first)
+        * [empty()](#empty)
+        * [durations()](#durations)
+        * [divisor()](#divisor)
+        * [repetitions()](#repetitions)
+        * [compare(rhythm)](#comparerhythm)
+        * [equivalent(rhythm)](#equivalentrhythm)
+        * [equal(rhythm)](#equalrhythm)
+
+  - [Modifying methods](#modifying-methods)
+        * [.beat(...durations)](#beat)
+        * [.rest(duration)](#rest)
+        * [.replace(...rhythm)](#replace)
+
+       
+        * [.deflate(divisor)](#deflate)
+        * [.inflate(n)](#inflate)
+        * [.repeat()](#repeat)
+        * [.cut()](#cut)
+        
+        * [.complement()](#complement)
+        * [.rotations(beat)](#rotations) ⇒ <code>array</code>
+        * [.core()](#core)
+        * [.odd()](#odd)
+        * [.shuffle()](#shuffle)
+        * [.unshuffle()](#unshuffle)
+        * [.isShuffle()](#isShuffle)
+        * [.rotate(pulses)](#rotate)
+        * [.rotateBeats(beats)](#rotateBeats)
+        
+        * [.normalize()](#normalize)
+
+        * [.toString()](#toString)
+        * [.toDurationString()](#toDurationString)
+        * [.rotation(rhythm)](#rotation)
+    - [Static methods](#static-methods)
+        * [.isBeat(value)](#isBeat)
+        * [.isDurationsString(str)](#isDurationsString)
+        * [.parse(rhythm)](#parse) ⇒ <code>array</code>
 * [Maintainers](#maintainers)
 * [Contributing](#contributing)
 * [License](#license)
@@ -95,171 +104,220 @@ console.log(`Rhythm has ${r.beats()} in ${r.length} pulses)
 
 This is a subclass of [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) so all of its properties and methods can be used. Please make sure the Array will contain only `0` and `1` elements when using low-level Array methods.
 
-### Constructor
+### Constructors
 
-Create a new Rhythm. If passed a single string or array argument, this is used to build the rhythm from.
+#### new
+
+The constructor creates a new Rhythm object like `new Array`. If passed a single string or Array argument, this argument is used to build the rhythm from.
 
 ```js
-Rhyth("x--x--x-")
-Rhythm("|RL-RRL--|")
-Rhyth([1,0,0,1,0,0,1,0])
-Rhyth("1","_","_","+","_","_","4","_")
+new Rhyth("x--x--x-")
+new Rhythm("|RL-RRL--|")
+new Rhyth([1,0,0,1,0,0,1,0])
+new Rhyth("A","_","_","+","_","_","B","_")
 
 Rhythm(n) // empty rhythm of length n
 ```
-<a name="Rhythm+beat"></a>
 
-### rhythm.beat(...durations)
-Add one or more beats with given durations.
+#### copy
 
-
-| Param | Type | Default |
-| --- | --- | --- |
-| ...durations | <code>number</code> | <code>1</code> | 
-
-<a name="Rhythm+rest"></a>
-
-### rhythm.rest(duration)
-Add a rest with given duration.
+This instance method returns a deep copy of the Rhythm object.
 
 
-| Param | Type | Default |
-| --- | --- | --- |
-| duration | <code>number</code> | <code>1</code> | 
+### Static methods
 
-<a name="Rhythm+replace"></a>
+#### fromPattern(pattern)
 
-### rhythm.replace(...rhythm)
-Change the rhytm in-place. Takes same arguments as constructor except a single number is not
-read as number of pules.
+Generates a Rhythm from a pattern `string`.
 
+#### fromDurations(durations)
+
+Generates a rhythm from an `Array` or `string` of durations.
+
+### euclidean(beats, pulses)
+
+Generates an euclidean rhythm with `beats` number of beats in `pulses` number of pulses.
+
+### isBeat(value)
+
+Return whether a variable is read as beat. This is true for every true
+value except for the characters space, tab, underscore, dot and minus.
 
 | Param | Type |
 | --- | --- |
-| ...rhythm | <code>string</code> \| <code>array</code> | 
+| value | <code>any</code> | 
 
-<a name="Rhythm+compare"></a>
+### isDurationsString(str)
 
-### rhythm.compare(rhythm)
-Compare two rhythms, first by length, then lexicographically.
+Return whether a string specifies durations with optional rotation.
+
+| Param | Type |
+| --- | --- |
+| str | <code>string</code> | 
+
+### parse(rhythm) ⇒ <code>array</code>
+
+Read a string, an array, or a list of values as rhythm.
+
+| Param | Type |
+| --- | --- |
+| rhythm | <code>string</code> \| <code>array</code> | 
 
 
-| Param |
-| --- |
-| rhythm | 
+### Accessor methods
 
-<a name="Rhythm+durations"></a>
+The following ("member const") methods don't modify instances.
 
-### rhythm.durations()
+#### beats()
+
+Get the number of beats in this rhythm.
+
+#### beatPulses()
+
+Get an array of index numbers of beats in this rhythm.
+
+#### first()
+
+Get the position the the first beat, or `undefined` if the rhythm is empty.
+
+~~~js
+rhythm.first() === rhythm.beatPulses()[0]
+~~~
+
+#### empty()
+
+Get whether the rhytm contains no beats.
+
+#### toString()
+
+Stringify the rhythm with "x" for beat and "-" for rest.
+
+#### toDurationString(sep)
+
+Stringify the durations of the beat, separated by `sep` (`+` by default) and
+preceded by more of this character if the first pulse is not a beat.
+
+#### durations()
+
 Return an array of durations between beats, starting with the first beat.
 
-<a name="Rhythm+divisor"></a>
+#### divisor()
 
-### rhythm.divisor()
 Get greatest common divisor of all durations.
 
 Returns 1 if the rhythm cannot be deflated or if the first pulse is not a beat.
 Returns the length of the rhytm for an empty rhythm.
 
-<a name="Rhythm+repetitions"></a>
+#### repetitions()
 
-### rhythm.repetitions() ⇒ <code>number</code>
 Get number of repetitions.
 
-<a name="Rhythm+deflate"></a>
+#### compare(rhythm)
 
-### rhythm.deflate(divisor)
+Compare two rhythms, first by length, then lexicographically by its durations.
+The argument is parsed if it is no Rhythm object.
+
+#### equals(rhythm)
+
+Whether the rythm is equal to another rythm (same length, same pulses). The
+argument is parsed if it is no Rhythm object.
+
+#### equivalent(rhythm)
+
+Check whether this rhythm is equivalent to another, possibly under rotation.
+The argument is parsed if it is no Rhythm object.
+
+#### rotation(rhythm)
+
+Get the rotation number if this rhythm is equivalent to another, or undefined otherwise.
+
+### Modifying methods
+
+#### beat(...durations)
+
+Add one or more beats with given duration(s) or one pulse if no parameter is given. 
+
+#### rest(duration)
+
+Add a rest with given `duration` in pulses.
+
+#### replace(...rhythm)
+
+Change the rhytm in-place. Takes same arguments as [the constructor](#new), except a single number is read is one pulse instead of a number of pulses.
+
+#### deflate(divisor)
+
 Deflate the rhythm if it has a divisor > 1.
-
 
 | Param | Type | Default |
 | --- | --- | --- |
 | divisor | <code>number</code> | <code>this.divisor</code> | 
 
-<a name="Rhythm+inflate"></a>
+#### inflate(n)
 
-### rhythm.inflate(n)
 Inflate the rhythm. Each pulse is replaced by n pulses.
-
 
 | Param | Type | Default |
 | --- | --- | --- |
 | n | <code>number</code> | <code>2</code> | 
 
-<a name="Rhythm+repeat"></a>
+#### repeat(n)
 
-### rhythm.repeat()
-Repeat rhythm.
+Repeat the rhythm `n` times (default 2 to duplicate it).
 
-**Params**: <code>number</code> n times  
-<a name="Rhythm+cut"></a>
+#### cut(n)
 
-### rhythm.cut()
-Remove all repetitions.
+Remove all repetitions. Optionally cut the rhythm partly by `n`, being a prime factor of repetitions.
 
-<a name="Rhythm+copy"></a>
+#### complement()
 
-### rhythm.copy()
-Return a copy of this rhythm object.
-
-<a name="Rhythm+complement"></a>
-
-### rhythm.complement()
 Convert rhythm into its complement by swapping beats and rests.
 
-<a name="Rhythm+rotations"></a>
+#### rotations(beat)
 
-### rhythm.rotations(beat) ⇒ <code>array</code>
 Calculate all rotations.
 
-**Returns**: <code>array</code> - of patterns  
+**Returns**: <code>array</code> - of patterns
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | beat | <code>boolean</code> | <code>false</code> | only consider beat rotations |
 
-<a name="Rhythm+core"></a>
+#### core()
 
-### rhythm.core()
 Check whether the rhythm is normalized to its core rhythm.
 
-<a name="Rhythm+odd"></a>
+#### odd()
 
-### rhythm.odd()
 Check whether the rhythm is odd (cannot be split at beats into two parts of equal length).
 
-<a name="Rhythm+shuffle"></a>
+#### shuffle()
 
-### rhythm.shuffle()
 ...
 
-<a name="Rhythm+unshuffle"></a>
+#### unshuffle()
 
-### rhythm.unshuffle()
 ...
 
-<a name="Rhythm+isShuffle"></a>
+#### isShuffle()
 
-### rhythm.isShuffle()
 ...
 
-<a name="Rhythm+rotate"></a>
+#### rotate(pulses)
 
-### rhythm.rotate(pulses)
 Rotate the rhythm one or more pulses to the right.
-
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | pulses | <code>number</code> | <code>1</code> | positive or negative number |
 
-**Example**  
+**Example**
 ```js
 Rhythm.fromPattern("x--x-").rotate(1) // => [0,1,0,0,1]
 ```
-<a name="Rhythm+rotateBeats"></a>
 
-### rhythm.rotateBeats(beats)
+#### rotateBeats(beats)
+
 Rotate the rhythm one or more beats to the right.
 
 If the first pulse is not a beat, the rhythm is first rotated to do so, so rotation by zero
@@ -270,134 +328,9 @@ beats will shift the first beat to the first pulse.
 | --- | --- | --- |
 | beats | <code>number</code> | <code>1</code> | 
 
-<a name="Rhythm+beats"></a>
+#### normalize()
 
-### rhythm.beats()
-Get the number of beats in this rhythm.
-
-<a name="Rhythm+beatPulses"></a>
-
-### rhythm.beatPulses()
-Get index numbers of beats in this rhythm.
-
-<a name="Rhythm+first"></a>
-
-### rhythm.first()
-Get the position the the first beat, or null if the rhythm is empty.
-
-<a name="Rhythm+empty"></a>
-
-### rhythm.empty()
-Get whether the rhytm contains no beats.
-
-<a name="Rhythm+toString"></a>
-
-### rhythm.toString()
-Stringify the rhythm with "x" for beat and "-" for rest.
-
-<a name="Rhythm+toDurationString"></a>
-
-### rhythm.toDurationString()
-Stringify the durations of the beat, separated by `+` and 
-preceded by more `+` if the first pulse is not a beat.
-
-<a name="Rhythm+normalize"></a>
-
-### rhythm.normalize()
 Normalize to a core rhythm by rotating, deflation, and cutting repetitions.
-
-<a name="Rhythm+rotation"></a>
-
-### rhythm.rotation(rhythm)
-Get rotation number to make this rhythm into another (or undefined if not possible).
-
-
-| Param | Type |
-| --- | --- |
-| rhythm | [<code>Rhythm</code>](#Rhythm) | 
-
-<a name="Rhythm+equivalent"></a>
-
-### rhythm.equivalent(rhythm)
-Check whether this rhythm is equivalent to another, possibly under rotation.
-
-
-| Param | Type |
-| --- | --- |
-| rhythm | [<code>Rhythm</code>](#Rhythm) | 
-
-<a name="Rhythm+equals"></a>
-
-### rhythm.equals(rhythm)
-Whether the rythm is equal to another rythm.
-
-
-| Param | Type |
-| --- | --- |
-| rhythm | [<code>Rhythm</code>](#Rhythm) | 
-
-<a name="Rhythm.isBeat"></a>
-
-### Rhythm.isBeat(value)
-Return whether a variable is read as beat. This is true for every true
-value except for the characters space, tab, underscore, dot and minus.
-
-
-| Param | Type |
-| --- | --- |
-| value | <code>any</code> | 
-
-<a name="Rhythm.isDurationsString"></a>
-
-### Rhythm.isDurationsString(str)
-Return whether a string specifies durations with optional rotation.
-
-
-| Param | Type |
-| --- | --- |
-| str | <code>string</code> | 
-
-<a name="Rhythm.parse"></a>
-
-### Rhythm.parse(rhythm) ⇒ <code>array</code>
-Read a string, an array, or a list of values as rhythm.
-
-
-| Param | Type |
-| --- | --- |
-| rhythm | <code>string</code> \| <code>array</code> | 
-
-<a name="Rhythm.fromPattern"></a>
-
-### Rhythm.fromPattern(pattern)
-Generate a Rhythm from pattern string.
-
-
-| Param | Type |
-| --- | --- |
-| pattern | <code>string</code> | 
-
-<a name="Rhythm.fromDurations"></a>
-
-### Rhythm.fromDurations(durations)
-Generate a rhythm from an array or string of durations.
-
-
-| Param | Type |
-| --- | --- |
-| durations | <code>Array</code> \| <code>string</code> | 
-
-<a name="Rhythm.euclidean"></a>
-
-### Rhythm.euclidean(beats, pulses)
-Generate an euclidean rhythm.
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| beats | <code>number</code> | number of beats |
-| pulses | <code>number</code> | length of the rhythm |
-
 
 ## Maintainers
 
