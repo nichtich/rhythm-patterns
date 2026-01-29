@@ -9,12 +9,18 @@
   },
   "x": {
     "name": "Pulse",
+    "alias": [
+      "one beat"
+    ],
     "markdown": "The minimal rhythm consists of a sequence of steady pulses.",
     "pattern": "x"
   },
   "x-x": {
-    "name": "Minimal Shuffle",
-    "markdown": "The only core beat in three pulses.",
+    "name": "Shuffle",
+    "alias": [
+      "2-to-1"
+    ],
+    "markdown": "The only core beat in three pulses. See also `|x--x|`.",
     "pattern": "x-x"
   },
   "xx-": {
@@ -23,20 +29,35 @@
     "pattern": "xx-"
   },
   "x--x": {
-    "markdown": "",
+    "name": "Swing",
+    "alias": [
+      "3-to-1"
+    ],
+    "markdown": "There is a lot of room for microtiming between and beyond shuffle (`|x-x|`) and swing:\n\n| name    | pattern      | pattern                      | relation\n|---------|--------------|------------------------------|-------------\n|         | `|x----x--|` | `|x--------------x--------|` | 3/5 = 0.6\n| shuffle | `|x-x|`      | `|x---------------x-------|` | 1/2 = 0.5\n|         |              | `|x----------------x------|` | 7/17 ≈ 0.41\n| swing   | `|x--x|`     | `|x-----------------x-----|` | 1/3 ≈ 0.33\n|         |              | `|x------------------x----|` | 5/19 ≈ 0.26\n|         | `|x---x|`    | `|x-------------------x---|` | 1/5 = 0.2\n\n\nIn fact, any relation can be used, as microtiming is less perceived on a pulse.",
     "pattern": "x--x"
   },
   "x-xx": {
     "name": "Cumbia",
     "alias": [
       "Ayyub",
-      "Zar"
+      "Zar",
+      "Gallop"
     ],
     "source": [
       "<https://www.maqamworld.com/en/iqaa/ayyub.php>"
     ],
-    "markdown": "Prominent in the [Latin American musical rhythms of same name](https://en.wikipedia.org/wiki/Cumbia).\n\nKnown as *Ayyub* in arabic music.",
+    "markdown": "Prominent in the [Latin American musical rhythms of same name](https://en.wikipedia.org/wiki/Cumbia).\n\nAlso known as *Ayyub* in arabic music.\n\nAlso used played fast in Metal as `x-xxx-xxx-xxx-xx`.",
     "pattern": "x-xx"
+  },
+  "xx--": {
+    "name": "Scotch Snap",
+    "alias": [
+      "Lombard",
+      "Strathspey"
+    ],
+    "wikidata": "Q165805",
+    "markdown": "",
+    "pattern": "xx--"
   },
   "x---x": {
     "markdown": "",
@@ -311,11 +332,6 @@
     "markdown": "",
     "pattern": "x-x-xx-x-xx-"
   },
-  "x-xx-xx-xx-x": {
-    "name": "Shuffle",
-    "markdown": "two eights played as triole (2-to-1)",
-    "pattern": "x-xx-xx-xx-x"
-  },
   "x--x------x---": {
     "name": "Jhoomra",
     "category": [
@@ -366,7 +382,7 @@
   },
   "--x--x--x--x----": {
     "works": [
-      "*I Got Rhythm* by George Gershwin"
+      "[*I Got Rhythm*](https://de.wikipedia.org/wiki/I_Got_Rhythm) by George Gershwin"
     ],
     "markdown": "",
     "pattern": "--x--x--x--x----"
@@ -432,11 +448,6 @@
     "markdown": "",
     "pattern": "x--x-x-x--x-x-x-"
   },
-  "x--xx--xx--xx--x": {
-    "name": "Swing",
-    "markdown": "two eights played with length 3-to-1.\n\nThere is a lot of room between shuffle `|x-xx-xx-xx-x|` and swing pattern.",
-    "pattern": "x--xx--xx--xx--x"
-  },
   "x-x-x--x-x-xx---": {
     "name": "Barbara Ann",
     "works": [
@@ -457,21 +468,6 @@
     "name": "Baqueteo",
     "markdown": "Cinquillo `|x-xx-xx-|` followed by four unsyncopated notes.",
     "pattern": "x-xx-xx-x-x-x-x-"
-  },
-  "x-xxx-xxx-xxx-xx": {
-    "name": "Gallop",
-    "markdown": "",
-    "pattern": "x-xxx-xxx-xxx-xx"
-  },
-  "xx--xx--xx--xx--": {
-    "name": "Scotch Snap",
-    "alias": [
-      "Lombard",
-      "Strathspey"
-    ],
-    "wikidata": "Q165805",
-    "markdown": "",
-    "pattern": "xx--xx--xx--xx--"
   },
   "x-x-x-x-xxx-x-x-x-": {
     "name": "9:2 polyrhythm",
