@@ -5,6 +5,37 @@ import Rhythm from "rhythmicon-rhythm"
 import { yamlHeaderMarkdown } from "./lib/utils.js"
 import App from "./App.vue"
 
+// index page is raw HTML to not having to wait for JavaScript. The page is then
+// replaced by a component so its links must be replaced with components.
+const index = document.querySelector("#app main").innerHTML.replaceAll(
+  /<a href="\?([^"]+)"( class="[^"]+")?>([^<]+)<\/a>/g, (a,href,cls,text) => {
+    if (href.startsWith("?pattern=")) {
+      return `<RhythmLink pattern="${href.slice(8)}"/>`
+    } else {
+      const query = JSON.stringify(Object.fromEntries(new URLSearchParams(href)))
+      return `<RouterLink :to='{ query: ${query} }'>${text}</RouterLink>`
+    }
+  })
+
+const categories = ref({})
+const ucfirst =  s => s[0].toUpperCase() + s.slice(1)
+
+const store = {
+  index,
+  rhythms: shallowRef({}),
+  categories,
+  getCategory(id) {
+    if (!categories[id]) {
+      const name = id // ucfirst(id)
+      categories[id] = ref({ name })
+      fetch(`./${id}.md`)
+        .then(res => res.ok ? res.text() : "")
+        .then(text => Object.assign(categories[id].value, yamlHeaderMarkdown(text)))
+    }
+    return categories[id]
+  },
+}
+
 function enrichRhythm([pattern, r]) {
   const rhythm = new Rhythm(pattern)
   if (!("first" in r)) {
@@ -34,26 +65,6 @@ function enrichRhythm([pattern, r]) {
   if (r.euclidean) {
     r.category.add("euclidean")
   }
-}
-
-const ucfirst =  s => s[0].toUpperCase() + s.slice(1)
-
-const categories = ref({})
-
-const store = {
-  index: document.querySelector("#app main").innerHTML, // TODO: replace <a href="?...">...</a> with <RouterLink>
-  rhythms: shallowRef({}),
-  categories,
-  getCategory(id) {
-    if (!categories[id]) {
-      const name = ucfirst(id)
-      categories[id] = ref({ name })
-      fetch(`./${id}.md`)
-        .then(res => res.ok ? res.text() : "")
-        .then(text => Object.assign(categories[id].value, yamlHeaderMarkdown(text)))
-    }
-    return categories[id]
-  },
 }
 
 fetch("rhythms.json")

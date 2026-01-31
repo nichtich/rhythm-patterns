@@ -4,6 +4,7 @@ import { useRouter, useRoute } from "vue-router"
 
 import Rhythm from "rhythmicon-rhythm"
 import { RhythmInput } from "rhythmicon-vue"
+import RhythmLink from "./components/RhythmLink.vue"
 import RhythmPlayer from "./components/RhythmPlayer.vue"
 import RhythmPage from "./components/RhythmPage.vue"
 import IndexPage from "./components/IndexPage.vue"
@@ -72,7 +73,7 @@ onBeforeMount(() => routing(route))
       <RhythmPage v-else-if="rhythm.length" v-model="rhythm" :pulse="pulse" />
       <IndexPage v-else-if="search" :search="search" />
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div v-else v-html="store.index" />
+      <component :is="{ template: store.index, components: { RhythmLink } }" v-else-if="store.index" />
     </main>
   </div>
 </template>
