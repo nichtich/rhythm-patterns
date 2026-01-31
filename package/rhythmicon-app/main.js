@@ -18,7 +18,6 @@ const index = document.querySelector("#app main").innerHTML.replaceAll(
   })
 
 const categories = ref({})
-const ucfirst =  s => s[0].toUpperCase() + s.slice(1)
 
 const store = {
   index,
@@ -38,20 +37,17 @@ const store = {
 
 function enrichRhythm([pattern, r]) {
   const rhythm = new Rhythm(pattern)
-  if (!("first" in r)) {
-    r.first = rhythm.first()
-  }
 
+  r.first = rhythm.first()
   r.length = rhythm.length
   r.beats = rhythm.beats()
   r.durations = rhythm.durations()
   r.divisor = rhythm.divisor()
   r.repetitions = rhythm.repetitions()
 
-  r.condense = r.divisor === 1 && r.repetitions === 1
+  r.condense = rhythm.condense()
   r.category = new Set(r.category || [])
 
-  r.rhythm = rhythm
   r.core = rhythm.clone().normalize()
   if (pattern == r.core.toString() ) {
     r.category.add("core")
@@ -61,10 +57,12 @@ function enrichRhythm([pattern, r]) {
     r.category.add("odd")
   }
 
-  r.euclidean = Rhythm.euclidean(r.beats, r.length).equals(rhythm)
+  r.euclidean = Rhythm.fromEuclidean(r.beats, r.length).equals(rhythm)
   if (r.euclidean) {
     r.category.add("euclidean")
   }
+
+  r.rhythm = rhythm
 }
 
 fetch("rhythms.json")

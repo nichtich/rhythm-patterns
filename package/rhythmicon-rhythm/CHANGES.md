@@ -3,7 +3,7 @@
 - Make `0` a rest value as well
 - Add factory methods `fromTracy` and `fromHex`
 - Rename factory method `euclidean` to `fromEuclidean`
-- Add method `includes`
+- Add methods `includes` and `condense`
 
 # 0.3.0
 

@@ -29,6 +29,7 @@ This Node package implements class [Rhythm](#rhythm) to store, analyze and manip
     - [durations()](#durations)
     - [divisor()](#divisor)
     - [repetitions()](#repetitions)
+    - [condense()](#condense)
     - [shuffled()](#shuffled)
     - [odd()](#odd)
     - [core()](#core)
@@ -185,6 +186,10 @@ for an empty rhythm.
 
 Get number of repetitions.
 
+#### condense()
+
+Get whether the rhythm cannot be deflated and has no repetitions.
+ 
 #### shuffled()
 
 Check whether the rhythm is shuffled. That is the pulses can be organized in groups of three pulses where the second pulse of each group is a rest.

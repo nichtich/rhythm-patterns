@@ -105,6 +105,10 @@ class Rhythm extends Array {
     return 1
   }
 
+  condense() {
+    return this.divisor === 1 && this.repetitions === 1
+  }
+
   deflate(div=0) {
     const divisor = this.divisor()
     div = div || divisor
