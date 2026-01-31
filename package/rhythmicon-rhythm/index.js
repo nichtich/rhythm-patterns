@@ -271,9 +271,15 @@ class Rhythm extends Array {
     return this.map(x => x > 0 ? "x" : "-").join("")
   }
 
-  toDurationString(sep="+") {
+  toDurations(sep="+") {
     const durations = this.durations()
     return durations ? sep.repeat(this.first()) + durations.join(sep) : ""
+  }
+
+  toTracy() {
+    if (this.length % 3 === 0) {
+      return this.map((_,i,a) => i % 3 ? "" : 4*a[i]+2*a[i+1]+a[i+2]).join("")
+    }
   }
 
   normalize() {

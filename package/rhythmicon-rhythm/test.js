@@ -84,6 +84,8 @@ const properties = {
     core: true,
     beats: 1,
     odd: true,
+    toTracy: undefined,
+    shuffled: false
   },
   xx: {
     beatPulses: [0,1],
@@ -93,6 +95,8 @@ const properties = {
     core: false,
     beats: 2,
     odd: false,
+    toTracy: undefined,
+    shuffled: false
   },
   "x-x-x--x--": {    
     odd: false,
@@ -104,12 +108,16 @@ const properties = {
     core: true,
     beats: 2,
     odd: true,
+    toTracy: "5",
+    shuffled: true,
   },
   "x--": {
     durations: [3],
     core: false,
     beats: 1,
     odd: true,
+    toTracy: "4",
+    shuffled: true,
   },
   "xx-x": {
     durations: [1,2,1],
@@ -128,6 +136,12 @@ const properties = {
     divisor: 3,
     deflated: "xx-",
     odd: true,
+    toTracy: "440",
+    shuffled: true,
+  },
+  "xx-": {
+    toTracy: "6",
+    shuffled: false,
   },
   "x-----": {
     divisor: 6,
@@ -170,7 +184,7 @@ describe("fromDurations", () => {
     if (pat) {
       const rhythm = Rhythm.fromDurations(str)    
       assert.deepEqual(rhythm, new Rhythm(pat))
-      assert.equal(rhythm.toDurationString(), str)
+      assert.equal(rhythm.toDurations(), str)
     } else {
       assert.throws(() => Rhythm.fromDurations(str))
     }      

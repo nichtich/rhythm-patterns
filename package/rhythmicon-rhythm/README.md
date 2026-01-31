@@ -2,65 +2,63 @@
 
 [![NPM Version](https://img.shields.io/npm/v/rhythmicon-rhythm)](https://www.npmjs.com/package/rhythmicon-rhythm)
 
-> Analyze and compute rhythmic patterns
-
-This Node package implements class [Rhythm](#rhythm) to store, analyze and manipulate rhythms. 
+This Node package implements class [Rhythm](#usage) to store, analyze and manipulate rhythms. 
 
 ## Table of Contents
 
 - [Background](#background)
 - [Install](#install)
 - [Usage](#usage)
-- [Rhythm](#rhythm)
-  - [Constructors](#constructors)
-    - [new](#new)
-    - [clone()](#clone)
-  - [Factory methods](#factory-methods)
-    - [fromPattern(pattern)](#frompatternpattern)
-    - [fromDurations(durations)](#fromdurationsdurations)
-    - [fromEuclidean(beats, pulses)](#fromeuclideanbeats-pulses)
-    - [fromTracy(number)](#fromtracynumber)
-    - [fromHex(number)](#fromhexnumber)
-  - [Accessor methods](#accessor-methods)
-    - [beats()](#beats)
-    - [beatPulses()](#beatPulses)
-    - [first()](#first)
-    - [empty()](#empty)
-    - [durations()](#durations)
-    - [divisor()](#divisor)
-    - [repetitions()](#repetitions)
-    - [condense()](#condense)
-    - [shuffled()](#shuffled)
-    - [odd()](#odd)
-    - [core()](#core)
-    - [rotations()](#rotations)
-    - [beatRotations()](#beatrotations)
-    - [toString()](#tostring)
-    - [toDurationString()](#todurationstring)
-  - [Comparator methods](#comparator-methods)
-    - [compare(rhythm)](#comparerhythm)
-    - [equivalent(rhythm)](#equivalentrhythm)
-    - [equals(rhythm)](#equalsrhythm)
-    - [rotated(rhythm)](#rotatedrhythm)
-    - [includes(rhythm)](#includesrhythm)
-  - [Modifying methods](#modifying-methods)
-    - [beat(...durations)](#beatdurations)
-    - [rest(duration)](#restduration)
-    - [replace(...rhythm)](#replacerhythm)
-    - [deflate(divisor)](#deflatedivisor)
-    - [inflate(n)](#inflaten)
-    - [repeat(n)](#repeatn)
-    - [cut(n)](#cutn)
-    - [complement()](#complement)
-    - [shuffle()](#shuffle)
-    - [unshuffle()](#unshuffle)
-    - [rotate(pulses)](#rotatepulses)
-    - [rotateBeats(beats)](#rotatebeatsbeats)
-    - [normalize()](#normalize)
-  - [Static methods](#static-methods)
-    - [isBeat(value)](#isbeatvalue)
-    - [isDurationsString(str)](#isdurationsstringstr)
-    - [parse(rhythm)](#parserhythm)
+  - [Rhythm](#rhythm)
+  - [clone()](#clone)
+- [Factory methods](#factory-methods)
+  - [fromPattern(pattern)](#frompatternpattern)
+  - [fromDurations(durations)](#fromdurationsdurations)
+  - [fromEuclidean(beats, pulses)](#fromeuclideanbeats-pulses)
+  - [fromTracy(number)](#fromtracynumber)
+  - [fromHex(number)](#fromhexnumber)
+- [Accessor methods](#accessor-methods)
+  - [beats()](#beats)
+  - [beatPulses()](#beatPulses)
+  - [first()](#first)
+  - [empty()](#empty)
+  - [durations()](#durations)
+  - [divisor()](#divisor)
+  - [repetitions()](#repetitions)
+  - [condense()](#condense)
+  - [shuffled()](#shuffled)
+  - [odd()](#odd)
+  - [core()](#core)
+  - [rotations()](#rotations)
+  - [beatRotations()](#beatrotations)
+  - [toString()](#tostring)
+  - [toDurationString()](#todurationstring)
+  - [toTracy()](#totracy)
+  - [toHex()](#tohex)
+- [Comparator methods](#comparator-methods)
+  - [compare(rhythm)](#comparerhythm)
+  - [equivalent(rhythm)](#equivalentrhythm)
+  - [equals(rhythm)](#equalsrhythm)
+  - [rotated(rhythm)](#rotatedrhythm)
+  - [includes(rhythm)](#includesrhythm)
+- [Modifying methods](#modifying-methods)
+  - [beat(...durations)](#beatdurations)
+  - [rest(duration)](#restduration)
+  - [replace(...rhythm)](#replacerhythm)
+  - [deflate(divisor)](#deflatedivisor)
+  - [inflate(n)](#inflaten)
+  - [repeat(n)](#repeatn)
+  - [cut(n)](#cutn)
+  - [complement()](#complement)
+  - [shuffle()](#shuffle)
+  - [unshuffle()](#unshuffle)
+  - [rotate(pulses)](#rotatepulses)
+  - [rotateBeats(beats)](#rotatebeatsbeats)
+  - [normalize()](#normalize)
+- [Static methods](#static-methods)
+  - [isBeat(value)](#isbeatvalue)
+  - [isDurationsString(str)](#isdurationsstringstr)
+  - [parse(rhythm)](#parserhythm)
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 - [License](#license)
@@ -99,13 +97,9 @@ const r = new Rhytm("x--x--x-")
 console.log(`Rhythm has ${r.beats()} in ${r.length} pulses) 
 ~~~
 
-## Rhythm
+### Rhythm
 
 This is a subclass of [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) so all of its properties and methods can be used. Please make sure the Array will contain only `0` and `1` elements when using low-level Array methods.
-
-### Constructors
-
-#### new
 
 The constructor creates a new Rhythm object like `new Array`. If passed a single string or Array argument, this argument is used to build the rhythm from.
 
@@ -122,45 +116,45 @@ Rhythm(n) // empty rhythm of length n
 
 This instance method returns a copy of the Rhythm instance.
 
-### Factory methods
-
-#### fromPattern(pattern)
+## Factory methods
+ 
+### fromPattern(pattern)
 
 Create a Rhythm from a pattern `string`.
 
-#### fromDurations(durations)
+### fromDurations(durations)
 
 Create a rhythm from an `Array` or `string` of durations.
 
-### fromEuclidean(beats, pulses)
+## fromEuclidean(beats, pulses)
 
 Create an euclidean rhythm with `beats` number of beats in `pulses` number of pulses.
 
-### fromTracy(number)
+## fromTracy(number)
 
 Create a rhythm from its [Tracy Number], being an octal number (sequence of
 digits `0` to `7`). Each digit represents three pulses (`0=---` to `7=xxx`). 
 
 [Tracy Number]: https://www.tbray.org/ongoing/When/202x/2025/12/02/Bell-Combinatorics
 
-### fromHex(number)
+## fromHex(number)
 
 Create a rhythm from its hexadecimal representation. Each character (digit or
 letter A to F) represents four pulses (`0=----` to `F=xxxx`). 
 
-### Accessor methods
+## Accessor methods
 
 The following ("member const") methods don't modify instances.
 
-#### beats()
+### beats()
 
 Get the number of beats in this rhythm.
 
-#### beatPulses()
+### beatPulses()
 
 Get an array of index numbers of beats in this rhythm.
 
-#### first()
+### first()
 
 Get the position the the first beat, or `undefined` if the rhythm is empty.
 
@@ -168,29 +162,29 @@ Get the position the the first beat, or `undefined` if the rhythm is empty.
 rhythm.first() === rhythm.beatPulses()[0]
 ~~~
 
-#### empty()
+### empty()
 
 Get whether the rhytm contains no beats.
 
-#### durations()
+### durations()
 
 Return an array of durations between beats, starting with the first beat.
 
-#### divisor()
+### divisor()
 
 Get greatest common divisor of all durations. Returns 1 if the rhythm cannot be
 deflated or if the first pulse is not a beat. Returns the length of the rhytm
 for an empty rhythm.
 
-#### repetitions()
+### repetitions()
 
 Get number of repetitions.
 
-#### condense()
+### condense()
 
 Get whether the rhythm cannot be deflated and has no repetitions.
  
-#### shuffled()
+### shuffled()
 
 Check whether the rhythm is shuffled. That is the pulses can be organized in groups of three pulses where the second pulse of each group is a rest.
 
@@ -199,83 +193,91 @@ Rhythm.fromPattern("x--x-x").shuffled() // true
 Rhythm.fromPattern("xx-x-x").shuffled() // false
 ~~~
 
-#### odd()
+### odd()
 
 Check whether the rhythm is odd (cannot be split at beats into two parts of equal length).
 
-#### core()
+### core()
 
 Check whether the rhythm is normalized to its core rhythm.
 
-#### rotations()
+### rotations()
 
 Calculate all rotations by pulse. Returns a Set of pattern strings.
 
-#### beatRotations()
+### beatRotations()
 
 Calculate all rotations by beat. Returns a Set of pattern strings.
 
-#### toString()
+### toString()
 
 Stringify the rhythm with "x" for beat and "-" for rest.
 
-#### toDurationString(sep)
+### toDurations(sep)
 
 Stringify the durations of the beat, separated by `sep` (`+` by default) and
 preceded by more of this character if the first pulse is not a beat.
 
-## Comparator methods
+### toTracy()
 
-#### compare(rhythm)
+Get the tracy number (octal representation), if the rhythm length is divideable by three.
+
+### toHex()
+
+Get the hexadecimal representation, if the rhythm length is divideable by four.
+
+# Comparator methods
+
+### compare(rhythm)
 
 Compare two rhythms, first by length, then lexicographically by its durations.
 The argument is parsed if it is no Rhythm object.
 
-#### equivalent(rhythm)
+### equivalent(rhythm)
 
 Check whether this rhythm is equivalent to another, possibly under rotation.
 The argument is parsed if it is no Rhythm object.
 
-#### equals(rhythm)
+### equals(rhythm)
 
 Whether the rythm is equal to another rythm (same length, same pulses). The
 argument is parsed if it is no Rhythm object.
 
-#### rotated(rhythm)
+### rotated(rhythm)
 
 Get the rotation number if this rhythm is equivalent to another, or undefined otherwise.
 
-#### includes(rhythm)
+### includes(rhythm)
 
 Whether a rhythm has same length and same beats (plus maybe more) than another rhythm.
 
-### Modifying methods
+## Modifying methods
 
-#### beat(...durations)
+### beat(...durations)
 
 Add one or more beats with given duration(s) or one pulse if no parameter is given. 
 
-#### rest(duration)
+### rest(duration)
 
 Add a rest with given `duration` in pulses.
 
-#### replace(...rhythm)
+### replace(...rhythm)
 
 Change the rhytm in-place. Takes same arguments as [the constructor](#new), except a single number is read is one pulse instead of a number of pulses.
 
-#### deflate(divisor)
+### deflate(divisor)
 
 Deflate the rhythm if it has a [divisor](#divisor) > 1. The optional parameter must be a prime of the divisor.
 
-#### inflate(n)
+### inflate(n)
 
 Inflate the rhythm. Each pulse is replaced by `n` pulses with default `n=2`.
 
-#### repeat(n)
+### repeat(n)
 
 Repeat the rhythm `n` times (default 2 to duplicate it).
 
-#### cut(n)
+### cut(n)
 
 Reduce the rhythm by removal of all repetitions or to a smaller number `n` of repetitions. Does nothing if `n` is larger than [repetitions()](#repetitions). 
 
@@ -288,11 +290,11 @@ Rhythm.fromPattern("x-x-x-x-").cut(2) // => Rhythm[1,0,1,0]
 Rhythm.fromPattern("x-x-x-x-").cut(3) // => Rhythm[1,0,1,0,1,0]
 ~~~
 
-#### complement()
+### complement()
 
 Convert rhythm into its complement by swapping beats and rests.
 
-#### shuffle()
+### shuffle()
 
 If the rhythm can be grouped into groups of two pulses, each of these groups is replaced by three pulses, the second one being a rest.
 
@@ -300,11 +302,11 @@ If the rhythm can be grouped into groups of two pulses, each of these groups is 
 Rhythm.fromPattern("x-xx").shuffle() // => "x--x-x"
 ~~~
 
-#### unshuffle()
+### unshuffle()
 
 Remove the middle rest of each triple group if the rhythm is [shuffled](#shuffled). Does nothing otherwise.
 
-#### rotate(pulses)
+### rotate(pulses)
 
 Rotate the rhythm `pulses` number of pulses to the right (1 by default), or to the left if `pulses` is negative.
 
@@ -312,19 +314,19 @@ Rotate the rhythm `pulses` number of pulses to the right (1 by default), or to t
 Rhythm.fromPattern("x--x-").rotate(1) // => Rhythm[0,1,0,0,1]
 ```
 
-#### rotateBeats(beats)
+### rotateBeats(beats)
 
 Rotate the rhythm one or more beats to the right.
 
 If the first pulse is not a beat, the rhythm is first rotated to do so, so rotation by zero
 beats will rotate the first beat to the first pulse.
 
-#### normalize()
+### normalize()
 
 Normalize to a core rhythm by rotating, deflation, and cutting repetitions.
 
 
-### Static methods
+## Static methods
 
 ### isBeat(value)
 

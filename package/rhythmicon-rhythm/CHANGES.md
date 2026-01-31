@@ -1,3 +1,8 @@
+# 0.4.1
+
+- Add method `toTracy`
+- Rename `toDurationString` to `toDurations`
+
 # 0.4.0
 
 - Make `0` a rest value as well
