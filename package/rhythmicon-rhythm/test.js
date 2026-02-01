@@ -116,7 +116,7 @@ const properties = {
     core: false,
     beats: 1,
     odd: true,
-    toTracy: "4",
+    toTracy: "1",
     shuffled: true,
   },
   "xx-x": {
@@ -136,11 +136,11 @@ const properties = {
     divisor: 3,
     deflated: "xx-",
     odd: true,
-    toTracy: "440",
+    toTracy: "110",
     shuffled: true,
   },
   "xx-": {
-    toTracy: "6",
+    toTracy: "3",
     shuffled: false,
   },
   "x-----": {
@@ -209,11 +209,8 @@ const generate = {
     [[3,8], "x--x--x-"],
   ],
   fromTracy: [
-    [[5325], "x-x-xx-x-x-x"],
-  ],
-  fromHex: [
-    [["z"]],
-    [["8f"], "x---xxxx"],
+    [[5625], "x-x-xx-x-x-x"],
+    [[410], "--xx-----"],
   ],
 }
 

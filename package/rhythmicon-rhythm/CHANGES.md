@@ -1,6 +1,7 @@
 # 0.4.1
 
-- Add method `toTracy`
+- Change Tracy numbers to reversed Tracy numbers
+- Remove method `fromHex` (needs discussion)
 - Rename `toDurationString` to `toDurations`
 
 # 0.4.0

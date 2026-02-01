@@ -32,7 +32,7 @@ This Node package implements class [Rhythm](#usage) to store, analyze and manipu
   - [rotations()](#rotations)
   - [beatRotations()](#beatrotations)
   - [toString()](#tostring)
-  - [toDurationString()](#todurationstring)
+  - [toDurations()](#todurations)
   - [toTracy()](#totracy)
   - [toHex()](#tohex)
 - [Comparator methods](#comparator-methods)
@@ -132,15 +132,11 @@ Create an euclidean rhythm with `beats` number of beats in `pulses` number of pu
 
 ## fromTracy(number)
 
-Create a rhythm from its [Tracy Number], being an octal number (sequence of
-digits `0` to `7`). Each digit represents three pulses (`0=---` to `7=xxx`). 
+Create a rhythm from its reversed [Tracy Number], being an octal number (sequence of
+digits `0` to `7`) of the reverse rhythm bits. Each digit represents three pulses:
+`0=---`, `1=x--`, `2=-x-`, `3=xx-`, `4=--x`, `5=x-x`, `6=xx-` to `7=xxx`. 
 
 [Tracy Number]: https://www.tbray.org/ongoing/When/202x/2025/12/02/Bell-Combinatorics
-
-## fromHex(number)
-
-Create a rhythm from its hexadecimal representation. Each character (digit or
-letter A to F) represents four pulses (`0=----` to `F=xxxx`). 
 
 ## Accessor methods
 
@@ -220,11 +216,8 @@ preceded by more of this character if the first pulse is not a beat.
 
 ### toTracy()
 
-Get the tracy number (octal representation), if the rhythm length is divideable by three.
-
-### toHex()
-
-Get the hexadecimal representation, if the rhythm length is divideable by four.
+Get the reversed tracy number (octal representation), if the rhythm length is
+divideable by three.
 
 # Comparator methods
 

@@ -278,7 +278,7 @@ class Rhythm extends Array {
 
   toTracy() {
     if (this.length % 3 === 0) {
-      return this.map((_,i,a) => i % 3 ? "" : 4*a[i]+2*a[i+1]+a[i+2]).join("")
+      return this.map((_,i,a) => i % 3 ? "" : a[i]+2*a[i+1]+4*a[i+2]).join("")
     }
   }
 
@@ -345,15 +345,12 @@ class Rhythm extends Array {
   }
 
   static fromTracy(number) {
-    number = `${number}`
+    number = `${number}`.replace(/^T/,"")
     if (number.match(/^[0-7]+$/)) {
-      return new Rhythm(number.split("").map(d => Number(d).toString(2).padStart(3,"0")).join(""))
-    }
-  }
-
-  static fromHex(number) {
-    if (number.match(/^[0-9A-F]+$/i)) {
-      return new Rhythm(number.split("").map(d => parseInt(d,16).toString(2).padStart(4,"0")).join(""))
+      const pulses = number.split("").map(
+          d => Number(d).toString(2).padStart(3,"0").split("").reverse()
+      )
+      return new Rhythm(pulses.flat())
     }
   }
 }
