@@ -53,7 +53,7 @@ function enrichRhythm([pattern, r]) {
     r.category.add("core")
   }
 
-  if (r.rhythm.odd()) {
+  if (rhythm.odd()) {
     r.category.add("odd")
   }
 

@@ -348,7 +348,7 @@ class Rhythm extends Array {
     number = `${number}`.replace(/^T/,"")
     if (number.match(/^[0-7]+$/)) {
       const pulses = number.split("").map(
-          d => Number(d).toString(2).padStart(3,"0").split("").reverse()
+        d => Number(d).toString(2).padStart(3,"0").split("").reverse(),
       )
       return new Rhythm(pulses.flat())
     }

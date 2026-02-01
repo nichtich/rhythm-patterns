@@ -85,7 +85,7 @@ const properties = {
     beats: 1,
     odd: true,
     toTracy: undefined,
-    shuffled: false
+    shuffled: false,
   },
   xx: {
     beatPulses: [0,1],
@@ -96,7 +96,7 @@ const properties = {
     beats: 2,
     odd: false,
     toTracy: undefined,
-    shuffled: false
+    shuffled: false,
   },
   "x-x-x--x--": {    
     odd: false,

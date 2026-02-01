@@ -39,7 +39,7 @@ const info = computed(() => store.rhythms.value[rhythm.value.toString()])
         one beat in
       </span>
       <span v-else-if="rhythm.beats() > 1">
-        {{ rhythm.beats() }} beats ({{ rhythm.toDurationString() }}) in
+        {{ rhythm.beats() }} beats ({{ rhythm.toDurations() }}) in
       </span>
       {{ rhythm.length }} pulses
     </div>    

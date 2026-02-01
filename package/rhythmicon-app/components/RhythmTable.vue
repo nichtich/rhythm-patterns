@@ -52,7 +52,7 @@ const emit = defineEmits(["selectCategory","selectBeats","selectLength"])
           <rhythm-link :pattern="pattern" />
         </td>
         <td>
-          {{ rhythm.rhythm.toDurationString() }}
+          {{ rhythm.rhythm.toDurations() }}
         </td>                
         <td>
           <ul v-if="rhythm.category.size" class="inline">

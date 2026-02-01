@@ -14,7 +14,7 @@ const props = defineProps({
 
 const beats = computed(() => props.rhythm.beats())
 const length = computed(() => props.rhythm.length)
-const euclidean = computed(() => beats.value ? Rhythm.euclidean(beats.value, length.value).toString() : undefined)
+const euclidean = computed(() => beats.value ? Rhythm.fromEuclidean(beats.value, length.value).toString() : undefined)
 const pattern = computed(() => props.rhythm.toString())
 const divisor = computed(() => props.rhythm.divisor())
 const repetitions = computed(() => props.rhythm.repetitions())
@@ -28,6 +28,7 @@ const knownRotated = computed(() => new Set(allRotated.value.filter(p => store.r
 
 const core = computed(() => props.rhythm.core())
 
+// TODO: merge with main.js from utils
 const categories = computed(() => {
   let cats = props.info?.category
   if (!cats) {
@@ -59,12 +60,9 @@ const categories = computed(() => {
         <span v-if="rhythm.first() > 0">
           The rhythm is condense but shifted.
         </span>
-        <span v-else-if="!core">
+        <span v-else-if="rhythm.condense()">
           The rhythm is condense.
         </span>
-      </span>
-      <span v-if="core">
-        This is a <b><router-link to="?page=glossary">core rhythm</router-link></b>.
       </span>
       <span v-if="euclidean">
         <span v-if="pattern == euclidean">
@@ -74,10 +72,13 @@ const categories = computed(() => {
         </span>
         <span v-else>
           The rhythm is not
-          <RouterLink :to="{ query: { category: 'euclidean' } }">euclidean</RouterLink>:
-          E({{ beats }},{{ length }}) is <span v-if="rotations.has(euclidean)">rotated variant </span>
-          <RhythmLink :pattern="euclidean" />.
+          <RouterLink :to="{ query: { category: 'euclidean' } }">euclidean</RouterLink>
+          (E({{ beats }},{{ length }}) is <span v-if="rotations.has(euclidean)">rotated variant </span>
+          <RhythmLink :pattern="euclidean" />).
         </span>
+      </span>
+      <span v-if="length % 3 === 0">
+        (reversed) Tracy Number: T{{ rhythm.toTracy() }}
       </span>
     </div>
     <div v-if="categories.size">
