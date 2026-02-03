@@ -90,7 +90,7 @@ const scoreNotes = computed(() => {
 </script>
 
 <template>
-  <div class="score-renderer bravura">
+  <div class="rhythm-score bravura">
     <div class="stave">
       <div class="stave-line" />      
       <div class="spacer" style="grid-column: 1" />
@@ -117,7 +117,7 @@ const scoreNotes = computed(() => {
 </template>
 
 <style>
-.score-renderer {
+.rhythm-score {
   font-family: Bravura;
   font-size: 2.5rem;
   padding: 0;
@@ -129,7 +129,6 @@ const scoreNotes = computed(() => {
   grid-template-columns: 0.25em max-content max-content repeat(v-bind(length), 0.8em) max-content;
   align-items: center;
   height: 1em; 
-  align-items: center; 
 }
 
 .stave-line {

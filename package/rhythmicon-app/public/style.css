@@ -12,7 +12,6 @@ footer {
 main h1 {
   font-size: 1.8em;
   margin: 0.5em 0;
-
 }
 
 p {
@@ -60,6 +59,14 @@ ul.inline li {
 
 ul.inline li+li:before {
   content: ", ";
+}
+
+table { 
+  border-collapse: collapse;
+}
+table td {
+  border: 1px solid #AAAAAA;
+  padding: 0.25em;
 }
 
 button.action {
@@ -128,16 +135,12 @@ a {
   font-family: Bravura;
 }
 
-.rhythm-controls {
-  position: fixed;
-  right: 0.2em;
-  top: 2.5em;
-  border-right: none;
-  border-radius: 4px 0 0 4px;
-  z-index: 100;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-.rhythm-controls button {
+@media (max-width:850px) { 
+  header input.rhythm-input {
+    width: 100%;
+  }
+  .rhythm-score {
+    width: 95%;
+  }
 }
 

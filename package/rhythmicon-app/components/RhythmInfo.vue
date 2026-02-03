@@ -3,7 +3,7 @@ import { computed, inject } from "vue"
 import Rhythm from "rhythmicon-rhythm"
 import RhythmLink from "./RhythmLink.vue"
 import MarkdownText from "./MarkdownText.vue"
-import SourcesList from "./SourcesList.vue"
+import MarkdownList from "./MarkdownList.vue"
 
 const store = inject("store")
 
@@ -25,8 +25,6 @@ const allRotated = computed(() => [...rotations.value].sort().reverse())
 
 // TODO: add Euclidean variant to knownRotated if it is a variant?
 const knownRotated = computed(() => new Set(allRotated.value.filter(p => store.rhythms.value[p])))
-
-const core = computed(() => props.rhythm.core())
 
 // TODO: merge with main.js from utils
 const categories = computed(() => {
@@ -81,7 +79,7 @@ const categories = computed(() => {
         (reversed) Tracy Number: T{{ rhythm.toTracy() }}
       </span>
     </div>
-    <div v-if="categories.size">
+    <div v-if="categories.size" class="markdown-list">
       <h3>Categories</h3>
       <ul>
         <li v-for="category of categories" :key="category">
@@ -90,6 +88,14 @@ const categories = computed(() => {
           </RouterLink>
         </li>
       </ul>
+    </div>
+    <MarkdownList title="Notable works" :items="info?.works" />
+    <MarkdownList title="Sources" :items="info?.source" />
+    <div v-if="info">
+      <a :href="`https://github.com/nichtich/rhythmicon/blob/main/rhythms/${rhythm.toString()}.md`" class="source-link">source record</a>
+    </div>
+    <div v-else>
+      <a :href="`https://github.com/nichtich/rhythmicon/new/main/rhythms?filename=${rhythm.toString()}.md&value=---%0Aname%3A%20...%0A---%0A%0Adescription`" class="source-link">create record</a>
     </div>
     <div v-if="knownRotated.size">
       <h3>Rotated variants</h3>
@@ -101,30 +107,11 @@ const categories = computed(() => {
         </li>
       </ul>
     </div>
-    <div v-if="info">
-      <div v-if="info.works">
-        <h3>Notable works</h3>
-        <ul>
-          <li v-for="(work,i) in info.works" :key="i">
-            <MarkdownText :markdown="work" />
-          </li>
-        </ul>
-      </div>
-      <SourcesList :sources="info.source" />
-      <a :href="`https://github.com/nichtich/rhythmicon/blob/main/rhythms/${rhythm.toString()}.md`" class="source-link">source record</a>
-    </div>
-    <div v-else>
-      <a :href="`https://github.com/nichtich/rhythmicon/new/main/rhythms?filename=${rhythm.toString()}.md&value=---%0Aname%3A%20...%0A---%0A%0Adescription`" class="source-link">create record</a>
-    </div>
   </div>
 </template>
 
 <style>
-h2 {
-  margin-bottom: 0.25rem;
-}
-.subtitle {
-  color: #090;
-  margin-bottom: 1rem;
+.source-link {
+  font-size: small;
 }
 </style>

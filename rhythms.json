@@ -33,7 +33,7 @@
     "alias": [
       "3-to-1"
     ],
-    "markdown": "There is a lot of room for microtiming between and beyond shuffle (`|x-x|`) and swing:\n\n| name    | pattern      | pattern                      | relation\n|---------|--------------|------------------------------|-------------\n|         | `|x----x--|` | `|x--------------x--------|` | 3/5 = 0.6\n| shuffle | `|x-x|`      | `|x---------------x-------|` | 1/2 = 0.5\n|         |              | `|x----------------x------|` | 7/17 ≈ 0.41\n| swing   | `|x--x|`     | `|x-----------------x-----|` | 1/3 ≈ 0.33\n|         |              | `|x------------------x----|` | 5/19 ≈ 0.26\n|         | `|x---x|`    | `|x-------------------x---|` | 1/5 = 0.2\n\n\nIn fact, any relation can be used, as microtiming is less perceived on a pulse.",
+    "markdown": "There is a lot of room for microtiming between and beyond shuffle (`|x-x|`) and swing:\n\n| name    | pattern    | pattern                    | relation\n|---------|------------|----------------------------|-------------\n|         | `x----x--` | `x--------------x--------` | 3/5 = 0.6\n| shuffle | `x-x`      | `x---------------x-------` | 1/2 = 0.5\n|         |            | `x----------------x------` | 7/17 ≈ 0.41\n| swing   | `x--x`     | `x-----------------x-----` | 1/3 ≈ 0.33\n|         |            | `x------------------x----` | 5/19 ≈ 0.26\n|         | `x---x`    | `x-------------------x---` | 1/5 = 0.2\n\n\nIn fact, any relation can be used, as microtiming is less perceived on a pulse.",
     "pattern": "x--x"
   },
   "x-xx": {
@@ -92,6 +92,14 @@
   "x-xxx": {
     "markdown": "",
     "pattern": "x-xxx"
+  },
+  "x--x-x": {
+    "name": "Zamacueca",
+    "source": [
+      "[La Guía Musical: Cajón Capítulo 5: Patrón de Zamacueca](https://www.youtube.com/watch?v=kwqX4Fo4nsc)"
+    ],
+    "markdown": "The Peruan [Zamacueca](https://en.wikipedia.org/wiki/Zamacueca) rhythm is usually played with additional bass beats as `X-xXxX` on a Cajón, based on a 3:2 polyrhythm `x-xxx-`.",
+    "pattern": "x--x-x"
   },
   "x-xxx-": {
     "name": "3:2 polyrhythm",
@@ -381,6 +389,7 @@
     "pattern": "x-x-x-x-x--x-x-"
   },
   "--x--x--x--x----": {
+    "name": "I Got Rhythm",
     "works": [
       "[*I Got Rhythm*](https://de.wikipedia.org/wiki/I_Got_Rhythm) by George Gershwin"
     ],

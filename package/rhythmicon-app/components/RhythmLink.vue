@@ -17,6 +17,6 @@ const text = computed(() => {
 
 <template>
   <RouterLink class="rhythm-link" :to="{ query: { pattern } }">
-    {{ text }}
+    <slot>{{ text }}</slot>
   </RouterLink>
 </template>

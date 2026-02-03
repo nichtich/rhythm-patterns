@@ -7,7 +7,7 @@ import RhythmLink from "./RhythmLink.vue"
 
 const props = defineProps({ markdown: String })
 
-const RE = /^\|[x-][x-]*\|+$/i
+const RE = /^\|?[x-][x-]*\|?$/i
 const MD = markdownit({ typographer: true, html: true })
 
 MD.use(md => {
@@ -18,7 +18,7 @@ MD.use(md => {
         for (let i = 0; i < children.length; i++) {
           const { type, content } = children[i]          
           if (type == "code_inline" && RE.test(content)) {
-            const patternText = content.slice(1,content.length-1)
+            const patternText = content.replaceAll("|","")
             const pattern = patternText.replaceAll(/[^-]/gi,"x")
             const linkOpen = new state.Token("link_open", "RhythmLink", 1)
             linkOpen.attrs = [ [":pattern", `"${pattern}"`] ]

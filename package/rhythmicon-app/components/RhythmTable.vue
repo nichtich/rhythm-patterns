@@ -88,13 +88,6 @@ const emit = defineEmits(["selectCategory","selectBeats","selectLength"])
 </template>
 
 <style scoped>
-table { 
-    border-collapse: collapse;
-}
-table td {
-      border: 1px solid #AAAAAA;
-        padding: 0.25em;
-}
 .category.active {
   font-weight: bold;
 }

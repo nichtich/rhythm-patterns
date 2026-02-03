@@ -1,13 +1,13 @@
 <script setup>
-import SourcesList from "./SourcesList.vue"
+import MarkdownList from "./MarkdownList.vue"
 import MarkdownText from "./MarkdownText.vue"
 
-defineProps({ category: { type: Object } })
+defineProps({ category: Object })
 </script>
 
 <template>
   <div v-if="category">
     <MarkdownText :markdown="category.value.markdown" />
-    <SourcesList :sources="category.value.source" />
+    <MarkdownList :items="category.value.source" title="Sources" />
   </div>
 </template>
